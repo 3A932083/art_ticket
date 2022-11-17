@@ -11,7 +11,7 @@
             <a class="nav-link " aria-current="page" href="{{route('home.new')}}">最新</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="#">推薦</a>
+            <a class="nav-link disabled" href="#">推薦</a>
         </li>
     </ul>
     </div>

@@ -9,7 +9,7 @@
                     </div>
 
                     <div class="carousel-item">
-                        <img src="../img/3.png" class="d-block w-100">
+                        <img src="../img/2.png" class="d-block w-100">
                     </div>
                 </div>
             </div>

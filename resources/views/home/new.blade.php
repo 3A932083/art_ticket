@@ -8,7 +8,7 @@
         <div style="width: 83%">
             <ul class="nav nav-tabs ">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">最新</a>
+                    <a class="nav-link disabled" aria-current="page" href="#">最新</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('home.refer')}}">推薦</a>
