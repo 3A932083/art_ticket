@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
-});
+    return view('home/new');
+})->name('home.new');
+
+Route::get('refer', function (){
+   return view('home/refer');
+})->name('home.refer');
