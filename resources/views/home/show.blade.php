@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title','ArtHome')
+@section('title','展覽')
 @section('content')
 
     <!--展覽之頁面-->

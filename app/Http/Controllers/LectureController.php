@@ -13,7 +13,7 @@ class LectureController extends Controller
      */
     public function index()
     {
-        //
+        return view('home.lecture');
     }
 
     /**

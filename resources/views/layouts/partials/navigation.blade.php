@@ -7,7 +7,7 @@
           <div class="container">
               <div class="row ">
                   <div class="col-10 nav" style="color: #fefefe">
-                      <a class="nav-link link-light" aria-current="page" href="{{route('home.show')}}">展覽</a>
+                      <a class="nav-link link-light" aria-current="page"  href="{{ route('home.show') }}">展覽</a>
                       <a class="nav-link link-light" href="{{route('home.diy')}}">體驗</a>
                       <a class="nav-link link-light" href="{{route('home.lecture')}}">講座</a>
                   </div>
@@ -17,12 +17,6 @@
               </div>
           </div>
 
-            <!-- <ul class="navbar-nav navbar-right">
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">展覽</a></li>
-                <li class="nav-item"><a class="nav-link active" href="#!">體驗</a></li>
-                <li class="nav-item"><a class="nav-link active" href="#!">講座</a></li>
-                <li class="nav-item text-end"><a class="nav-link active" href="#!">會員</a></li>
-            </ul>-->
         </div>
     </div>
 </nav>

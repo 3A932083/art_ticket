@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DiyController;
+use App\Http\Controllers\LectureController;
+use App\Http\Controllers\ShowController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,26 +18,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 //首頁(最新)
-Route::get('/', function () {
-    return view('home/new');
-})->name('home.new');
+Route::get('/',[HomeController::class,'index'])->name('home.new');
 
 //推薦
-Route::get('refer', function (){
-   return view('home/refer');
-})->name('home.refer');
+Route::get('refer',[HomeController::class,'index'])->name('home.refer');
 
 //展覽
-Route::get('show', function (){
-    return view('home/show');
-})->name('home.show');
+Route::get('show',[ShowController::class,'index'])->name('home.show');
 
 //體驗
-Route::get('diy', function (){
-    return view('home/diy');
-})->name('home.diy');
+Route::get('diy',[DiyController::class,'index'])->name('home.diy');
 
 //講座
-Route::get('lecture', function (){
-    return view('home/lecture');
-})->name('home.lecture');
+Route::get('lecture',[LectureController::class,'index'])->name('home.lecture');
+
