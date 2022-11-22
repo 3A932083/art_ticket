@@ -29,6 +29,7 @@
 
                             <h2 class="fs-4 fw-bold">title1</h2>
                             <p class="mb-0">content123456</p>
+                            <a href="#" class="stretched-link"></a>
                         </div>
                     </div>
                 </div>
@@ -40,6 +41,7 @@
 
                             <h2 class="fs-4 fw-bold">title2</h2>
                             <p class="mb-0">content123456</p>
+                            <a href="#" class="stretched-link"></a>
                         </div>
                     </div>
                 </div>
@@ -51,6 +53,7 @@
 
                             <h2 class="fs-4 fw-bold">title3</h2>
                             <p class="mb-0">content123456</p>
+                            <a href="#" class="stretched-link"></a>
                         </div>
                     </div>
                 </div>
@@ -62,6 +65,7 @@
 
                             <h2 class="fs-4 fw-bold">title4</h2>
                             <p class="mb-0">content123456</p>
+                            <a href="#" class="stretched-link"></a>
                         </div>
                     </div>
                 </div>
@@ -73,6 +77,7 @@
 
                             <h2 class="fs-4 fw-bold">title5</h2>
                             <p class="mb-0">content123456</p>
+                            <a href="#" class="stretched-link"></a>
                         </div>
                     </div>
                 </div>
@@ -84,6 +89,7 @@
 
                             <h2 class="fs-4 fw-bold">title6</h2>
                             <p class="mb-0">content123456</p>
+                            <a href="#" class="stretched-link"></a>
                         </div>
                     </div>
                 </div>

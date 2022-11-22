@@ -25,17 +25,20 @@ Route::get('/',[HomeController::class,'index'])->name('home.new');
 Route::get('refer',[HomeController::class,'index'])->name('home.refer');
 
 //展覽
-Route::get('show',[ActivityController::class,'show'])->name('home.show');
+Route::get('show',[ActivityController::class,'show'])->name('activity.show');
 
 //體驗
-Route::get('diy',[ActivityController::class,'diy'])->name('home.diy');
+Route::get('diy',[ActivityController::class,'diy'])->name('activity.diy');
 
 //講座
-Route::get('lecture',[ActivityController::class,'lecture'])->name('home.lecture');
+Route::get('lecture',[ActivityController::class,'lecture'])->name('activity.lecture');
 
-//活動頁面
-
+<<<<<<< HEAD
 
 //會員首頁
 Route::get('userhome',[UserController::class,'userhome'])->name('user.userhome');
 
+=======
+//活動頁面(選擇性路由
+Route::get('activity',[ActivityController::class,'activity'])->name('activity.activity');
+>>>>>>> origin/master

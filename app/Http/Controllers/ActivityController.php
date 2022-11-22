@@ -16,9 +16,15 @@ class ActivityController extends Controller
     {
         return view('home.diy');
     }
+
     public function lecture()
     {
     return view('home.lecture');
+    }
+
+    public function activity()
+    {
+        return view('activity.activity');
     }
 }
 

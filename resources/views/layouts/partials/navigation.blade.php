@@ -7,9 +7,9 @@
           <div class="container">
               <div class="row ">
                   <div class="col-10 nav" style="color: #fefefe">
-                      <a class="nav-link link-light" aria-current="page"  href="{{ route('home.show') }}">展覽</a>
-                      <a class="nav-link link-light" href="{{route('home.diy')}}">體驗</a>
-                      <a class="nav-link link-light" href="{{route('home.lecture')}}">講座</a>
+                      <a class="nav-link link-light" aria-current="page"  href="{{ route('activity.show') }}">展覽</a>
+                      <a class="nav-link link-light" href="{{route('activity.diy')}}">體驗</a>
+                      <a class="nav-link link-light" href="{{route('activity.lecture')}}">講座</a>
                   </div>
                   <div class="col" style="color: #fefefe">
                       <a class="nav-link link-light text-end" href="#!">會員</a>
