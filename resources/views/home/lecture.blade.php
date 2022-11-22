@@ -6,10 +6,11 @@
 <div>
     <!--日期-->
     <div class="row justify-content-center">
-    <div style="width: 80%">
-        <h2 class="fs-4 fw-bold">日期：</h2>
-        <input type="date" value="2022-06-01">
-    </div>
+        <div style="width: 80%">
+            <h2 class="fs-4 fw-bold">日期：</h2>
+            <input type="date" value="2022-06-01">~<input type="date" value="2022-06-01">
+            <input type="button" style="width:55px;height:35px;" value="查詢">
+        </div>
     </div>
 
     <!-- Page Content-->
