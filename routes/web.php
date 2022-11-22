@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DiyController;
 use App\Http\Controllers\LectureController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,4 +34,8 @@ Route::get('diy',[ActivityController::class,'diy'])->name('home.diy');
 Route::get('lecture',[ActivityController::class,'lecture'])->name('home.lecture');
 
 //活動頁面
+
+
+//會員首頁
+Route::get('userhome',[UserController::class,'userhome'])->name('user.userhome');
 
