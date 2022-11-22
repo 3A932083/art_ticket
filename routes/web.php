@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DiyController;
 use App\Http\Controllers\LectureController;
-use App\Http\Controllers\ShowController;
+use App\Http\Controllers\ActivityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,11 +24,13 @@ Route::get('/',[HomeController::class,'index'])->name('home.new');
 Route::get('refer',[HomeController::class,'index'])->name('home.refer');
 
 //展覽
-Route::get('show',[ShowController::class,'index'])->name('home.show');
+Route::get('show',[ActivityController::class,'show'])->name('home.show');
 
 //體驗
-Route::get('diy',[DiyController::class,'index'])->name('home.diy');
+Route::get('diy',[ActivityController::class,'diy'])->name('home.diy');
 
 //講座
-Route::get('lecture',[LectureController::class,'index'])->name('home.lecture');
+Route::get('lecture',[ActivityController::class,'lecture'])->name('home.lecture');
+
+//活動頁面
 
