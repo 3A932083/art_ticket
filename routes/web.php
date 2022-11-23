@@ -22,7 +22,7 @@ use App\Http\Controllers\UserController;
 Route::get('/',[HomeController::class,'index'])->name('home.new');
 
 //推薦
-Route::get('refer',[HomeController::class,'index'])->name('home.refer');
+Route::get('refer',[HomeController::class,'refer'])->name('home.refer');
 
 //展覽
 Route::get('show',[ActivityController::class,'show'])->name('activity.show');
@@ -33,12 +33,11 @@ Route::get('diy',[ActivityController::class,'diy'])->name('activity.diy');
 //講座
 Route::get('lecture',[ActivityController::class,'lecture'])->name('activity.lecture');
 
-<<<<<<< HEAD
 
 //會員首頁
 Route::get('userhome',[UserController::class,'userhome'])->name('user.userhome');
 
-=======
+
 //活動頁面(選擇性路由
 Route::get('activity',[ActivityController::class,'activity'])->name('activity.activity');
->>>>>>> origin/master
+
