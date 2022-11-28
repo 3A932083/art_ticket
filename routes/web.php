@@ -41,3 +41,7 @@ Route::get('userhome',[UserController::class,'userhome'])->name('user.userhome')
 //活動頁面(選擇性路由
 Route::get('activity',[ActivityController::class,'activity'])->name('activity.activity');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
