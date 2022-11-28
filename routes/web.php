@@ -33,15 +33,9 @@ Route::get('diy',[ActivityController::class,'diy'])->name('activity.diy');
 //講座
 Route::get('lecture',[ActivityController::class,'lecture'])->name('activity.lecture');
 
-
-//會員首頁
-Route::get('userhome',[UserController::class,'userhome'])->name('user.userhome');
-
-
 //活動頁面(選擇性路由
 Route::get('activity',[ActivityController::class,'activity'])->name('activity.activity');
 
-
+//會員首頁
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('userhome',[UserController::class,'userhome'])->name('auth.home');

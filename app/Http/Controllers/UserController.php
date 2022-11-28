@@ -13,7 +13,7 @@ class UserController extends Controller
      */
     public function userhome()
     {
-        return view('user.userhome');
+        return view('auth.home');
     }
 
     /**
