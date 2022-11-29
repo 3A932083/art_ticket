@@ -33,6 +33,11 @@ Route::get('diy',[ActivityController::class,'diy'])->name('activity.diy');
 //講座
 Route::get('lecture',[ActivityController::class,'lecture'])->name('activity.lecture');
 
+//註冊
+Route::get('register',[UserController::class,'register'])->name('home.register');
+//登入
+Route::get('login',[UserController::class,'login'])->name('home.login');
+
 
 //會員首頁
 Route::get('userhome',[UserController::class,'userhome'])->name('user.userhome');
