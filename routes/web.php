@@ -33,11 +33,6 @@ Route::get('diy',[ActivityController::class,'diy'])->name('activity.diy');
 //講座
 Route::get('lecture',[ActivityController::class,'lecture'])->name('activity.lecture');
 
-//註冊
-Route::get('register',[UserController::class,'register'])->name('home.register');
-//登入
-Route::get('login',[UserController::class,'login'])->name('home.login');
-
 
 //會員首頁
 Route::get('userhome',[UserController::class,'userhome'])->name('user.userhome');
@@ -46,3 +41,9 @@ Route::get('userhome',[UserController::class,'userhome'])->name('user.userhome')
 //活動頁面(選擇性路由
 Route::get('activity',[ActivityController::class,'activity'])->name('activity.activity');
 
+//活動詳情
+Route::get('activity_information',[ActivityController::class,'activity_information'])->name('activity.activity_information');
+//訂單確認
+Route::get('activity_check',[ActivityController::class,'activity_check'])->name('activity.activity_check');
+//發送票券
+Route::get('activity_end',[ActivityController::class,'activity_end'])->name('activity.activity_end');
