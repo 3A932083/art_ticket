@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminActivityController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DiyController;
@@ -45,4 +46,9 @@ Route::get('userhome',[UserController::class,'userhome'])->name('user.userhome')
 
 //活動頁面(選擇性路由
 Route::get('activity',[ActivityController::class,'activity'])->name('activity.activity');
+
+//管理員
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/',[AdminActivityController::class,'index'])->name('posts.index');//活動列表
+});
 
