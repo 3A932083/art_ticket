@@ -3,7 +3,9 @@
 @section('content')
     <!-- Page Content-->
     <section class="py-5">
-        <h1 class="align-bottom">確認訂購</h1>
+        <h1 class="fw-bolder mb-1 ">確認訂單</h1>
+
+
         <div class="container px-5 my-5 ">
             <div class="row gx-5">
                 <div class="position-relative m-4">

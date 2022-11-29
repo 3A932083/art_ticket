@@ -27,10 +27,10 @@
                     <tbody>
                     <tr>
 
-                        <td>名稱</td>
-                        <td>日期</td>
-                        <td>時間</td>
-                        <td>數量</td>
+                        <td>活動名稱</td>
+                        <td>活動日期</td>
+                        <td>活動時間</td>
+                        <td>票券數量</td>
                         <td>價格</td>
                     </tr>
                     <tr>
@@ -47,6 +47,15 @@
                         <td>x1</td>
                         <td>800</td>
                     </tr>
+                    <tr>
+                    <thead>
+                        <th scope="row">總計</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>1600</td>
+                    </thead>
+                    </tr>
                     </tbody>
                 </table>
 
@@ -59,8 +68,10 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <div class="w20">
-                        <th scope="row">持卡人姓名<input type="password" class="form-control"  placeholder="持卡人姓名"></th>
+                        <div style="margin-bottom:20px">
+                            <th scope="row">持卡人姓名<input type="password" class="form-control"  placeholder="持卡人姓名"></th>
+
+                        </div>
 
 
                     </tr>
