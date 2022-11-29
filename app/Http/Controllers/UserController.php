@@ -15,11 +15,12 @@ class UserController extends Controller
     {
         return view('auth.home');
     }
-    public function resetpassword()
+
+
+    public function forget()
     {
         return view('auth.passwords.email');
     }
-
 
 
     /**

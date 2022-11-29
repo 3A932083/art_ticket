@@ -32,10 +32,33 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('忘記密碼問題') }}</label>
+
+                            <div class="col-md-6">
+
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('答案') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="ans" type="text" class="form-control @error('ans') is-invalid @enderror" name="ans" required autocomplete="new-ans">
+
+                                @error('ans')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('傳送連結') }}
+                                    {{ __('確定') }}
                                 </button>
                             </div>
                         </div>
