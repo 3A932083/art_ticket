@@ -39,3 +39,14 @@ Route::get('activity',[ActivityController::class,'activity'])->name('activity.ac
 //會員首頁
 Auth::routes();
 Route::get('userhome',[UserController::class,'userhome'])->name('auth.home');
+//會員重設密碼
+Route::get('resetpassword',[UserController::class,'resetpassword'])->name('auth.passwords.email');
+
+
+
+
+
+//test view
+Route::get('test',function (){
+    return view('auth.passwords.email');
+});

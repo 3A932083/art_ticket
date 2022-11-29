@@ -58,8 +58,8 @@
                                     {{ __('登入') }}
                                 </button>
 
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                @if (Route::has('password.email'))
+                                    <a class="btn btn-link" href="{{route('auth.passwords.email')}}" >
                                         {{ __('忘記密碼?') }}
                                     </a>
                                 @endif

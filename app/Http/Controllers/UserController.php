@@ -15,6 +15,12 @@ class UserController extends Controller
     {
         return view('auth.home');
     }
+    public function resetpassword()
+    {
+        return view('auth.passwords.email');
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
