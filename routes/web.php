@@ -36,6 +36,7 @@ Route::get('lecture',[ActivityController::class,'lecture'])->name('activity.lect
 //活動頁面(選擇性路由
 Route::get('activity',[ActivityController::class,'activity'])->name('activity.activity');
 
+<<<<<<< HEAD
 //會員首頁
 Auth::routes();
 Route::get('userhome',[UserController::class,'userhome'])->name('auth.home');
@@ -51,3 +52,11 @@ Route::get('forget',[UserController::class,'forget'])->name('auth.passwords.emai
 Route::get('test',function (){
     return view('auth.passwords.email');
 });
+=======
+//活動詳情
+Route::get('activity_information',[ActivityController::class,'activity_information'])->name('activity.activity_information');
+//訂單確認
+Route::get('activity_check',[ActivityController::class,'activity_check'])->name('activity.activity_check');
+//發送票券
+Route::get('activity_end',[ActivityController::class,'activity_end'])->name('activity.activity_end');
+>>>>>>> origin/master

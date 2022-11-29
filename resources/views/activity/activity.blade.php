@@ -17,8 +17,8 @@
                                         <!-- Post title-->
                                         <h1 class="fw-bolder mb-1 ">活動名稱</h1>
                                     </div>
-                                    <div class="col-xs-12 col-md-3 d-md-flex justify-content-md-end">
-                                        <a href="#" class="btn btn-secondary fs-5 position-end " >立即訂購</a>
+                                    <div class="col-xs-12 col-md-3 d-md-flex">
+                                        <a href="{{route('activity.activity_information')}}" class="btn btn-secondary fs justify-content-md-end-5 position-end " >立即訂購</a>
                                     </div>
                                 </div>
 
