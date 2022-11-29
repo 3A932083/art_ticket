@@ -34,21 +34,32 @@ Route::get('diy',[ActivityController::class,'diy'])->name('activity.diy');
 //講座
 Route::get('lecture',[ActivityController::class,'lecture'])->name('activity.lecture');
 
-//註冊
-Route::get('register',[UserController::class,'register'])->name('home.register');
-//登入
-Route::get('login',[UserController::class,'login'])->name('home.login');
+//活動頁面(選擇性路由
+Route::get('activity',[ActivityController::class,'activity'])->name('activity.activity');
 
 
 //會員首頁
-Route::get('userhome',[UserController::class,'userhome'])->name('user.userhome');
+Auth::routes();
+//還未使用
+Route::get('userhome',[UserController::class,'userhome'])->name('auth.home');
+//會員忘記密碼
+Route::get('forget',[UserController::class,'forget'])->name('auth.passwords.email');
+//會員重設密碼
+
+//活動詳情
+Route::get('activity_information',[ActivityController::class,'activity_information'])->name('activity.activity_information');
+//訂單確認
+Route::get('activity_check',[ActivityController::class,'activity_check'])->name('activity.activity_check');
+//發送票券
+Route::get('activity_end',[ActivityController::class,'activity_end'])->name('activity.activity_end');
 
 
-//活動頁面(選擇性路由
-Route::get('activity',[ActivityController::class,'activity'])->name('activity.activity');
+
 
 //管理員
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/',[AdminActivityController::class,'index'])->name('posts.index');//活動列表
 });
+
+
 
