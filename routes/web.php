@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\AdminAccountController;
 use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\AdminActivityController;
 use App\Http\Controllers\AdminOrderController;
@@ -22,22 +24,16 @@ use App\Http\Controllers\UserController;
 
 //首頁(最新)
 Route::get('/',[HomeController::class,'index'])->name('home.new');
-
 //推薦
 Route::get('refer',[HomeController::class,'refer'])->name('home.refer');
-
 //展覽
 Route::get('show',[ActivityController::class,'show'])->name('activity.show');
-
 //體驗
 Route::get('diy',[ActivityController::class,'diy'])->name('activity.diy');
-
 //講座
 Route::get('lecture',[ActivityController::class,'lecture'])->name('activity.lecture');
-
 //活動頁面(選擇性路由
 Route::get('activity',[ActivityController::class,'activity'])->name('activity.activity');
-
 
 //會員首頁
 Auth::routes();
@@ -58,4 +54,5 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/',[AdminHomeController::class,'index'])->name('index');//主控台
     Route::get('/activity',[AdminActivityController::class,'index'])->name('activities.index');//活動列表
     Route::get('/order',[AdminOrderController::class,'index'])->name('orders.index');//訂單列表
+    Route::get('/account',[AdminAccountController::class,'index'])->name('account.index');//帳號列表
 });
