@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\AdminActivityController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -54,5 +54,6 @@ Route::get('activity_check',[ActivityController::class,'activity_check'])->name(
 Route::get('activity_end',[ActivityController::class,'activity_end'])->name('activity.activity_end');
 //管理員
 Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/',[AdminActivityController::class,'index'])->name('posts.index');//活動列表
+    Route::get('/',[AdminHomeController::class,'index'])->name('index');//主控台
+    Route::get('/activity',[AdminActivityController::class,'index'])->name('activities.index');//活動列表
 });
