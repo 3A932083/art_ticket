@@ -4,9 +4,9 @@
 
 @section('page-content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4">活動管理</h1>
+    <h1 class="mt-4">訂單管理</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">活動一覽表</li>
+        <li class="breadcrumb-item active">訂單一覽表</li>
     </ol>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
         <a class="btn btn-success btn-sm" href="#">新增</a>
@@ -15,7 +15,7 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">活動名稱</th>
+            <th scope="col">訂單</th>
             <th scope="col">功能</th>
         </tr>
         </thead>
@@ -42,7 +42,7 @@
                 <th scope="row" style="width: 50px">01</th>
                 <td>AAA</td>
                 <td style="width: 150px">
-                    <a href="#" type="button" class="btn btn-primary btn-sm">詳細資料</a>
+                    <a href="#" type="button" class="btn btn-primary btn-sm">訂單明細</a>
                     <a href="#" type="button" class="btn btn-danger btn-sm">刪除</a>
                 </td>
             </tr>

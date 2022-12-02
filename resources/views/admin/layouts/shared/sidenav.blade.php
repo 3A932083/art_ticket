@@ -8,7 +8,7 @@
                     </div>
                     活動管理
                 </a>
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('admin.orders.index')}}">
                     <div class="sb-nav-link-icon">
                         <i class="fas fa-tachometer-alt"></i>
                     </div>

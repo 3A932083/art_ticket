@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\AdminActivityController;
+use App\Http\Controllers\AdminOrderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DiyController;
@@ -56,4 +57,5 @@ Route::get('activity_end',[ActivityController::class,'activity_end'])->name('act
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/',[AdminHomeController::class,'index'])->name('index');//主控台
     Route::get('/activity',[AdminActivityController::class,'index'])->name('activities.index');//活動列表
+    Route::get('/order',[AdminOrderController::class,'index'])->name('orders.index');//訂單列表
 });
