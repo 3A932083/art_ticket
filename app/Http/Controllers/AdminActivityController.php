@@ -49,29 +49,6 @@ class AdminActivityController extends Controller
     }
     public function image( Request $request)
     {
-        /*$request->validate([
-            'item' => ['required', 'unique:items'],
-            'image' => ['required', 'mimes:jpg,jpeg,bmp,png'],
-        ]);
-        $parameters = request()->all();
-        if (request()->hasFile('image'))
-        {
-            // 檔案存在，所以存到project/storage/app/public，並拿到url，此範例會拿到public/fileName
-            $imageURL = request()->file('image')->store('public');
-            // 儲存純『檔名』到資料庫，因此把前面路徑修剪掉
-            $parameters['image'] = substr($imageURL, 7);
-        }
-        $create = Image::create([
-            'item' => $request['item'],
-            'image' => $parameters['image'],
-        ]);
-        $result = $create->toArray();
-        if ($parameters['image'] != null){
-            $result['imageURL'] = asset('storage/' . $parameters['image']);
-        }
-        if ($create) {
-            return response()->json($result, 200);
-        }*/
         //驗證資料
         Validator::make($request->all(), [
             'image' => 'required|image',
@@ -84,6 +61,7 @@ class AdminActivityController extends Controller
             //把檔案存到公開的資料夾
             $imageURL=$request->file('image')->move(public_path('/images'), $imageName);
         }
+        //將檔案名稱存至DB
         Image::create([
             'image' => $imageName,
         ]);
