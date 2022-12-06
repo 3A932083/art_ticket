@@ -11,17 +11,16 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function userhome()
-    {
-        return view('auth.home');
-    }
 
 
     public function forget()
     {
         return view('auth.passwords.email');
     }
-
+    public function userindex()
+    {
+        return view('auth.dashboard.index');
+    }
 
     /**
      * Show the form for creating a new resource.
