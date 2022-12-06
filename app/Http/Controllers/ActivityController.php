@@ -19,7 +19,7 @@ class ActivityController extends Controller
 
     public function lecture()
     {
-    return view('home.lecture');
+        return view('home.lecture');
     }
 
     public function activity()
@@ -27,18 +27,5 @@ class ActivityController extends Controller
         return view('activity.activity');
     }
 
-    public function activity_information()
-    {
-        return view('activity.activity_information');
-    }
-
-    public function activity_check()
-    {
-        return view('activity.activity_check');
-    }
-    public function activity_end()
-    {
-        return view('activity.activity_end');
-    }
 }
 

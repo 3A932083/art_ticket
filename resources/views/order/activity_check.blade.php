@@ -2,10 +2,17 @@
 @section('title','活動名稱')
 @section('content')
     <!-- Page Content-->
-    <section class="py-5">
-        <h1 class="align-bottom">確認訂購</h1>
+
+    <p>
+    <div class="row justify-content-center">
+        <div style="width: 80%">
+            <h1 ><<確認訂購>></h1>
+        </div>
+        </p>
+        <section class="py-5">
         <div class="container px-5 my-5 ">
             <div class="row gx-5">
+
                 <div class="position-relative m-4">
                     <div class="progress" style="height: 1px;">
                         <div class="progress-bar" role="progressbar" style="width:50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -76,7 +83,7 @@
 
                     </tr>
                     <tr>
-                        <th scope="row">信用卡號<input type="password" class="form-control"  placeholder=""></th>
+                        <th scope="row">信用卡號<input type="password" class="form-control" placeholder="xxxx-xxxx-xxxx-xxxx"></th>
 
                     </tr>
                     <tr>
@@ -90,14 +97,15 @@
                 </table>
 
                 <div class="col-xs-12 col-md-3 d-md-flex">
-                    <a href="{{route('activity.activity_end')}}" class="btn btn-secondary fs justify-content-md-end-5 position-end " >下一步</a>
+                    <a href="{{route('order.activity_end')}}" class="btn btn-secondary fs justify-content-md-end-5 position-end " >下一步</a>
                 </div>
                         </header>
                         <!-- Post content-->
                         <section class="mb-5">
                             <hr>
                             <div class="accordion" id="accordionExample">
-
+                            </div>
+            </div>
     </section>
 
 @endsection
