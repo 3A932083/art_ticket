@@ -43,6 +43,17 @@
                                       <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                           @csrf
                                       </form>
+
+                                      <!--會員中心-->
+                                      <a class="dropdown-item" href="{{ route('auth.dashboard.index') }}"
+                                         onclick="event.preventDefault();
+                                                     document.getElementById('dashboard-form').submit();">
+                                          {{ __('會員中心') }}
+                                      </a>
+
+                                      <form id="logout-form" action="{{ route('auth.dashboard.index') }}" method="POST" class="d-none">
+                                          @csrf
+                                      </form>
                                   </div>
                               </li>
                           @endguest

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminActivityController;
+use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DiyController;
@@ -38,13 +40,14 @@ Route::get('lecture',[ActivityController::class,'lecture'])->name('activity.lect
 Route::get('activity',[ActivityController::class,'activity'])->name('activity.activity');
 
 
-//會員首頁
+
 Auth::routes();
-//還未使用
-Route::get('userhome',[UserController::class,'userhome'])->name('auth.home');
 //會員忘記密碼
 Route::get('forget',[UserController::class,'forget'])->name('auth.passwords.email');
-
+//會員
+Route::prefix('auth')->name('auth.')->group(function () {
+    Route::get('/',[UserController::class,'userindex'])->name('dashboard.index');
+});
 
 //活動詳情
 Route::get('activity_information',[ActivityController::class,'activity_information'])->name('activity.activity_information');
