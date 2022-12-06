@@ -95,7 +95,44 @@
 
         <!--個人票卷-->
         <div class="tab-pane fade" id="nav-ticket" role="tabpanel" aria-labelledby="nav-ticket-tab">
-        222222222222
+
+            <section class="pt-4">
+                <div class="container px-lg-5">
+
+                    <h2>我的票券</h2>
+                    <div class="card mb-3" style="max-width: 100%;">
+                        <div class="row g-0">
+
+
+                            <div class="card mb-3" style="max-width:100%;">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="../img/4.png" alt="...">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h4 class="card-title">【全民通識課 免費講座】「藥」健康如何補充營養</h4>
+                                            <p class="card-text">你曉得如何健康用藥嗎？
+                                                重視健康的現代人不可不知， 有些藥物、中草藥、食品與保健營養品會產生交互作用。歡迎來純青認識藥品&保健營養品的相關知識。</p>
+                                            <p class="card-text"><small class="text-muted">2022/2/22</small></p>
+                                        </div>
+                                    </div>
+                                    <div class="row g-0">
+                                        <div class="col-md-4">
+                                            <img src="../img/4.png" alt="...">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h4 class="card-title">【免費講座】居家空間萬用收納術</h4>
+                                                <p class="card-text">家是每個人的避風港 隨著經年累月的堆積，空間塞滿東西越來越亂 透過專業的居家整聊師講解，教你如何有效整理收納 純青與你一同找回家庭的美好環境</p>
+                                                <p class="card-text"><small class="text-muted">2022/12/25</small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            </section>
 
         </div>
 
@@ -106,56 +143,55 @@
                 @csrf
 
                 <section class="pt-4">
+                        <div class="row mb-3 px-4">
+                            <label for="order" class="col-md-4 col-form-label text-md-end">{{ __('訂單：') }}</label>
+                            <div class="col-md-2">
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>選擇訂單</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
 
-                <div class="row mb-3 px-4">
-                    <label for="order" class="col-md-4 col-form-label text-md-end">{{ __('訂單：') }}</label>
-                    <div class="col-md-2">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>選擇訂單</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-                </div>
+                        <div class="row mb-3 px-4">
+                            <label for="activityname" class="col-md-4 col-form-label text-md-end">{{ __('活動名稱：') }}</label>
 
-                <div class="row mb-3 px-4">
-                    <label for="order" class="col-md-4 col-form-label text-md-end">{{ __('活動名稱：') }}</label>
+                        </div>
 
-                </div>
+                        <div class="row mb-3 px-4">
+                            <label for="activityplace" class="col-md-4 col-form-label text-md-end">{{ __('活動地點：') }}</label>
 
-                <div class="row mb-3 px-4">
-                    <label for="order" class="col-md-4 col-form-label text-md-end">{{ __('活動地點：') }}</label>
+                        </div>
 
-                </div>
+                        <div class="row mb-3 px-4">
+                            <label for="activitytime" class="col-md-4 col-form-label text-md-end">{{ __('活動場次：') }}</label>
 
-                <div class="row mb-3 px-4">
-                    <label for="order" class="col-md-4 col-form-label text-md-end">{{ __('活動場次：') }}</label>
+                        </div>
 
-                </div>
+                        <div class="row mb-3 px-4">
+                            <label for="bank" class="col-md-4 col-form-label text-md-end">{{ __('退款銀行：') }}</label>
+                            <div class="col-md-2">
+                                <input id="bank" type="text" class="form-control" placeholder="請輸入退款銀行">
+                            </div>
+                        </div>
 
-                <div class="row mb-3 px-4">
-                    <label for="bank" class="col-md-4 col-form-label text-md-end">{{ __('退款銀行：') }}</label>
-                    <div class="col-md-2">
-                        <input id="bank" type="text" class="form-control" placeholder="請輸入退款銀行">
-                    </div>
-                </div>
+                        <div class="row mb-3 px-4">
+                            <label for="bankaccount" class="col-md-4 col-form-label text-md-end">{{ __('銀行帳號：') }}</label>
+                            <div class="col-md-2">
+                                <input id="bankaccount" type="text" class="form-control"  placeholder="請輸入銀行帳號">
+                            </div>
+                        </div>
 
-                <div class="row mb-3 px-4">
-                    <label for="bankaccount" class="col-md-4 col-form-label text-md-end">{{ __('銀行帳號：') }}</label>
-                    <div class="col-md-2">
-                        <input id="bankaccount" type="text" class="form-control"  placeholder="請輸入銀行帳號">
-                    </div>
-                </div>
-
-                <div class="row mb-3 px-4">
-                    <div class="col-md-8 offset-md-4">
-                        <button type="submit" class="btn btn-primary">
-                            {{ __('確定退票') }}
-                        </button>
-                    </div>
-                </div>
-                </section>>
+                        <div class="row mb-3 px-4">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('確定退票') }}
+                                </button>
+                            </div>
+                        </div>
+                </section>
             </form>
         </div>
 
