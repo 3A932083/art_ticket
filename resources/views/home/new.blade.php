@@ -17,10 +17,9 @@
     </div>
 
     <!--內容-->
-    <!--最新-->
     <div class="tab-content" id="nav-tabContent">
+        <!--最新-->
         <div class="tab-pane fade show active" id="nav-new" role="tabpanel" aria-labelledby="nav-new-tab">
-            <div class="tab-pane fade show active" id="new" role="tabpanel" aria-labelledby="new-tab">
                 <section class="pt-4">
                     <div class="container px-lg-5">
                         <!-- Page Features-->
@@ -101,12 +100,10 @@
                         </div>
                     </div>
                 </section>
-            </div>
         </div>
 
         <!--推薦-->
         <div class="tab-pane fade" id="nav-refer" role="tabpanel" aria-labelledby="nav-refer-tab">
-            <div class="tab-pane fade show active" id="new" role="tabpanel" aria-labelledby="new-tab">
                 <section class="pt-4">
                     <div class="container px-lg-5">
                         <!-- Page Features-->
@@ -187,8 +184,8 @@
                         </div>
                     </div>
                 </section>
-            </div>
         </div>
+
     </div>
 
 
