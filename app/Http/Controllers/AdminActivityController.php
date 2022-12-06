@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Intervention\Image\ImageManagerStatic as Image;  //在檔案開頭的namespace加上
+//use Intervention\Image\ImageManagerStatic as Image;  //在檔案開頭的namespace加上
+use App\Models\Image;
 
 class AdminActivityController extends Controller
 {
@@ -83,6 +84,9 @@ class AdminActivityController extends Controller
             //把檔案存到公開的資料夾
             $imageURL=$request->file('image')->move(public_path('/images'), $imageName);
         }
+        Image::create([
+            'image' => $imageName,
+        ]);
         //回到傳送資料來的頁面
         return 'OKK?'.$imageURL;
     }
