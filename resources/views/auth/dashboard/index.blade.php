@@ -10,7 +10,7 @@
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <button class="nav-link active" id="nav-data-tab" data-bs-toggle="tab" data-bs-target="#nav-data" type="button" role="tab" aria-controls="nav-data" aria-selected="true">個人資料</button>
                     <button class="nav-link" id="nav-ticket-tab" data-bs-toggle="tab" data-bs-target="#nav-ticket" type="button" role="tab" aria-controls="nav-ticket" aria-selected="false">個人票卷</button>
-                    <button class="nav-link" id="nav-refund-tab" data-bs-toggle="tab" data-bs-target="#nav-refund" type="button" role="tab" aria-controls="nav-refund" aria-selected="false">退票頁面</button>
+                    <button class="nav-link" id="nav-refund-tab" data-bs-toggle="tab" data-bs-target="#nav-refund" type="button" role="tab" aria-controls="nav-refund" aria-selected="false">退票申請</button>
                 </div>
             </nav>
         </div>
@@ -98,11 +98,65 @@
         222222222222
 
         </div>
-        <!--退票頁面-->
-        <div class="tab-pane fade" id="nav-refund" role="tabpanel" aria-labelledby="nav-refund-tab">
 
-            33333333333333
+        <!--退票申請-->
+        <div class="tab-pane fade " id="nav-refund" role="tabpanel" aria-labelledby="nav-refund-tab">
 
+            <form method="POST" action=" ">
+                @csrf
+
+                <section class="pt-4">
+
+                <div class="row mb-3 px-4">
+                    <label for="order" class="col-md-4 col-form-label text-md-end">{{ __('訂單：') }}</label>
+                    <div class="col-md-2">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>選擇訂單</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3 px-4">
+                    <label for="order" class="col-md-4 col-form-label text-md-end">{{ __('活動名稱：') }}</label>
+
+                </div>
+
+                <div class="row mb-3 px-4">
+                    <label for="order" class="col-md-4 col-form-label text-md-end">{{ __('活動地點：') }}</label>
+
+                </div>
+
+                <div class="row mb-3 px-4">
+                    <label for="order" class="col-md-4 col-form-label text-md-end">{{ __('活動場次：') }}</label>
+
+                </div>
+
+                <div class="row mb-3 px-4">
+                    <label for="bank" class="col-md-4 col-form-label text-md-end">{{ __('退款銀行：') }}</label>
+                    <div class="col-md-2">
+                        <input id="bank" type="text" class="form-control" placeholder="請輸入退款銀行">
+                    </div>
+                </div>
+
+                <div class="row mb-3 px-4">
+                    <label for="bankaccount" class="col-md-4 col-form-label text-md-end">{{ __('銀行帳號：') }}</label>
+                    <div class="col-md-2">
+                        <input id="bankaccount" type="text" class="form-control"  placeholder="請輸入銀行帳號">
+                    </div>
+                </div>
+
+                <div class="row mb-3 px-4">
+                    <div class="col-md-8 offset-md-4">
+                        <button type="submit" class="btn btn-primary">
+                            {{ __('確定退票') }}
+                        </button>
+                    </div>
+                </div>
+                </section>>
+            </form>
         </div>
 
     </div>
