@@ -52,7 +52,11 @@ Route::get('activity_end',[ActivityController::class,'activity_end'])->name('act
 //管理員
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/',[AdminHomeController::class,'index'])->name('index');//主控台
-    Route::get('/activity',[AdminActivityController::class,'index'])->name('activities.index');//活動列表
+    Route::prefix('activities')->name('activities.')->group(function () {
+        Route::get('/',[AdminActivityController::class,'index'])->name('index');//活動列表
+        Route::get('/image',[AdminActivityController::class,'test'])->name('image.test');
+        Route::post('/image',[AdminActivityController::class,'image'])->name('image');//儲存圖片
+    });
     Route::get('/order',[AdminOrderController::class,'index'])->name('orders.index');//訂單列表
     Route::get('/account',[AdminAccountController::class,'index'])->name('account.index');//帳號列表
 });
