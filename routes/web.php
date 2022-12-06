@@ -21,11 +21,8 @@ use App\Http\Controllers\UserController;
 |
 */
 
-//首頁(最新)
+//首頁
 Route::get('/',[HomeController::class,'index'])->name('home.new');
-
-//推薦
-Route::get('refer',[HomeController::class,'refer'])->name('home.refer');
 
 //展覽
 Route::get('show',[ActivityController::class,'show'])->name('activity.show');

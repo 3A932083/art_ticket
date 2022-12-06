@@ -51,7 +51,7 @@
                                           {{ __('會員中心') }}
                                       </a>
 
-                                      <form id="logout-form" action="{{ route('auth.dashboard.index') }}" method="POST" class="d-none">
+                                      <form id="dashboard-form" action="{{ route('auth.dashboard.index') }}" method="GET" class="d-none">
                                           @csrf
                                       </form>
                                   </div>

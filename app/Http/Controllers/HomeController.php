@@ -15,10 +15,6 @@ class HomeController extends Controller
     {
         return view('home.new');
     }
-public function refer()
-    {
-        return view('home.refer');
-    }
 
     /**
      * Show the form for creating a new resource.
