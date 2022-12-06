@@ -54,8 +54,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/',[AdminHomeController::class,'index'])->name('index');//主控台
     Route::prefix('activities')->name('activities.')->group(function () {
         Route::get('/',[AdminActivityController::class,'index'])->name('index');//活動列表
-        Route::get('/image',[AdminActivityController::class,'test'])->name('image.test');
-        Route::post('/image',[AdminActivityController::class,'image'])->name('image');//儲存圖片
+        Route::get('/create',[AdminActivityController::class,'create'])->name('create');//新增活動頁面
+        Route::post('/',[AdminActivityController::class,'store'])->name('store');//儲存活動資料
+        Route::get('/image',[AdminActivityController::class,'test'])->name('image.test');//測試-上傳圖片
+        Route::post('/image',[AdminActivityController::class,'image'])->name('image');//測試-儲存圖片
     });
     Route::get('/order',[AdminOrderController::class,'index'])->name('orders.index');//訂單列表
     Route::get('/account',[AdminAccountController::class,'index'])->name('account.index');//帳號列表

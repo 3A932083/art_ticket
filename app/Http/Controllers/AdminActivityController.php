@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 //use Intervention\Image\ImageManagerStatic as Image;  //在檔案開頭的namespace加上
 use App\Models\Image;
+use App\Models\Activity;
 
 class AdminActivityController extends Controller
 {
@@ -16,12 +17,25 @@ class AdminActivityController extends Controller
 
     public function create()
     {
-        //
+        return view('admin.activities.create');
     }
 
     public function store(Request $request)
     {
-        //
+
+        //將檔案名稱存至DB
+        Activity::create([
+
+            'name'=>$request->name,
+            'organizer'=>$request->organizer,
+            'start_time'=>$request->start_time,
+            'end_time'=>$request->end_time,
+            'place'=>$request->place,
+            'introduce'=>$request->introduce,
+
+        ]);
+        //回到傳送資料來的頁面
+        return 'OKK?';
     }
 
     public function show($id)
