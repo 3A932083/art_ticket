@@ -12,7 +12,12 @@ class AdminActivityController extends Controller
 {
     public function index()
     {
-        return view('admin.activities.index');
+        $activities = Activity::orderBy('id', 'DESC')->get();//取得資料庫中的欄位值，以陣列的方式
+        $data=[
+            'activities'=>$activities
+        ];
+
+        return view('admin.activities.index',$data);
     }
 
     public function create()
@@ -37,7 +42,6 @@ class AdminActivityController extends Controller
         }
         //將檔案名稱存至DB
         Activity::create([
-
             'name'=>$request->name,
             'organizer'=>$request->organizer,
             'start_time'=>$request->start_time,
