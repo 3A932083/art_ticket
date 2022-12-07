@@ -9,7 +9,7 @@
         <li class="breadcrumb-item active">新增活動</li>
     </ol>
 
-    <form action="{{route('admin.activities.store')}}" method="post">
+    <form action="{{route('admin.activities.store')}}" method="post"  enctype="multipart/form-data">
         @method('post')
         <!--csrf驗證機制，產生隱藏的input，包含一組驗證密碼-->
         @csrf
@@ -41,7 +41,7 @@
             <label for="exampleFormControlTextarea1" class="form-label">活動介紹</label>
             <textarea name="introduce" id="introduce" class="form-control" rows="10" placeholder="請輸入活動介紹"></textarea><!--多行輸入框-->
         </div>
-        <input type="file" name="image" id="image">
+        <input type="file" name="image" id="image" accept="image/*">
 
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <button class="btn btn-primary btn-sm" type="submit">儲存</button>

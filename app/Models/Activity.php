@@ -11,8 +11,8 @@ class Activity extends Model
     protected $fillable=[
         'id',
         'name',
-        'start_name',
-        'end_name',
+        'start_time',
+        'end_time',
         'place',
         'introduce',
         'organizer',

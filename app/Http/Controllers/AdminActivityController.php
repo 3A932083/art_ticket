@@ -22,19 +22,33 @@ class AdminActivityController extends Controller
 
     public function store(Request $request)
     {
+        //驗證資料
+        Validator::make($request->all(), [
+            'image' => 'required|image',
+        ])->validate();
+
+        //確認有檔案的話儲存到資料夾
+        if ($request->hasFile('image')) {
+            echo 'UUU';
+            //自訂檔案名稱
+            $imageName = time().'.'.$request->file('image')->extension();
+            //把檔案存到公開的資料夾
+            $imageURL=$request->file('image')->move(public_path('/images'), $imageName);
+        }
         //將檔案名稱存至DB
         Activity::create([
 
             'name'=>$request->name,
             'organizer'=>$request->organizer,
-            'start_time'=>date('y-m-d',2022-12-12),
-            'end_time'=>date($request->end_time),
+            'start_time'=>$request->start_time,
+            'end_time'=>$request->end_time,
             'place'=>$request->place,
             'introduce'=>$request->introduce,
+            'img'=>$imageName,
 
         ]);
         //回到傳送資料來的頁面
-        return 'OKK?';
+        return view('admin.activities.index');
     }
 
     public function show($id)
