@@ -2,12 +2,16 @@
 @section('title','活動名稱')
 @section('content')
     <!-- Page Content-->
+<p>
+    <div class="row justify-content-center">
+        <div style="width: 80%">
+                <h1 ><<確認訂單>></h1>
+        </div>
+        </p>
     <section class="py-5">
-        <h1 class="fw-bolder mb-1 ">確認訂單</h1>
-
-
         <div class="container px-5 my-5 ">
             <div class="row gx-5">
+
                 <div class="position-relative m-4">
                     <div class="progress" style="height: 1px;">
                         <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -48,18 +52,20 @@
                             <td>活動日期1</td>
                             <td>地點1</td>
                             <td>票價1</td>
-
+                    </div>
                         </tr>
                     </table>
                         <div class="col-xs-12 col-md-3 d-md-flex">
-                            <a href="{{route('activity.activity_check')}}" class="btn btn-secondary fs justify-content-md-end-5 position-end " >下一步</a>
+                            <a href="{{route('order.activity_check')}}" class="btn btn-secondary fs justify-content-md-end-5 position-end " >下一步</a>
                         </div>
                         </header>
                         <!-- Post content-->
                         <section class="mb-5">
                             <hr>
                             <div class="accordion" id="accordionExample">
+                            </div>
 
+        </div>
     </section>
 
 @endsection
