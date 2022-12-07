@@ -17,6 +17,7 @@ class Activity extends Model
         'introduce',
         'organizer',
         'img',
+        'precaution',
     ];
     public $timestamps = false;
 }

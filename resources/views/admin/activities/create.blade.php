@@ -41,6 +41,10 @@
             <label for="exampleFormControlTextarea1" class="form-label">活動介紹</label>
             <textarea name="introduce" id="introduce" class="form-control" rows="10" placeholder="請輸入活動介紹"></textarea><!--多行輸入框-->
         </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">注意事項</label>
+            <textarea name="precaution" id="precaution" class="form-control" rows="10" placeholder="請輸入注意事項"></textarea><!--多行輸入框-->
+        </div>
         <input type="file" name="image" id="image" accept="image/*">
 
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">

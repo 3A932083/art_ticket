@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::table('activities', function (Blueprint $table) {
             $table->date('start_time')->change();
             $table->date('end_time')->change();
+            $table->string('precaution');
         });
     }
 
@@ -29,6 +30,7 @@ return new class extends Migration
         Schema::table('activities', function (Blueprint $table) {
             $table->dateTime('start_time')->change();
             $table->dateTime('end_time')->change();
+            $table->dropColumn('precaution');
         });
     }
 };

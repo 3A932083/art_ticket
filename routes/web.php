@@ -73,6 +73,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/',[AdminActivityController::class,'index'])->name('index');//活動列表
         Route::get('/create',[AdminActivityController::class,'create'])->name('create');//新增活動頁面
         Route::post('/',[AdminActivityController::class,'store'])->name('store');//儲存活動資料
+        Route::get('/{id}/edit',[AdminActivityController::class,'edit'])->name('edit');//新增活動頁面
+        Route::patch('/{id}',[AdminActivityController::class,'update'])->name('update');//儲存活動資料
+        Route::delete('/{id}',[AdminActivityController::class,'delete'])->name('delete');//儲存活動資料
+
         Route::get('/image',[AdminActivityController::class,'test'])->name('image.test');//測試-上傳圖片
         Route::post('/image',[AdminActivityController::class,'image'])->name('image');//測試-儲存圖片
     });

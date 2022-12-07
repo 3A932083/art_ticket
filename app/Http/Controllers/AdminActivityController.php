@@ -48,11 +48,12 @@ class AdminActivityController extends Controller
             'end_time'=>$request->end_time,
             'place'=>$request->place,
             'introduce'=>$request->introduce,
+            'precaution'=>$request->precaution,
             'img'=>$imageName,
 
         ]);
         //回到傳送資料來的頁面
-        return view('admin.activities.index');
+        return redirect()->route('admin.activities.index');
     }
 
     public function show($id)
