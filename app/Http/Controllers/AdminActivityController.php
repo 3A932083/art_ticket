@@ -22,14 +22,13 @@ class AdminActivityController extends Controller
 
     public function store(Request $request)
     {
-
         //將檔案名稱存至DB
         Activity::create([
 
             'name'=>$request->name,
             'organizer'=>$request->organizer,
-            'start_time'=>$request->start_time,
-            'end_time'=>$request->end_time,
+            'start_time'=>date('y-m-d',2022-12-12),
+            'end_time'=>date($request->end_time),
             'place'=>$request->place,
             'introduce'=>$request->introduce,
 

@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('activities', function (Blueprint $table) {
-            $table->timestamps();
+            $table->date('start_time')->change();
+            $table->date('end_time')->change();
         });
     }
 
@@ -26,7 +27,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('activities', function (Blueprint $table) {
-            //
+            $table->dateTime('start_time')->change();
+            $table->dateTime('end_time')->change();
         });
     }
 };

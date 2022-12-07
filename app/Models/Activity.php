@@ -18,4 +18,5 @@ class Activity extends Model
         'organizer',
         'img',
     ];
+    public $timestamps = false;
 }
