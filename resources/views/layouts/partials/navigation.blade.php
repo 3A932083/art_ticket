@@ -6,17 +6,24 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
           <div class="container">
               <div class="row ">
-                  <div class="col-10 nav" style="color: #fefefe">
-                      <a class="nav-link link-light" aria-current="page"  href="{{ route('activity.show') }}">展覽</a>
+                  <div class="navbar-nav col-9 col-sm-6 nav" style="color: #fefefe">
+                      <a class="nav-link link-light " aria-current="page"  href="{{ route('activity.show') }}">展覽</a>
                       <a class="nav-link link-light" href="{{route('activity.diy')}}">體驗</a>
                       <a class="nav-link link-light" href="{{route('activity.lecture')}}">講座</a>
                   </div>
-                  <div class="col" style="color: #fefefe">
+
+                  <div class="col-9 col-sm-6 " style="color: #fefefe">
                       <!-- Right Side Of Navbar -->
-                      <ul class="navbar-nav ms-auto">
+                      <ul class="navbar-nav ms-auto d-flex ">
                           <!-- Authentication Links -->
                           @guest
-                              @if (Route::has('user.login'))
+                              @if(Route::has('admin.login'))
+                                  <li class="nav-item ">
+                                      <a class="nav-link" href="{{ route('admin.login') }}">{{ __('管理員登入') }}</a>
+                                  </li>
+                              @endif
+
+                              @if(Route::has('user.login'))
                                   <li class="nav-item">
                                       <a class="nav-link" href="{{ route('user.login') }}">{{ __('登入') }}</a>
                                   </li>
@@ -30,17 +37,17 @@
                           @else
                               <li class="nav-item dropdown">
                                   <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                      {{ Auth::user()->name }}
+                                      {{ Auth::guard('web')->user()->name }}
                                   </a>
                           @endguest
 
                                   @auth
-                                  <!--登出-->
+                                  <!--會員登出-->
                                   <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                       <a class="dropdown-item" href="{{ route('user.logout') }}"
                                          onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                          {{ __('Logout') }}
+                                          {{ __('登出') }}
                                       </a>
 
                                       <form id="logout-form" action="{{ route('user.logout') }}" method="POST" class="d-none">

@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminOrderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\DiyController;
-use App\Http\Controllers\LectureController;
+
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
@@ -38,52 +37,37 @@ Route::get('lecture',[ActivityController::class,'lecture'])->name('activity.lect
 Route::get('activity',[ActivityController::class,'activity'])->name('activity.activity');
 
 
-
-
-
 //會員
 Auth::routes();
 Route::prefix('user')->name('user.')->group(function () {
     //登入前
-    Route::middleware(['guest','PreventBackHistory'])->group(function (){
+    Route::middleware(['guest:web','PreventBackHistory'])->group(function (){
         Route::view('/login','user.login')->name('login');//登入表單
         Route::view('/register','user.register')->name('register');//註冊表單
         Route::post('/create',[UserController::class,'create'])->name('create');//建立帳號
-        Route::post('/check',[UserController::class,'check'])->name('check');//登入會員首頁
+        Route::post('/check',[UserController::class,'check'])->name('check');//登入確認並登入會員首頁
     });
     //登入後
-    Route::middleware(['auth','PreventBackHistory'])->group(function (){
-        Route::view('/index','user.index')->name('index');
+    Route::middleware(['auth:web','PreventBackHistory'])->group(function (){
+        Route::get('/index',[UserController::class,'index'])->name('index');//會員中心
         Route::post('/logout',[UserController::class,'logout'])->name('logout');//登出
-
     });
-
-});
-//Route::get('forget',[UserController::class,'forget'])->name('auth.passwords.email');//會員忘記密碼
-
-
-//訂購
-Route::prefix('order')->name('order.')->group(function () {
-    Route::get('information',[OrderController::class,'information'])->name('activity_information');//活動詳情
-    Route::get('check',[OrderController::class,'check'])->name('activity_check');//訂單確認
-    Route::get('end',[OrderController::class,'end'])->name('activity_end');//發送票券
-});
-// 會員專區
-//Route::prefix('personal')->name('personal.')->group(function () {
-  //  Route::get('data',[PersonalController::class,'data'])->name('data');//個資
-    //Route::get('ticket',[PersonalController::class,'ticket'])->name('ticket');//個人票券
-    //Route::get('refund',[PersonalController::class,'refund'])->name('refund');//退票
-//});
-
-//會員
-Route::prefix('auth')->name('auth.')->group(function () {
-    Route::get('/',[UserController::class,'userindex'])->name('dashboard.index');
 });
 
 
 //管理員
 Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/',[AdminHomeController::class,'index'])->name('index');//主控台
+    //登入前
+    Route::middleware(['guest:admin','PreventBackHistory'])->group(function () {
+        Route::view('/login','admin.login')->name('login');//登入表單
+        Route::post('/check',[AdminHomeController::class,'check'])->name('check');//登入確認並登入管理員首頁
+    });
+    Route::middleware(['auth:admin','PreventBackHistory'])->group(function () {
+        Route::get('/index',[AdminHomeController::class,'index'])->name('index');//主控台
+        Route::post('/logout',[AdminHomeController::class,'logout'])->name('logout');//登出
+    });
+
+
     Route::prefix('activities')->name('activities.')->group(function () {
         Route::get('/',[AdminActivityController::class,'index'])->name('index');//活動列表
         Route::get('/create',[AdminActivityController::class,'create'])->name('create');//新增活動頁面
@@ -97,4 +81,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
     Route::get('/order',[AdminOrderController::class,'index'])->name('orders.index');//訂單列表
     Route::get('/account',[AdminAccountController::class,'index'])->name('account.index');//帳號列表
+});
+
+
+//訂購
+Route::prefix('order')->name('order.')->group(function () {
+    Route::get('information',[OrderController::class,'information'])->name('activity_information');//活動詳情
+    Route::get('check',[OrderController::class,'check'])->name('activity_check');//訂單確認
+    Route::get('end',[OrderController::class,'end'])->name('activity_end');//發送票券
 });

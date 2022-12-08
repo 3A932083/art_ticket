@@ -1,15 +1,21 @@
 @extends('layouts.master')
-@section('title','登入')
+@section('title','管理員登入')
 @section('content')
 
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 py-5">
-            <div class="card">
-                <div class="card-header">{{ __('登入') }}</div>
 
+            <!--查無此帳號-->
+            @if (Session::get('fail'))
+                <div class="alert alert-danger">{{Session::get('fail')}}</div>
+            @endif
+
+            <div class="card">
+                <div class="card-header">{{ __('管理員登入') }}</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('admin.check') }}">
+                        @method('post')
                         @csrf
 
                         <div class="row mb-3">
@@ -58,11 +64,6 @@
                                     {{ __('登入') }}
                                 </button>
 
-                                @if (Route::has('password.email'))
-                                    <a class="btn btn-link" href="{{route('auth.passwords.email')}}" >
-                                        {{ __('忘記密碼?') }}
-                                    </a>
-                                @endif
                             </div>
                         </div>
                     </form>

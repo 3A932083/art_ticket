@@ -5,9 +5,14 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 py-5">
+
+            <!--查無此帳號-->
+            @if (Session::get('fail'))
+                <div class="alert alert-danger">{{Session::get('fail')}}</div>
+            @endif
+
             <div class="card">
                 <div class="card-header">{{ __('登入') }}</div>
-
                 <div class="card-body">
                     <form method="POST" action="{{ route('user.check') }}">
                         @method('post')

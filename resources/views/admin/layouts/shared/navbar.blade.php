@@ -19,7 +19,16 @@
                 <li>
                     <hr class="dropdown-divider"/>
                 </li>
-                <li><a class="dropdown-item" href="#!">登出</a></li>
+                <li>
+                    <a class="dropdown-item" href="{{ route('admin.logout') }}" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            {{ __('管理員登出') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
+                            @csrf
+                    </form>
+                    </a>
+                </li>
             </ul>
         </li>
     </ul>

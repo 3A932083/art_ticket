@@ -17,6 +17,10 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    //會員中心
+    public function index(){
+        return view('user.index');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -53,16 +57,17 @@ class UserController extends Controller
     //使用者登入確認
     protected function check(Request $request){
         $creds=$request->only('email','password');
-        if(Auth::attempt($creds)){
+
+        if(Auth::guard('web')->attempt($creds)){
             return redirect()->route('user.index');//正確
         }else{
-            return redirect()->route('user.login');//錯誤
+            return redirect()->route('user.login')->with('fail','信箱或密碼輸入錯誤.');//錯誤
         }
     }
 
     //使用者登出
     protected function logout(){
-        Auth::logout();
+        Auth::guard('web')->logout();
         return redirect()->route('user.login');
     }
 
