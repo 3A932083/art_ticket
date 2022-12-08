@@ -35,24 +35,24 @@
                           @endguest
 
                                   <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                      <a class="dropdown-item" href="{{ route('logout') }}"
+                                      <a class="dropdown-item" href="{{ route('user.logout') }}"
                                          onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                           {{ __('Logout') }}
                                       </a>
 
-                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                      <form id="logout-form" action="{{ route('user.logout') }}" method="POST" class="d-none">
                                           @csrf
                                       </form>
 
                                       <!--會員中心-->
-                                      <a class="dropdown-item" href="{{ route('auth.dashboard.index') }}"
+                                      <a class="dropdown-item" href="{{ route('user.index') }}"
                                          onclick="event.preventDefault();
                                                      document.getElementById('dashboard-form').submit();">
                                           {{ __('會員中心') }}
                                       </a>
 
-                                      <form id="dashboard-form" action="{{ route('auth.dashboard.index') }}" method="GET" class="d-none">
+                                      <form id="dashboard-form" action="{{ route('user.index') }}" method="GET" class="d-none">
                                           @csrf
                                       </form>
                                   </div>

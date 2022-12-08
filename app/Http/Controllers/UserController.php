@@ -60,6 +60,12 @@ class UserController extends Controller
         }
     }
 
+    //使用者登出
+    protected function logout(){
+        Auth::logout();
+        return redirect()->route('user.login');
+    }
+
     /**
      * Store a newly created resource in storage.
      *

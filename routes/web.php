@@ -44,18 +44,18 @@ Route::get('activity',[ActivityController::class,'activity'])->name('activity.ac
 //會員
 Auth::routes();
 Route::prefix('user')->name('user.')->group(function () {
+    //登入前
     Route::middleware('guest')->group(function (){
         Route::view('/login','user.login')->name('login');//登入表單
         Route::view('/register','user.register')->name('register');//註冊表單
-        Route::post('/create',[UserController::class,'create'])->name('create');//建立頁面
+        Route::post('/create',[UserController::class,'create'])->name('create');//建立帳號
         Route::post('/check',[UserController::class,'check'])->name('check');//登入會員首頁
-
-
-
     });
-
+    //登入後
     Route::middleware('auth')->group(function (){
         Route::view('/index','user.index')->name('index');
+        Route::post('/logout',[UserController::class,'logout'])->name('logout');//登出
+
     });
 
 });
