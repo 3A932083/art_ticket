@@ -71,6 +71,8 @@ class UserController extends Controller
         return redirect()->route('user.login');
     }
 
+
+
     /**
      * Store a newly created resource in storage.
      *

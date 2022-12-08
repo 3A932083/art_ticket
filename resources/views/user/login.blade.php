@@ -64,11 +64,12 @@
                                     {{ __('登入') }}
                                 </button>
 
-                                @if (Route::has('password.email'))
-                                    <a class="btn btn-link" href="" >
+                                @if (Route::has('user.forget'))
+                                    <a class="btn btn-link" href="{{ route('user.forget') }}">
                                         {{ __('忘記密碼?') }}
                                     </a>
                                 @endif
+
                             </div>
                         </div>
                     </form>

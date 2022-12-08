@@ -44,8 +44,10 @@ Route::prefix('user')->name('user.')->group(function () {
     Route::middleware(['guest:web','PreventBackHistory'])->group(function (){
         Route::view('/login','user.login')->name('login');//登入表單
         Route::view('/register','user.register')->name('register');//註冊表單
+        Route::view('/forget','user.passwords.forget')->name('forget');//忘記密碼表單
         Route::post('/create',[UserController::class,'create'])->name('create');//建立帳號
         Route::post('/check',[UserController::class,'check'])->name('check');//登入確認並登入會員首頁
+
     });
     //登入後
     Route::middleware(['auth:web','PreventBackHistory'])->group(function (){
