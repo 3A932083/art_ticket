@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -13,23 +18,46 @@ class UserController extends Controller
      */
 
 
-    public function forget()
-    {
-        return view('auth.passwords.email');
-    }
-    public function userindex()
-    {
-        return view('auth.dashboard.index');
-    }
-
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+
+    //建立帳號
+        //驗證資料
+    protected function validator(array $data)
     {
-        //
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'question' => ['required', 'string', 'max:255'],
+            'ans' => ['required', 'string', 'max:255'],
+        ]);
+    }
+
+    protected function create(Request $request)
+    {
+        User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+            'question' => $request['question'],
+            'ans' => $request['ans'],
+        ]);
+
+        return redirect()->route('user.login');//回到登入頁面
+    }
+
+    //使用者登入確認
+    protected function check(Request $request){
+        $creds=$request->only('email','password');
+        if(Auth::attempt($creds)){
+            return redirect()->route('user.index');//正確
+        }else{
+            return redirect()->route('user.login');//錯誤
+        }
     }
 
     /**

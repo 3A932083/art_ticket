@@ -16,15 +16,15 @@
                       <ul class="navbar-nav ms-auto">
                           <!-- Authentication Links -->
                           @guest
-                              @if (Route::has('login'))
+                              @if (Route::has('user.login'))
                                   <li class="nav-item">
-                                      <a class="nav-link" href="{{ route('login') }}">{{ __('登入') }}</a>
+                                      <a class="nav-link" href="{{ route('user.login') }}">{{ __('登入') }}</a>
                                   </li>
                               @endif
 
-                              @if (Route::has('register'))
+                              @if (Route::has('user.register'))
                                   <li class="nav-item">
-                                      <a class="nav-link" href="{{ route('register') }}">{{ __('註冊') }}</a>
+                                      <a class="nav-link" href="{{ route('user.register') }}">{{ __('註冊') }}</a>
                                   </li>
                               @endif
                           @else
@@ -32,6 +32,7 @@
                                   <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                       {{ Auth::user()->name }}
                                   </a>
+                          @endguest
 
                                   <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                       <a class="dropdown-item" href="{{ route('logout') }}"
@@ -56,7 +57,7 @@
                                       </form>
                                   </div>
                               </li>
-                          @endguest
+
                       </ul>
                   </div>
               </div>

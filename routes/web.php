@@ -4,7 +4,7 @@ use App\Http\Controllers\AdminAccountController;
 use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\AdminActivityController;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Auth\LoginController;
+
 use App\Http\Controllers\AdminOrderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -41,10 +41,25 @@ Route::get('activity',[ActivityController::class,'activity'])->name('activity.ac
 
 
 
-//會員首頁
+//會員
 Auth::routes();
-//會員忘記密碼
-Route::get('forget',[UserController::class,'forget'])->name('auth.passwords.email');
+Route::prefix('user')->name('user.')->group(function () {
+    Route::middleware('guest')->group(function (){
+        Route::view('/login','user.login')->name('login');//登入表單
+        Route::view('/register','user.register')->name('register');//註冊表單
+        Route::post('/create',[UserController::class,'create'])->name('create');//建立頁面
+        Route::post('/check',[UserController::class,'check'])->name('check');//登入會員首頁
+
+
+
+    });
+
+    Route::middleware('auth')->group(function (){
+        Route::view('/index','user.index')->name('index');
+    });
+
+});
+//Route::get('forget',[UserController::class,'forget'])->name('auth.passwords.email');//會員忘記密碼
 
 
 //訂購
