@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 //use Intervention\Image\ImageManagerStatic as Image;  //在檔案開頭的namespace加上
 use App\Models\Image;
 use App\Models\Activity;
+use function GuzzleHttp\Promise\all;
 
 class AdminActivityController extends Controller
 {
@@ -37,8 +38,9 @@ class AdminActivityController extends Controller
             echo 'UUU';
             //自訂檔案名稱
             $imageName = time().'.'.$request->file('image')->extension();
+            $imageURL ='images/'.$imageName;
             //把檔案存到公開的資料夾
-            $imageURL=$request->file('image')->move(public_path('/images'), $imageName);
+            $request->file('image')->move(public_path('/images'), $imageName);
         }
         //將檔案名稱存至DB
         Activity::create([
@@ -49,7 +51,7 @@ class AdminActivityController extends Controller
             'place'=>$request->place,
             'introduce'=>$request->introduce,
             'precaution'=>$request->precaution,
-            'img'=>$imageName,
+            'img'=>$imageURL,
 
         ]);
         //回到傳送資料來的頁面
@@ -63,12 +65,38 @@ class AdminActivityController extends Controller
 
     public function edit($id)
     {
-        //
+        $activity=Activity::find($id);
+        $data=[
+            'activity'=>$activity,
+        ];
+        return view('admin.activities.edit',$data);
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $update=Activity::find($id);
+        //確認有檔案的話儲存到資料夾
+        if ($request->hasFile('image')) {
+            //自訂檔案名稱
+            $imageName = time().'.'.$request->file('image')->extension();
+            $imageURL ='images/'.$imageName;
+            //把檔案存到公開的資料夾
+            $request->file('image')->move(public_path('/images'), $imageName);
+        }else{
+            //如果沒有上傳新檔案抓取原檔案的路徑
+            //$img=Activity::find($id);
+            //$image=$img->img;
+        }
+        $update->update([
+            'name'=>$request->name,
+            'start_time'=>$request->start_time,
+            'end_time'=>$request->end_time,
+            'place'=>$request->place,
+            'introduce'=>$request->introduce,
+            'organizer'=>$request->organizer,
+            //'img'
+        ]);
+        return redirect()->route('admin.posts.index');
     }
 
     public function destroy($id)
