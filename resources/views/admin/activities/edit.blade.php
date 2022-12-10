@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('page-title', 'Create article')
+@section('page-title', 'Edit activity')
 
 @section('page-content')
 <div class="container-fluid px-4">
@@ -9,7 +9,7 @@
         <li class="breadcrumb-item active">編輯活動</li>
     </ol>
 
-    <form action="{{route('admin.activities.store',$activity->id)}}" method="post" >
+    <form action="{{route('admin.activities.update',$activity->id)}}" method="post" enctype="multipart/form-data">
         @method('patch')
         <!--csrf驗證機制，產生隱藏的input，包含一組驗證密碼-->
         @csrf
@@ -45,8 +45,15 @@
             <label for="exampleFormControlTextarea1" class="form-label">注意事項</label>
             <textarea name="precaution" id="precaution" class="form-control" rows="10" placeholder="請輸入注意事項">{{$activity->precaution}}</textarea><!--多行輸入框-->
         </div>
-        <input type="file" name="image" id="image" accept="image/*">
-        <img src="{{asset($activity->img)}}">
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">活動圖片</label>
+            <input type="file" name="image" id="image" accept="image/*" class="form-control">
+        </div>
+        <div class="md-3">
+            <label for="exampleFormControlTextarea1" class="form-label">活動圖片預覽</label>
+            <img src="{{asset($activity->img)}}" class="form-control ">
+        </div>
+
 
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <button class="btn btn-primary btn-sm" type="submit">儲存</button>

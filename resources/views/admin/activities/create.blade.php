@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('page-title', 'Create article')
+@section('page-title', 'Create activity')
 
 @section('page-content')
 <div class="container-fluid px-4">
@@ -45,7 +45,10 @@
             <label for="exampleFormControlTextarea1" class="form-label">注意事項</label>
             <textarea name="precaution" id="precaution" class="form-control" rows="10" placeholder="請輸入注意事項"></textarea><!--多行輸入框-->
         </div>
-        <input type="file" name="image" id="image" accept="image/*">
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">活動圖片</label>
+            <input type="file" name="image" id="image" accept="image/*" class="form-control">
+        </div>
 
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <button class="btn btn-primary btn-sm" type="submit">儲存</button>

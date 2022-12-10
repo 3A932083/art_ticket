@@ -27,7 +27,7 @@
                 <td>{{ $activity->name }}</td>
                 <td style="width: 150px">
                      <a href="{{route('admin.activities.edit',$activity->id)}}" class="btn btn-primary btn-sm">編輯</a>
-                    <form action="{{route('admin.activities.delete',$activity->id)}}" method="post" style="display: inline-block">
+                    <form action="{{route('admin.activities.destroy',$activity->id)}}" method="post" style="display: inline-block">
                         @method('delete')
                         @csrf
                         <button type="submit" class="btn btn-danger btn-sm">刪除</button>
