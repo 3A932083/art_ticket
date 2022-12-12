@@ -71,6 +71,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware(['auth:admin','PreventBackHistory'])->group(function () {
         Route::get('/index',[AdminHomeController::class,'index'])->name('index');//主控台
         Route::post('/logout',[AdminHomeController::class,'logout'])->name('logout');//登出
+
+        Route::get('/account',[AdminAccountController::class,'index'])->name('account.index');//會員、平台人員帳號列表
+        Route::delete('account/{user}/user', [AdminAccountController::class, 'userDestroy'])->name('user.destroy');//刪除會員
+        Route::delete('account/{admin}/admin', [AdminAccountController::class, 'adminDestroy'])->name('admin.destroy');//刪除平台人員
+
     });
 
 
@@ -86,7 +91,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/image',[AdminActivityController::class,'image'])->name('image');//測試-儲存圖片
     });
     Route::get('/order',[AdminOrderController::class,'index'])->name('orders.index');//訂單列表
-    Route::get('/account',[AdminAccountController::class,'index'])->name('account.index');//帳號列表
+
 });
 
 
