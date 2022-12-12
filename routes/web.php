@@ -44,9 +44,13 @@ Route::prefix('user')->name('user.')->group(function () {
     Route::middleware(['guest:web','PreventBackHistory'])->group(function (){
         Route::view('/login','user.login')->name('login');//登入表單
         Route::view('/register','user.register')->name('register');//註冊表單
-        Route::view('/forget','user.passwords.forget')->name('forget');//忘記密碼表單
         Route::post('/create',[UserController::class,'create'])->name('create');//建立帳號
         Route::post('/check',[UserController::class,'check'])->name('check');//登入確認並登入會員首頁
+
+        Route::get('/passwords/forgot',[UserController::class,'forgot'])->name('passwords.forgot');//忘記密碼表單
+        Route::post('/passwords/forgot',[UserController::class,'sendLink'])->name('passwords.send.link');//發送重設密碼連結
+        Route::get('/passwords/reset/{token}',[UserController::class,'resetForm'])->name('passwords.reset.form');//重設密碼頁面
+        Route::post('/passwords/reset',[UserController::class,'resetPassword'])->name('reset.password');//將重設密碼更新置資料庫
 
     });
     //登入後
