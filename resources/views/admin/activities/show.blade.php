@@ -103,7 +103,8 @@
                     <thead>
                     <tr>
                         <th scope="col">時間</th>
-                        <th scope="col">票價</th>
+                        <th scope="col">數量</th>
+                        <th scope="col">價格</th>
                         <th scope="col">功能</th>
                     </tr>
                     </thead>
