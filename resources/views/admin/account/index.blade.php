@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('page-title', 'Article list')
+@section('page-title', '帳號管理')
 
 @section('page-content')
 <div class="container-fluid px-4">
@@ -8,59 +8,105 @@
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active">帳號一覽表</li>
     </ol>
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <a class="btn btn-success btn-sm" href="#">新增</a>
-    </div>
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">名稱</th>
-            <th scope="col">功能</th>
-        </tr>
-        </thead>
 
-        <tbody>
-        {{--
-          @foreach($posts as $post)<!--posts陣列內有幾筆資料就會重複執行幾次-->
-            <tr>
-                <th scope="row" style="width: 50px">{{ $post->id }}</th><!--印出資料表內的id欄位-->
-                <td>{{ $post->title }}</td>
-                <td style="width: 150px">
-                    <a href="{{route('admin.posts.edit',$post->id)}}" class="btn btn-primary btn-sm">編輯</a>
-                    <form action="{{route('admin.posts.destroy',$post->id)}}" method="post" style="display: inline-block">
-                        @method('delete')
-                        @csrf
-                        <button type="submit" class="btn btn-danger btn-sm">刪除</button>
-                    </form>
-
-                </td>
-            </tr>
-        @endforeach
-            --}}
         <!--標籤列-->
         <div class="row justify-content-center">
             <div >
-                <ul class="nav nav-tabs ">
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-current="page" href="#">會員</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">平台人員</a>
-                    </li>
-                </ul>
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <button class="nav-link active" id="nav-user-tab" data-bs-toggle="tab" data-bs-target="#nav-user" type="button" role="tab" aria-controls="nav-user" aria-selected="true">會員</button>
+                        <button class="nav-link" id="nav-admin-tab" data-bs-toggle="tab" data-bs-target="#nav-admin" type="button" role="tab" aria-controls="nav-admin" aria-selected="false">平台人員</button>
+                    </div>
+                </nav>
             </div>
         </div>
-            <tr>
-                <th scope="row" style="width: 50px">01</th>
-                <td>王曉明</td>
-                <td style="width: 150px">
-                    <a href="#" type="button" class="btn btn-primary btn-sm">詳細資料</a>
-                    <a href="#" type="button" class="btn btn-danger btn-sm">刪除</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
 
+
+        <!--內容-->
+    <div class="tab-content" id="nav-tabContent">
+        <!--會員-->
+        <div class="tab-pane fade show active" id="nav-user" role="tabpanel" aria-labelledby="nav-user-tab">
+            <section class="pt-4">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a class="btn btn-success btn-sm" href="#">新增</a>
+            </div>
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">姓名</th>
+                        <th scope="col">功能</th>
+                    </tr>
+                    </thead>
+
+
+                    <tbody>
+
+                    @foreach($users as $user)
+                            <tr>
+                                <th scope="row" style="width: 50px">{{ $user->id }}</th>
+                                <td>{{ $user->name }}</td>
+                                <td style="width: 150px">
+                                    <a href="#" type="button" class="btn btn-primary btn-sm">詳細資料</a>
+
+                                    <!--刪除-->
+                                    <form action="/admin/account/{{$user->id}}/user" method="POST" style="display: inline-block">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button class="btn btn-sm btn-danger" type="submit">刪除</button>
+                                    </form>
+                                </td>
+                            </tr>
+                    @endforeach
+
+                    </tbody>
+                </table>
+
+            </section>
+        </div>
+
+        <!--平台人員-->
+        <div class="tab-pane fade" id="nav-admin" role="tabpanel" aria-labelledby="nav-admin-tab">
+            <section class="pt-4">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a class="btn btn-success btn-sm" href="#">新增</a>
+            </div>
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">姓名</th>
+                        <th scope="col">功能</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    @foreach($admins as $admin)
+                            <tr>
+                                <th scope="row" style="width: 50px">{{ $admin->id }}</th>
+                                <td>{{ $admin->name }}</td>
+                                <td style="width: 150px">
+                                    <a href="#" type="button" class="btn btn-primary btn-sm">詳細資料</a>
+
+                                    <!--刪除-->
+                                    <form action="/admin/account/{{$admin->id}}/admin" method="POST" style="display: inline-block">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button class="btn btn-sm btn-danger" type="submit">刪除</button>
+                                    </form>
+                                </td>
+                            </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+
+            </section>
+        </div>
+
+
+
+</div>
 </div>
 @endsection

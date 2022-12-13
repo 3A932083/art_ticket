@@ -11,6 +11,13 @@
                 <div class="alert alert-danger">{{Session::get('fail')}}</div>
             @endif
 
+            <!--重設密碼成功訊息-->
+            @if (Session::get('info'))
+                <div class="alert alert-info">
+                    {{Session::get('info')}}
+                </div>
+            @endif
+
             <div class="card">
                 <div class="card-header">{{ __('登入') }}</div>
                 <div class="card-body">
@@ -64,8 +71,8 @@
                                     {{ __('登入') }}
                                 </button>
 
-                                @if (Route::has('user.forget'))
-                                    <a class="btn btn-link" href="{{ route('user.forget') }}">
+                                @if (Route::has('user.passwords.forgot'))
+                                    <a class="btn btn-link" href="{{ route('user.passwords.forgot') }}">
                                         {{ __('忘記密碼?') }}
                                     </a>
                                 @endif
