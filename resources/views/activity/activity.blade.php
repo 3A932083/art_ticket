@@ -93,14 +93,12 @@
                                                     <thead>
                                                         <tr>
                                                             <th>活動日期</th>
-                                                            <th>地點</th>
                                                             <th>票價</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
                                                             <th>2022/12/10</th>
-                                                            <th>勤益</th>
                                                             <th>$700</th>
                                                         </tr>
                                                     </tbody>
