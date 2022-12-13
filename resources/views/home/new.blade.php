@@ -33,7 +33,7 @@
                                     <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
 
                                         <h2 class="fs-4 fw-bold">{{$activities->name}}</h2>
-                                        <p class="mb-0">{{$activities->id}}</p>
+                                        <p class="mb-0">{{$activities->introduce}}</p>
                                         <a href="{{route('activity.activity',1)}}" class="stretched-link"></a>
                                     </div>
                                 </div>

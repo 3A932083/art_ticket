@@ -55,13 +55,13 @@
                                       </form>
 
                                       <!--會員中心-->
-                                      <a class="dropdown-item" href="{{ route('user.index') }}"
+                                      <a class="dropdown-item" href="{{ route('user.index',1) }}"
                                          onclick="event.preventDefault();
                                                      document.getElementById('dashboard-form').submit();">
                                           {{ __('會員中心') }}
                                       </a>
 
-                                      <form id="dashboard-form" action="{{ route('user.index') }}" method="GET" class="d-none">
+                                      <form id="dashboard-form" action="{{ route('user.index',1) }}" method="GET" class="d-none">
                                           @csrf
                                       </form>
                                   </div>

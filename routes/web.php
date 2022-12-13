@@ -54,7 +54,7 @@ Route::prefix('user')->name('user.')->group(function () {
     });
     //登入後
     Route::middleware(['auth:web','PreventBackHistory'])->group(function (){
-        Route::get('/index',[UserController::class,'index'])->name('index');//會員中心
+        Route::get('/index/{user}',[UserController::class,'index'])->name('index');//會員中心
         Route::post('/logout',[UserController::class,'logout'])->name('logout');//登出
     });
 });

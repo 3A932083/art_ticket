@@ -24,8 +24,12 @@ class UserController extends Controller
      */
 
     //會員中心
-    public function index(){
-        return view('user.index');
+    public function index(User $user)
+    {
+        $data = [
+            'user' => $user,
+        ];
+        return view('user.index',$data);
     }
 
     /**
