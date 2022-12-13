@@ -52,8 +52,13 @@ class UserController extends Controller
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
-
-        return redirect()->route('user.login');//回到登入頁面
+        //確認註冊帳號，並直接跳轉至會員中心頁面
+        $creds=$request->only('email','password');
+        if(Auth::guard('web')->attempt($creds)){
+            return redirect()->route('user.index');//正確
+        }else{
+            return redirect()->route('user.register')->with('fail','信箱或密碼輸入錯誤.');//錯誤
+        }
     }
 
     //使用者登入確認

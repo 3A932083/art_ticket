@@ -21,12 +21,12 @@ class AdminAccountController extends Controller
         return view('admin.account.index',$data);
     }
 
-    public function userDestroy(User $user){
+    public function user_destroy(User $user){
         $user->delete();//刪除會員
         return redirect()->route('admin.account.index');
     }
 
-    public function adminDestroy(Admin $admin){
+    public function admin_destroy(Admin $admin){
         $admin->delete();//刪除管理員
         return redirect()->route('admin.account.index');
     }

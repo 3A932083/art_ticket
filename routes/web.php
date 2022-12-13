@@ -73,12 +73,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/logout',[AdminHomeController::class,'logout'])->name('logout');//登出
 
         Route::get('/account',[AdminAccountController::class,'index'])->name('account.index');//會員、平台人員帳號列表
-        Route::delete('account/{user}/user', [AdminAccountController::class, 'userDestroy'])->name('user.destroy');//刪除會員
-        Route::delete('account/{admin}/admin', [AdminAccountController::class, 'adminDestroy'])->name('admin.destroy');//刪除平台人員
+        //Route::
+        Route::delete('account/{user}/user', [AdminAccountController::class, 'user_destroy'])->name('user.destroy');//刪除會員
+        Route::delete('account/{admin}/admin', [AdminAccountController::class, 'admin_destroy'])->name('admin.destroy');//刪除平台人員
 
     });
 
-
+    //活動
     Route::prefix('activities')->name('activities.')->group(function () {
         Route::get('/',[AdminActivityController::class,'index'])->name('index');//活動列表
         Route::get('/create',[AdminActivityController::class,'create'])->name('create');//新增活動頁面
