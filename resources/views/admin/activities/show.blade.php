@@ -70,32 +70,36 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 {{--標題--}}
-                                <h5 class="modal-title" id="exampleModalLabel">時間</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">新增場次</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
+                            <form action="{{route('admin.activities.events.store')}}" method="post" >
+                                @method('post')
+                                <!--csrf驗證機制，產生隱藏的input，包含一組驗證密碼-->
+                                @csrf
                             <div class="modal-body">
-                                <form>
+                                    <input id="activity_id" name="activity_id" type="hidden" value="{{$activity->id}}">
                                     <div class="mb-3">
                                         <label for="recipient-name" class="col-form-label">活動時間:</label>
-                                        <input type="date" class="form-control" id="recipient-name">
+                                        <input type="date" class="form-control" id="time" name="time">
                                     </div>
                                     <div class="mb-3">
                                         <label for="message-text" class="col-form-label">票券數量:</label>
-                                        <input class="form-control" id="message-text" type="text">
+                                        <input type="text" class="form-control" id="count" name="count">
                                     </div>
                                     <div class=" mb-3">
                                         <label for="message-text" class="col-form-label">票券價格:</label>
                                         <div class="input-group">
                                             <span class="input-group-text">$</span>
-                                            <input class="form-control" id="message-text" type="text">
+                                            <input type="text" class="form-control" id="price" name="price">
                                         </div>
                                     </div>
-                                </form>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Send message</button>
+                                <button type="submit" class="btn btn-primary">新增</button>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -110,14 +114,15 @@
                     </thead>
 
                     <tbody>
-                    {{--@foreach($activities as $activity)<!--activities陣列內有幾筆資料就會重複執行幾次-->
+                    @foreach($events as $event)<!--activities陣列內有幾筆資料就會重複執行幾次-->
                     <tr>
-                        <th scope="row" style="width: 50px">{{ $activity->id }}</th><!--印出資料表內的id欄位-->
-                        <td>{{ $activity->name }}</td>
+                        <th scope="row">{{ $event->time }}</th><!--印出資料表內的id欄位-->
+                        <td>{{ $event->count }}</td>
+                        <td>{{$event->price}}</td>
                         <td style="width: 150px">
-                            <a href="{{route('admin.activities.show',$activity->id)}}" class="btn btn-primary btn-sm">詳細資料</a>
+                            <a href="#" class="btn btn-primary btn-sm">編輯</a>
 
-                            <form action="{{route('admin.activities.destroy',$activity->id)}}" method="post" style="display: inline-block">
+                            <form action="#}" method="post" style="display: inline-block">
                                 @method('delete')
                                 @csrf
                                 <button type="submit" class="btn btn-danger btn-sm">刪除</button>
@@ -126,7 +131,7 @@
 
                         </td>
                     </tr>
-                    @endforeach--}}
+                    @endforeach
 
                     </tbody>
                 </table>

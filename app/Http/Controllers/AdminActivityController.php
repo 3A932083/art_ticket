@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -62,8 +63,10 @@ class AdminActivityController extends Controller
 
     public function show(Activity $activity)
     {
+        $events=Event::where('activity_id','=',$activity->id)->get();
         $data=[
             'activity'=>$activity,
+            'events'=>$events,
         ];
         return view('admin.activities.show',$data);
     }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminAccountController;
+use App\Http\Controllers\AdminEventController;
 use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\AdminActivityController;
 use Illuminate\Support\Facades\Auth;
@@ -87,7 +88,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/{activity}/edit',[AdminActivityController::class,'edit'])->name('edit');//編輯活動頁面
         Route::patch('/{activity}',[AdminActivityController::class,'update'])->name('update');//更新活動資料
         Route::delete('/{activity}',[AdminActivityController::class,'destroy'])->name('destroy');//刪除活動資料
-        Route::post('/events',[AdminEventController::class,'store'])->name('event.store');//儲存場次資訊
+        Route::post('/events',[AdminEventController::class,'store'])->name('events.store');//儲存場次資訊
 
         Route::get('/image',[AdminActivityController::class,'test'])->name('image.test');//測試-上傳圖片
         Route::post('/image',[AdminActivityController::class,'image'])->name('image');//測試-儲存圖片
