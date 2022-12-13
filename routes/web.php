@@ -35,8 +35,7 @@ Route::get('diy',[ActivityController::class,'diy'])->name('activity.diy');
 //講座
 Route::get('lecture',[ActivityController::class,'lecture'])->name('activity.lecture');
 //活動頁面(選擇性路由
-Route::get('activity',[ActivityController::class,'activity'])->name('activity.activity');
-
+Route::get('activity/{activity}',[ActivityController::class,'activity'])->name('activity.activity');
 
 //會員
 Auth::routes();
@@ -56,7 +55,7 @@ Route::prefix('user')->name('user.')->group(function () {
     });
     //登入後
     Route::middleware(['auth:web','PreventBackHistory'])->group(function (){
-        Route::get('/index',[UserController::class,'index'])->name('index');//會員中心
+        Route::get('/index/{user}',[UserController::class,'index'])->name('index');//會員中心
         Route::post('/logout',[UserController::class,'logout'])->name('logout');//登出
     });
 });
@@ -101,7 +100,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 //訂購
 Route::prefix('order')->name('order.')->group(function () {
-    Route::get('information',[OrderController::class,'information'])->name('activity_information');//活動詳情
-    Route::get('check',[OrderController::class,'check'])->name('activity_check');//訂單確認
-    Route::get('end',[OrderController::class,'end'])->name('activity_end');//發送票券
+    Route::get('information/{activity}',[OrderController::class,'information'])->name('activity_information');//活動詳情
+
+    Route::get('check/{activity}',[OrderController::class,'check'])->name('activity_check');//訂單確認
+    Route::get('end/{activity}',[OrderController::class,'end'])->name('activity_end');//發送票券
 });
+

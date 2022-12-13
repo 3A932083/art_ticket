@@ -15,10 +15,10 @@
                                 <div class="row align-items-center">
                                     <div class="col-xs-12 col-md-9">
                                         <!-- Post title-->
-                                        <h1 class="fw-bolder mb-1 ">活動名稱</h1>
+                                        <h1 class="fw-bolder mb-1 ">{{$activity->name}}</h1>
                                     </div>
                                     <div class="col-xs-12 col-md-3 d-md-flex">
-                                        <a href="{{route('order.activity_information')}}" class="btn btn-secondary fs justify-content-md-end-5 position-end " >立即訂購</a>
+                                        <a href="{{route('order.activity_information',1)}}" class="btn btn-secondary fs justify-content-md-end-5 position-end " >立即訂購</a>
                                     </div>
                                 </div>
 
@@ -36,7 +36,7 @@
                                     </h2>
                                     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                         <div class="accordion-body fs-5">
-                                            <strong>小標題</strong> 內容
+                                            <strong>{{$activity->introduce}}</strong>
                                         </div>
                                     </div>
                                 </div>
@@ -62,7 +62,7 @@
                                     </h2>
                                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                         <div class="accordion-body fs-5">
-                                            <strong>小標題</strong> 內容
+                                            <strong></strong> 內容
                                         </div>
                                     </div>
                                 </div>
@@ -75,7 +75,7 @@
                                     </h2>
                                     <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                                         <div class="accordion-body fs-5">
-                                            <strong>小標題</strong> 內容
+                                            <strong>{{$activity->precaution}}</strong>
                                         </div>
                                     </div>
                                 </div>
@@ -98,8 +98,9 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <th>2022/12/10</th>
-                                                            <th>$700</th>
+
+                                                            <th>{{$activity->start_time}}</th>
+                                                            <th>{{$activity->place}}</th>
                                                         </tr>
                                                     </tbody>
                                                 </table>
