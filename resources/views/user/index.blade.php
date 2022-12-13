@@ -29,17 +29,11 @@
                             <div class="col-8 form-horizontal">
                                 <div class="control-group string optional user_login">
                                     <label class="string optional control-label" for="user_login">使用者名稱</label>
-                                    <div class="controls"><input class="string optional col-12" type="text" value="1d_417" readonly name="user[login]" id="user_login" />
-                                        <p class="help-block">您可以用此帳號登入AT，此名稱不可更改</p>
+                                    <div class="controls"><input class="string optional col-12" type="text" value=" " name="user[login]" id="user_login" />
+                                        <p class="help-block"></p>
                                     </div>
                                 </div>
 
-                                <div class="control-group string optional user_nickname">
-                                    <label class="string optional control-label" for="user_nickname">暱稱</label>
-                                    <div class="controls"><input class="string optional col-12" type="text" value="" name="user[nickname]" id="user_nickname" />
-                                        <p class="help-block">您的暱稱會顯示在個人頁面、活動頁面等地方</p>
-                                    </div>
-                                </div>
 
                                 <div class="control-group">
                                     <label class="string optional control-label">
