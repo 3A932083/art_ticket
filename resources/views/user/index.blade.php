@@ -42,7 +42,7 @@
                                     <div class="controls">
                                         <div class="control-group email optional user_email">
                                             <label class="email optional control-label" for="user_email">Email</label>
-                                            <div class="controls"><input class="col-12" data-email-suggestion="你要用的是嗎?" type="email" value="b28203598@gmail.com" readonly name="user[email]" id="user_email" />
+                                            <div class="controls"><input class="col-12" data-email-suggestion="你要用的是嗎?" type="email" value="$activities" readonly name="user[email]" id="user_email" />
                                                 <p class="help-block">您的 Email 已經認證完畢，不可更改。</p>
                                             </div>
                                         </div>

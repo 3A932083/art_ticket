@@ -19,6 +19,7 @@
     <!--內容-->
     <div class="tab-content" id="nav-tabContent">
         <!--最新-->
+       <!--activities陣列內有幾筆資料就會重複執行幾次-->
         <div class="tab-pane fade show active" id="nav-new" role="tabpanel" aria-labelledby="nav-new-tab">
                 <section class="pt-4">
                     <div class="container px-lg-5">
@@ -31,9 +32,9 @@
                                     <img src ="../img/1.png ">
                                     <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
 
-                                        <h2 class="fs-4 fw-bold">title1</h2>
-                                        <p class="mb-0">content123456</p>
-                                        <a href="{{route('activity.activity')}}" class="stretched-link"></a>
+                                        <h2 class="fs-4 fw-bold">{{$activities->name}}</h2>
+                                        <p class="mb-0">{{$activities->id}}</p>
+                                        <a href="{{route('activity.activity',1)}}" class="stretched-link"></a>
                                     </div>
                                 </div>
                             </div>
@@ -117,7 +118,7 @@
 
                                         <h2 class="fs-4 fw-bold">title1</h2>
                                         <p class="mb-0">content123456</p>
-                                        <a href="{{route('activity.activity')}}" class="stretched-link"></a>
+                                        <a href="#" class="stretched-link"></a>
                                     </div>
                                 </div>
                             </div>

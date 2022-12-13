@@ -7,6 +7,7 @@
         <div style="width: 80%">
                 <h1 ><<確認訂單>></h1>
         </div>
+    </div>
         </p>
     <section class="py-5">
         <div class="container px-5 my-5 ">
@@ -26,7 +27,7 @@
                     <!-- Post title-->
                 <div class="row">
                     <div class="col-sm-12">
-                        <h1 align="center"><span id="ctl00_ContentPlaceHolder1_NAME" class="title">活動名稱</span></h1>
+                        <h1 align="center"><span id="ctl00_ContentPlaceHolder1_NAME" class="title">{{$activity->name}}</span></h1>
                         <p>
                         <div class="alert alert-danger alert-dismissible fade in" style="margin:0 2em;">
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -48,15 +49,14 @@
                         </thead>
                         <tbody>
                         <tr>
-
-                            <td>活動日期1</td>
-                            <td>地點1</td>
+                            <td>{{$activity->start_time}}</td>
+                            <td>{{$activity->place}}</td>
                             <td>票價1</td>
                     </div>
                         </tr>
                     </table>
                         <div class="col-xs-12 col-md-3 d-md-flex">
-                            <a href="{{route('order.activity_check')}}" class="btn btn-secondary fs justify-content-md-end-5 position-end " >下一步</a>
+                            <a href="{{route('order.activity_check',1)}}" class="btn btn-secondary fs justify-content-md-end-5 position-end " >下一步</a>
                         </div>
                         </header>
                         <!-- Post content-->

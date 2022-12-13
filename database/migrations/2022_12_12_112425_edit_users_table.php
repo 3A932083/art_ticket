@@ -13,18 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('question');
-            $table->string('ans');
-            $table->rememberToken();
-            $table->timestamps();
+        Schema::table('users', function ($table) {
+            $table->dropColumn(['question', 'ans']);
         });
     }
+
 
     /**
      * Reverse the migrations.
@@ -36,3 +29,4 @@ return new class extends Migration
         Schema::dropIfExists('users');
     }
 };
+
