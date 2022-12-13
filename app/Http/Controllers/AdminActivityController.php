@@ -60,28 +60,29 @@ class AdminActivityController extends Controller
 
     }
 
-    public function show($id)
+    public function show(Activity $activity)
     {
-        //
+        $data=[
+            'activity'=>$activity,
+        ];
+        return view('admin.activities.show',$data);
     }
 
-    public function edit($id)
+    public function edit(Activity $activity)
     {
-        $activity=Activity::find($id);
         $data=[
             'activity'=>$activity,
         ];
         return view('admin.activities.edit',$data);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Activity $activity)
     {
-        $update=Activity::find($id);
         //確認有檔案的話儲存到資料夾
         if ($request->hasFile('image')) {
             echo 'OKK';
             //刪除原本的檔案
-            Storage::delete($update->img);
+            Storage::delete($activity->img);
             //自訂檔案名稱
             $imageName = time().'.'.$request->file('image')->extension();
             //把檔案存到公開的資料夾
@@ -90,10 +91,10 @@ class AdminActivityController extends Controller
 
         }else{
             //如果沒有上傳新檔案抓取原檔案的路徑
-            $imageURL=$update->img;
+            $imageURL=$activity->img;
             echo "NOO";
         }
-        $update->update([
+        $activity->update([
             'name'=>$request->name,
             'start_time'=>$request->start_time,
             'end_time'=>$request->end_time,
@@ -126,14 +127,15 @@ class AdminActivityController extends Controller
             $imageName = time().'.'.$request->file('image')->extension();
             //把檔案存到公開的資料夾
             //$imageURL=$request->file('image')->move(public_path('/images'), $imageName);
-            $imageURL=$request->file('image')->storeAs('images',$imageName);
+            $imageURL=$request->file('image')->storeAs('public/images',$imageName);
+            $url=Storage::url($imageURL);
         }
         //將檔案名稱存至DB
         Image::create([
             'image' => $imageURL,
         ]);
         //回到傳送資料來的頁面
-        return 'OKK?'.$imageURL;
+        return 'OKK?'.$url;
     }
     public function image_d()
     {

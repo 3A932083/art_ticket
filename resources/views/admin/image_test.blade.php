@@ -25,5 +25,6 @@
             <button class="btn btn-primary btn-sm" type="submit">刪除</button>
         </div>
     </form>
+    <img src="{{asset('atorage/images/1670675373.jpg')}}">
 </body>
 </html>

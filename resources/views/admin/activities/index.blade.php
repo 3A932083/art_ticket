@@ -26,7 +26,8 @@
                 <th scope="row" style="width: 50px">{{ $activity->id }}</th><!--印出資料表內的id欄位-->
                 <td>{{ $activity->name }}</td>
                 <td style="width: 150px">
-                     <a href="{{route('admin.activities.edit',$activity->id)}}" class="btn btn-primary btn-sm">編輯</a>
+                    <a href="{{route('admin.activities.show',$activity->id)}}" class="btn btn-primary btn-sm">詳細資料</a>
+
                     <form action="{{route('admin.activities.destroy',$activity->id)}}" method="post" style="display: inline-block">
                         @method('delete')
                         @csrf
