@@ -16,4 +16,8 @@ class Event extends Model
         'price',
     ];
     public $timestamps = false;//不用儲存建立時間及修改時間
+    public function activity(){
+        //一個場次只會屬於一個活動
+        return $this->belongsTo(Activity::class);
+    }
 }
