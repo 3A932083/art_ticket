@@ -63,7 +63,7 @@ class AdminActivityController extends Controller
 
     public function show(Activity $activity)
     {
-        $events=Event::where('activity_id','=',$activity->id)->get();
+        $events=Event::where('activity_id','=',$activity->id)->orderby('time')->get();
         $data=[
             'activity'=>$activity,
             'events'=>$events,

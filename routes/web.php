@@ -88,6 +88,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::patch('/{activity}',[AdminActivityController::class,'update'])->name('update');//更新活動資料
         Route::delete('/{activity}',[AdminActivityController::class,'destroy'])->name('destroy');//刪除活動資料
         Route::post('/events',[AdminEventController::class,'store'])->name('events.store');//儲存場次資訊
+        Route::delete('/events/{event}',[AdminEventController::class,'destroy'])->name('events.destroy');//儲存場次資訊
 
         Route::get('/image',[AdminActivityController::class,'test'])->name('image.test');//測試-上傳圖片
         Route::post('/image',[AdminActivityController::class,'image'])->name('image');//測試-儲存圖片

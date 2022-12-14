@@ -63,13 +63,13 @@
 
         <div class="tab-pane fade" id="nav-event" role="tabpanel" aria-labelledby="nav-event-tab">
             <div class="pt-4">
+                <!--新增場次-->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@123">新增場次資訊</button>
-
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                {{--標題--}}
+                                <!--標題-->
                                 <h5 class="modal-title" id="exampleModalLabel">新增場次</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
@@ -120,9 +120,47 @@
                         <td>{{ $event->count }}</td>
                         <td>{{$event->price}}</td>
                         <td style="width: 150px">
-                            <a href="#" class="btn btn-primary btn-sm">編輯</a>
-
-                            <form action="#}" method="post" style="display: inline-block">
+                            <!--場次編輯-->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@123">編輯</button>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <!--標題-->
+                                            <h5 class="modal-title" id="exampleModalLabel">編輯場次</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <form action="{{route('admin.activities.events.store')}}" method="post" >
+                                            @method('post')
+                                            <!--csrf驗證機制，產生隱藏的input，包含一組驗證密碼-->
+                                            @csrf
+                                            <div class="modal-body">
+                                                <input id="activity_id" name="activity_id" type="hidden" value="{{$activity->id}}">
+                                                <div class="mb-3">
+                                                    <label for="recipient-name" class="col-form-label">活動時間:</label>
+                                                    <input type="date" class="form-control" id="time" name="time" value="{{$event->time}}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="message-text" class="col-form-label">票券數量:</label>
+                                                    <input type="text" class="form-control" id="count" name="count">
+                                                </div>
+                                                <div class=" mb-3">
+                                                    <label for="message-text" class="col-form-label">票券價格:</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-text">$</span>
+                                                        <input type="text" class="form-control" id="price" name="price">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">儲存</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <form action="{{route('admin.activities.events.destroy',$event->id)}}" method="post" style="display: inline-block">
                                 @method('delete')
                                 @csrf
                                 <button type="submit" class="btn btn-danger btn-sm">刪除</button>
