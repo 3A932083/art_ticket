@@ -44,9 +44,9 @@
                     <tr>
                         <th scope="row">{{$activity->name}}</th>
                         <td>{{$activity->start_time}}</td>
-                        <td>5:20</td>
+                        <td>{{$event->time}}</td>
                         <td>x1</td>
-                        <td>800</td>
+                        <td>{{$event->price}}</td>
                     </tr>
                     <tr>
                     <thead>
@@ -54,7 +54,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>800</td>
+                        <td>{{$event->price}}</td>
                     </thead>
                     </tr>
                     </tbody>

@@ -51,7 +51,7 @@
                         <tr>
                             <td>{{$activity->start_time}}</td>
                             <td>{{$activity->place}}</td>
-                            <td>票價1</td>
+                            <td>{{$event->time}}</td>
                     </div>
                         </tr>
                     </table>

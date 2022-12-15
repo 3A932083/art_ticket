@@ -19,5 +19,9 @@ class Activity extends Model
         'img',
         'precaution',
     ];
-    public $timestamps = false;
+    public $timestamps = false;//不用儲存建立時間及修改時間
+    public function event(){
+        //一個活動有多個場次
+        return $this->hasMany(Activity::class);
+    }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminAccountController;
+use App\Http\Controllers\AdminEventController;
 use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\AdminActivityController;
 use Illuminate\Support\Facades\Auth;
@@ -80,14 +81,18 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::prefix('activities')->name('activities.')->group(function () {
         Route::get('/',[AdminActivityController::class,'index'])->name('index');//活動列表
+        Route::get('/{activity}/show',[AdminActivityController::class,'show'])->name('show');//活動詳情
         Route::get('/create',[AdminActivityController::class,'create'])->name('create');//新增活動頁面
         Route::post('/',[AdminActivityController::class,'store'])->name('store');//儲存活動資料
-        Route::get('/{id}/edit',[AdminActivityController::class,'edit'])->name('edit');//新增活動頁面
-        Route::patch('/{id}',[AdminActivityController::class,'update'])->name('update');//儲存活動資料
-        Route::delete('/{id}',[AdminActivityController::class,'delete'])->name('delete');//儲存活動資料
+        Route::get('/{activity}/edit',[AdminActivityController::class,'edit'])->name('edit');//編輯活動頁面
+        Route::patch('/{activity}',[AdminActivityController::class,'update'])->name('update');//更新活動資料
+        Route::delete('/{activity}',[AdminActivityController::class,'destroy'])->name('destroy');//刪除活動資料
+        Route::post('/events',[AdminEventController::class,'store'])->name('events.store');//儲存場次資訊
+        Route::delete('/events/{event}',[AdminEventController::class,'destroy'])->name('events.destroy');//儲存場次資訊
 
         Route::get('/image',[AdminActivityController::class,'test'])->name('image.test');//測試-上傳圖片
         Route::post('/image',[AdminActivityController::class,'image'])->name('image');//測試-儲存圖片
+        Route::delete('/image',[AdminActivityController::class,'image_d'])->name('image.d');//測試-儲存圖片
     });
     Route::get('/order',[AdminOrderController::class,'index'])->name('orders.index');//訂單列表
 

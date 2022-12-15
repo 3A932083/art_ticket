@@ -93,15 +93,14 @@
                                                     <thead>
                                                         <tr>
                                                             <th>活動日期</th>
-                                                            <th>地點</th>
                                                             <th>票價</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <th>{{$activity->start_time}}</th>
-                                                            <th>{{$activity->place}}</th>
-                                                            <th>$700</th>
+
+                                                            <th>{{$event->time}}</th>
+                                                            <th>{{$event->price}}</th>
                                                         </tr>
                                                     </tbody>
                                                 </table>
