@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function ($table) {
-            $table->dropColumn(['question', 'ans']);
+            $table->dropColumn(['question', 'ans']);//刪除問題答案欄位
         });
     }
 

@@ -68,14 +68,18 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::view('/login','admin.login')->name('login');//登入表單
         Route::post('/check',[AdminHomeController::class,'check'])->name('check');//登入確認並登入管理員首頁
     });
+    //登入後
     Route::middleware(['auth:admin','PreventBackHistory'])->group(function () {
         Route::get('/index',[AdminHomeController::class,'index'])->name('index');//主控台
         Route::post('/logout',[AdminHomeController::class,'logout'])->name('logout');//登出
-
         Route::get('/account',[AdminAccountController::class,'index'])->name('account.index');//會員、平台人員帳號列表
-        //Route::
-        Route::delete('account/{user}/user', [AdminAccountController::class, 'user_destroy'])->name('user.destroy');//刪除會員
-        Route::delete('account/{admin}/admin', [AdminAccountController::class, 'admin_destroy'])->name('admin.destroy');//刪除平台人員
+
+        Route::get('/user/{user}', [AdminAccountController::class,'user_show'])->name("user.show");//顯示會員詳情頁面
+        Route::delete('/account/{user}/user', [AdminAccountController::class, 'user_destroy'])->name('user.destroy');//刪除會員
+
+
+        Route::get('/admin/{admin}', [AdminAccountController::class,'admin_show'])->name("admin.show");//顯示管理員詳情頁面
+        Route::delete('/account/{admin}/admin', [AdminAccountController::class, 'admin_destroy'])->name('admin.destroy');//刪除平台人員
 
     });
 
