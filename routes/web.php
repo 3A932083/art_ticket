@@ -79,6 +79,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 
         Route::get('/admin/{admin}', [AdminAccountController::class,'admin_show'])->name("admin.show");//顯示管理員詳情頁面
+        Route::patch('/admin/{admin}', [AdminAccountController::class,'admin_update'])->name("admin.update");//存取編輯會員詳情頁面
         Route::delete('/account/{admin}/admin', [AdminAccountController::class, 'admin_destroy'])->name('admin.destroy');//刪除平台人員
 
     });

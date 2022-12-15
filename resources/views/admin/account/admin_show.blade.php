@@ -9,22 +9,25 @@
             <li class="breadcrumb-item active">管理員帳號詳情</li>
         </ol>
 
-        <form action="/admin/admin/{{$admin->id}}" method="GET" role="form" class="row g-3">
-            @method('get')
+        <form action="/admin/admin/{{$admin->id}}" method="POST" role="form" class="row g-3">
+            @method('patch')
             @csrf
 
             <label for="name" class="form-label fs-5" >編號：{{old('id',$admin->id)}}</label>
 
             <div class="col-md-6 fs-4">
                 <label class="form-label fs-5" >姓名</label>
-                <input type="text" disabled="disabled" class="form-control fs-5"  value="{{old('name',$admin->name)}}">
+                <input type="text" class="form-control fs-5"  value="{{old('name',$admin->name)}}">
             </div>
 
             <div class="col-md-6 fs-4">
                 <label class="form-label fs-5" >Email</label>
-                <input type="email" disabled="disabled" class="form-control fs-5"  value="{{old('email',$admin->email)}}">
+                <input type="email" class="form-control fs-5"  value="{{old('email',$admin->email)}}">
             </div>
 
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button class="btn btn-primary btn-sm fs-6" type="submit">儲存</button>
+            </div>
 
 
         </form>
