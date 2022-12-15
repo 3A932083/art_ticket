@@ -8,6 +8,7 @@ use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class AdminAccountController extends Controller
 {
@@ -33,14 +34,24 @@ class AdminAccountController extends Controller
         return redirect()->route('admin.account.index');
     }
 
-
-
     //管理員
     //顯示管理員帳號詳情頁面
     public function admin_show(Admin $admin){
         $data=['admin'=>$admin];
         return view('admin.account.admin_show',$data);
     }
+    //儲存修改的資料
+    public function admin_update(Request $request,Admin $admin){
+
+        $admin->update([
+            'name'=>$request->name,
+            'email'=>$request->email,
+        ]);
+
+        return redirect()->route('admin.account.index');
+    }
+
+
     //刪除管理員
     public function admin_destroy(Admin $admin){
         $admin->delete();
