@@ -29,7 +29,7 @@
                             <div class="col-8 form-horizontal">
                                 <div class="control-group string optional user_login">
                                     <label class="string optional control-label" for="user_login">使用者姓名</label>
-                                    <div class="controls"><input class="string optional col-12" type="text" value="{{$user->name}}" name="user[login]" id="user_login" />
+                                    <div class="controls"><input class="string optional col-12" type="text" value="" name="user[login]" id="user_login" />
                                         <p class="help-block"></p>
                                     </div>
                                 </div>
@@ -50,7 +50,7 @@
                                             <div class="controls">
                                                 <div class="control-group email optional user_email">
                                                     <label class="email optional control-label" for="user_email">地址</label>
-                                                    <div class="controls"><input class="col-12" data-email-suggestion="" type="email" value="{{$user->address}}" id="user_email" />
+                                                    <div class="controls"><input class="col-12" data-email-suggestion="" type="email" value="" id="user_email" />
                                                         <p class="help-block"></p>
                                                     </div>
                                                 </div>
@@ -60,7 +60,7 @@
                                                 手機號碼
                                             </label>
                                             <div class="controls">
-                                                <input class="string optional datepicker" type="text" value="{{$user->tel}}" id="user_birthdate" />
+                                                <input class="string optional datepicker" type="text" name="" id="user_birthdate" />
                                             </div>
                                         </div>
                                     </div>
@@ -68,11 +68,10 @@
                             </div>
                         </div>
                     </div>
-                    <br>
+
                     <div class="control-group string optional user_birthdate"><label class="string optional control-label" for="user_birthdate">出生年月日</label>
                         <div class="controls">
-                            <input class="string optional datepicker" type="text" value="{{$user->birthdate}}" id="user_birthdate" />
-                            <p class="help-block">不可更改出生年月日。</p>
+                            <input class="string optional datepicker" type="text" name="user[birthdate]" id="user_birthdate" />
                         </div>
                     </div>
                     <div class="control-group select optional user_sex">
@@ -83,7 +82,6 @@
                     </div>
                     <p>
                         <div class="col-xs-12 col-md-3 d-md-flex">
-                        <a href="{{route('user.create',1)}}" class="btn btn-primary btn-sm">修改</a>
                             <a class="btn btn-secondary fs justify-content-md-end-5 position-end " >儲存</a>
 
                         </div>

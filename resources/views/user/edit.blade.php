@@ -50,7 +50,7 @@
                                             <div class="controls">
                                                 <div class="control-group email optional user_email">
                                                     <label class="email optional control-label" for="user_email">地址</label>
-                                                    <div class="controls"><input class="col-12" data-email-suggestion="" type="email" value="{{$user->email}}" id="user_email" />
+                                                    <div class="controls"><input class="col-12" data-email-suggestion="" type="email" value="{{$user->address}}" id="user_email" />
                                                         <p class="help-block"></p>
                                                     </div>
                                                 </div>
@@ -60,7 +60,7 @@
                                                 手機號碼
                                             </label>
                                             <div class="controls">
-                                                <input class="string optional datepicker" type="text" name="user[birthdate]" id="user_birthdate" />
+                                                <input class="string optional datepicker" type="text" name="{{$user->address}}" id="user_birthdate" />
                                             </div>
                                         </div>
                                     </div>

@@ -98,7 +98,6 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-
                                                             <th>{{$event->time}}</th>
                                                             <th>{{$event->price}}</th>
                                                         </tr>
