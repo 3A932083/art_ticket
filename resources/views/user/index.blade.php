@@ -30,7 +30,7 @@
                                 <div class="control-group string optional user_login">
                                     <label class="string optional control-label" for="user_login">使用者姓名</label>
                                     <div class="controls"><input class="string optional col-12" type="text" value="{{$user->name}}" name="user[login]" id="user_login" />
-                                        <p class="help-block">您不可更改姓名。</p>
+                                        <p class="help-block"></p>
                                     </div>
                                 </div>
 
@@ -80,6 +80,7 @@
                     <p>
                         <div class="col-xs-12 col-md-3 d-md-flex">
                             <a class="btn btn-secondary fs justify-content-md-end-5 position-end " >儲存</a>
+
                         </div>
                     </p>
                 </div>
