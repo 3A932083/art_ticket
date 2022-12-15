@@ -38,11 +38,10 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    //建立帳號
-        //驗證資料
-    protected function validator(array $data)
+    protected function create(Request $request)
     {
-        return Validator::make($data, [
+        //驗證資料
+        $request->validate( [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -50,33 +49,36 @@ class UserController extends Controller
             'tel' => ['required', 'string', 'max:50'],
             'birthdate' => ['required', 'date'],
         ]);
-    }
+            $user =new User();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->address = $request->address;
+            $user->tel = $request->tel;
+            $user->birthdate = $request->birthdate;
+            $save = $user->save();
 
-    protected function create(Request $request)
-    {
-        User::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
-            'address' => $request['address'],
-            'tel' => $request['tel'],
-            'birthdate' => $request['birthdate'],
-        ]);
-        //確認註冊帳號，並直接跳轉至會員中心頁面
-        $creds=$request->only('email','password');
-        if(Auth::guard('web')->attempt($creds)){
-            return redirect()->route('user.index');//正確
-        }else{
-            return redirect()->route('user.register')->with('fail','信箱或密碼輸入錯誤.');//錯誤
+        //確認註冊帳號，並直接跳轉至首面
+        if($save){
+            $creds = $request->only('email','password');
+            if(Auth::guard('web')->attempt($creds)){
+                return redirect()->route('home.new');//正確
+            }else{
+                return redirect()->route('user.login')->with('fail','信箱或密碼輸入錯誤.');//錯誤
+            }
         }
     }
 
     //使用者登入確認
     protected function check(Request $request){
-        $creds=$request->only('email','password');
+        $request->validate( [
+            'email' => ['required', 'string', 'email', 'max:255', 'exists:users,email'],
+            'password' => ['required',  'min:8'],
+        ]);
 
+        $creds = $request->only('email','password');
         if(Auth::guard('web')->attempt($creds)){
-            return redirect()->route('user.index');//正確
+            return redirect()->route('home.new');//正確
         }else{
             return redirect()->route('user.login')->with('fail','信箱或密碼輸入錯誤.');//錯誤
         }

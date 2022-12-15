@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Activity;
 use App\Models\Admin;
+use App\Models\Event;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,17 +29,43 @@ class AdminAccountController extends Controller
         $data=['user'=>$user];
         return view('admin.account.user_show',$data);
     }
+    //編輯會員帳號頁面
+    public function user_edit(User $user){
+        $data=['user'=>$user];
+        return view('admin.account.user_edit',$data);
+    }
+    //儲存修改的資料
+    public function user_update(Request $request,User $user){
+
+        $user->update([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'address'=>$request->address,
+            'tel'=>$request->tel,
+            'birthdate'=>$request->birthdate,
+        ]);
+
+        return redirect()->route('admin.account.index');
+    }
+
     //刪除會員
     public function user_destroy(User $user){
         $user->delete();
         return redirect()->route('admin.account.index');
     }
 
+
+
     //管理員
-    //顯示管理員帳號詳情頁面
+    //顯示管理員員帳號詳情頁面
     public function admin_show(Admin $admin){
         $data=['admin'=>$admin];
         return view('admin.account.admin_show',$data);
+    }
+    //編輯管理員帳號頁面
+    public function admin_edit(Admin $admin){
+        $data=['admin'=>$admin];
+        return view('admin.account.admin_edit',$data);
     }
     //儲存修改的資料
     public function admin_update(Request $request,Admin $admin){
@@ -50,7 +77,6 @@ class AdminAccountController extends Controller
 
         return redirect()->route('admin.account.index');
     }
-
 
     //刪除管理員
     public function admin_destroy(Admin $admin){
