@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\Auth;
 class AdminAccountController extends Controller
 {
 
+    //會員、管理員列表
     public function index(){
-
         $users = User::orderBy('id', 'DESC')->get();//以陣列取得users資料表資料
         $admins = Admin::orderBy('id', 'DESC')->get();//以陣列取得admins資料表資料
 
@@ -21,14 +21,31 @@ class AdminAccountController extends Controller
         return view('admin.account.index',$data);
     }
 
-    public function userDestroy(User $user){
-        $user->delete();//刪除會員
+    //會員
+    //顯示會員帳號詳情頁面
+    public function user_show(User $user){
+        $data=['user'=>$user];
+        return view('admin.account.user_show',$data);
+    }
+    //刪除會員
+    public function user_destroy(User $user){
+        $user->delete();
         return redirect()->route('admin.account.index');
     }
 
-    public function adminDestroy(Admin $admin){
-        $admin->delete();//刪除管理員
+
+
+    //管理員
+    //顯示管理員帳號詳情頁面
+    public function admin_show(Admin $admin){
+        $data=['admin'=>$admin];
+        return view('admin.account.admin_show',$data);
+    }
+    //刪除管理員
+    public function admin_destroy(Admin $admin){
+        $admin->delete();
         return redirect()->route('admin.account.index');
     }
+
 
 }

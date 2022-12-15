@@ -46,6 +46,9 @@ class UserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'address' => ['required', 'string', 'max:255'],
+            'tel' => ['required', 'string', 'max:50'],
+            'birthdate' => ['required', 'date'],
         ]);
     }
 
@@ -55,9 +58,17 @@ class UserController extends Controller
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
+            'address' => $request['address'],
+            'tel' => $request['tel'],
+            'birthdate' => $request['birthdate'],
         ]);
-
-        return redirect()->route('user.login');//回到登入頁面
+        //確認註冊帳號，並直接跳轉至會員中心頁面
+        $creds=$request->only('email','password');
+        if(Auth::guard('web')->attempt($creds)){
+            return redirect()->route('user.index');//正確
+        }else{
+            return redirect()->route('user.register')->with('fail','信箱或密碼輸入錯誤.');//錯誤
+        }
     }
 
     //使用者登入確認

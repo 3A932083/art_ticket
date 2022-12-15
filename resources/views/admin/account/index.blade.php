@@ -28,7 +28,7 @@
         <div class="tab-pane fade show active" id="nav-user" role="tabpanel" aria-labelledby="nav-user-tab">
             <section class="pt-4">
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <a class="btn btn-success btn-sm" href="#">新增</a>
+                <a class="btn btn-success btn-sm" href="">新增</a>
             </div>
 
                 <table class="table">
@@ -48,7 +48,7 @@
                                 <th scope="row" style="width: 50px">{{ $user->id }}</th>
                                 <td>{{ $user->name }}</td>
                                 <td style="width: 150px">
-                                    <a href="#" type="button" class="btn btn-primary btn-sm">詳細資料</a>
+                                    <a href="{{ route('admin.user.show',$user->id)}}" type="button" class="btn btn-primary btn-sm">詳細資料</a>
 
                                     <!--刪除-->
                                     <form action="/admin/account/{{$user->id}}/user" method="POST" style="display: inline-block">
@@ -88,7 +88,7 @@
                                 <th scope="row" style="width: 50px">{{ $admin->id }}</th>
                                 <td>{{ $admin->name }}</td>
                                 <td style="width: 150px">
-                                    <a href="#" type="button" class="btn btn-primary btn-sm">詳細資料</a>
+                                    <a href="{{ route('admin.admin.show',$admin->id)}}" type="button" class="btn btn-primary btn-sm">詳細資料</a>
 
                                     <!--刪除-->
                                     <form action="/admin/account/{{$admin->id}}/admin" method="POST" style="display: inline-block">
