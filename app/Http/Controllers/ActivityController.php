@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activity;
 use Illuminate\Http\Request;
 
 class ActivityController extends Controller
@@ -22,9 +23,12 @@ class ActivityController extends Controller
         return view('home.lecture');
     }
 
-    public function activity()
+    public function activity(Activity $activity)
     {
-        return view('activity.activity');
+        $data=[
+            'activity'=>$activity,
+        ];
+        return view('activity.activity',$data);
     }
 
 }

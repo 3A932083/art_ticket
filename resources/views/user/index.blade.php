@@ -28,18 +28,12 @@
                         <div class="clearfix">
                             <div class="col-8 form-horizontal">
                                 <div class="control-group string optional user_login">
-                                    <label class="string optional control-label" for="user_login">使用者名稱</label>
-                                    <div class="controls"><input class="string optional col-12" type="text" value="1d_417" readonly name="user[login]" id="user_login" />
-                                        <p class="help-block">您可以用此帳號登入AT，此名稱不可更改</p>
+                                    <label class="string optional control-label" for="user_login">使用者姓名</label>
+                                    <div class="controls"><input class="string optional col-12" type="text" value="{{$user->name}}" name="user[login]" id="user_login" />
+                                        <p class="help-block">您不可更改姓名。</p>
                                     </div>
                                 </div>
 
-                                <div class="control-group string optional user_nickname">
-                                    <label class="string optional control-label" for="user_nickname">暱稱</label>
-                                    <div class="controls"><input class="string optional col-12" type="text" value="" name="user[nickname]" id="user_nickname" />
-                                        <p class="help-block">您的暱稱會顯示在個人頁面、活動頁面等地方</p>
-                                    </div>
-                                </div>
 
                                 <div class="control-group">
                                     <label class="string optional control-label">
@@ -48,7 +42,7 @@
                                     <div class="controls">
                                         <div class="control-group email optional user_email">
                                             <label class="email optional control-label" for="user_email">Email</label>
-                                            <div class="controls"><input class="col-12" data-email-suggestion="你要用的是嗎?" type="email" value="b28203598@gmail.com" readonly name="user[email]" id="user_email" />
+                                            <div class="controls"><input class="col-12" data-email-suggestion="你要用的是嗎?" type="email" value="{{$user->email}}" readonly name="user[email]" id="user_email" />
                                                 <p class="help-block">您的 Email 已經認證完畢，不可更改。</p>
                                             </div>
                                         </div>

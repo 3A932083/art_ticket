@@ -24,8 +24,12 @@ class UserController extends Controller
      */
 
     //會員中心
-    public function index(){
-        return view('user.index');
+    public function index(User $user)
+    {
+        $data = [
+            'user' => $user,
+        ];
+        return view('user.index',$data);
     }
 
     /**
@@ -81,8 +85,8 @@ class UserController extends Controller
     //使用者登出
     protected function logout(){
         Auth::guard('web')->logout();
-        return redirect()->route('user.login');
-    }
+        return redirect()->route('user.login');}
+
 
     //忘記密碼表單
     protected function forgot(){
@@ -144,6 +148,7 @@ class UserController extends Controller
 
             return redirect()->route('user.login')->with('info','您的密碼已重設，請重新登入.');//成功訊息
         }
+
     }
 
 

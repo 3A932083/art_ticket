@@ -8,6 +8,7 @@
         <div style="width: 80%">
             <h1 ><<確認訂購>></h1>
         </div>
+    </div>
         </p>
         <section class="py-5">
         <div class="container px-5 my-5 ">
@@ -41,15 +42,8 @@
                         <td>價格</td>
                     </tr>
                     <tr>
-                        <th scope="row">徐義竹</th>
-                        <td>4/17</td>
-                        <td>5:20</td>
-                        <td>x1</td>
-                        <td>800</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">徐義竹</th>
-                        <td>4/17</td>
+                        <th scope="row">{{$activity->name}}</th>
+                        <td>{{$activity->start_time}}</td>
                         <td>5:20</td>
                         <td>x1</td>
                         <td>800</td>
@@ -60,7 +54,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>1600</td>
+                        <td>800</td>
                     </thead>
                     </tr>
                     </tbody>
@@ -97,7 +91,7 @@
                 </table>
 
                 <div class="col-xs-12 col-md-3 d-md-flex">
-                    <a href="{{route('order.activity_end')}}" class="btn btn-secondary fs justify-content-md-end-5 position-end " >下一步</a>
+                    <a href="{{route('order.activity_end',1)}}" class="btn btn-secondary fs justify-content-md-end-5 position-end " >下一步</a>
                 </div>
                         </header>
                         <!-- Post content-->
