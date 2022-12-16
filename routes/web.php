@@ -86,12 +86,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::delete('/user/{user}', [AdminAccountController::class, 'user_destroy'])->name('user.destroy');//刪除會員
 
         //管理員
-        Route::get('/admin/{admin}/show', [AdminAccountController::class,'admin_show'])->name("admin.show");//會員詳情頁面
+        Route::get('/admin/{admin}/show', [AdminAccountController::class,'admin_show'])->name("admin.show");//管理員詳情頁面
         Route::get('/admin/{admin}/edit', [AdminAccountController::class,'admin_edit'])->name("admin.edit");//管理員編輯頁面
         Route::patch('/admin/{admin}', [AdminAccountController::class,'admin_update'])->name("admin.update");//更新管理員資料
         Route::get('/admin/create', [AdminAccountController::class, 'admin_create'])->name("admin.create");//新增管理員頁面
         Route::post('/admin/store', [AdminAccountController::class, 'admin_store'])->name("admin.store");//存取管理員資料
         Route::delete('/admin/{admin}', [AdminAccountController::class, 'admin_destroy'])->name('admin.destroy');//刪除管理員
+
     });
 
 

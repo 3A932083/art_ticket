@@ -83,23 +83,25 @@
                     </thead>
 
                     <tbody>
-                    @foreach($admins as $admin)
-                            <tr>
-                                <th scope="row" style="width: 50px">{{ $admin->id }}</th>
-                                <td>{{ $admin->name }}</td>
-                                <td style="width: 150px">
-                                    <a href="{{route('admin.account.admin.show',$admin->id)}}" type="button" class="btn btn-primary btn-sm">詳細資料</a>
+                        @foreach($admins as $admin)
+                                <tr>
+                                    <th scope="row" style="width: 50px">{{ $admin->id }}</th>
+                                    <td>{{ $admin->name }}</td>
 
-                                    <!--刪除-->
-                                    <form action="{{route('admin.account.admin.destroy',$admin->id)}}" method="POST" style="display: inline-block">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button class="btn btn-sm btn-danger" type="submit">刪除</button>
-                                    </form>
-                                </td>
-                            </tr>
-                    @endforeach
+                                    <td style="width: 150px">
+                                        <a href="{{route('admin.account.admin.show',$admin->id)}}" type="button" class="btn btn-primary btn-sm">詳細資料</a>
+
+                                        <!--刪除-->
+                                        <form action="{{route('admin.account.admin.destroy',$admin->id)}}" method="POST" style="display: inline-block">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button class="btn btn-sm btn-danger" type="submit">刪除</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                        @endforeach
                     </tbody>
+
                 </table>
 
             </section>
