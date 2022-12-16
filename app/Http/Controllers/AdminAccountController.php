@@ -9,6 +9,7 @@ use App\Models\Event;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class AdminAccountController extends Controller
@@ -48,6 +49,41 @@ class AdminAccountController extends Controller
         return redirect()->route('admin.account.index');
     }
 
+    //新增會員頁面
+    public function user_create(){
+        return view('admin.account.user_create');
+    }
+    //儲存
+    public function user_store(Request $request){
+        //驗證資料
+        $request->validate( [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'address' => ['required', 'string', 'max:255'],
+            'tel' => ['required', 'string', 'max:50'],
+            'birthdate' => ['required', 'date'],
+        ]);
+        $user =new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->address = $request->address;
+        $user->tel = $request->tel;
+        $user->birthdate = $request->birthdate;
+        $save = $user->save();
+
+        $save = $user->save();
+        if($save){
+            $creds = $request->only('email','password');
+            if(Auth::guard('admin')->attempt($creds)){
+                return redirect()->route('admin.account.index');//正確
+            }else{
+                return redirect()->route('admin.account.index')->with('fail','信箱或密碼輸入錯誤.');//錯誤
+            }
+        }
+    }
+
     //刪除會員
     public function user_destroy(User $user){
         $user->delete();
@@ -76,6 +112,34 @@ class AdminAccountController extends Controller
         ]);
 
         return redirect()->route('admin.account.index');
+    }
+
+    //新增管理員頁面
+    public function admin_create(){
+        return view('admin.account.admin_create');
+    }
+    //儲存
+    public function admin_store(Request $request){
+        //驗證資料
+        $request->validate( [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:admins'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+        $admin =new Admin();
+        $admin->name = $request->name;
+        $admin->email = $request->email;
+        $admin->password = Hash::make($request->password);
+
+        $save = $admin->save();
+        if($save){
+            $creds = $request->only('email','password');
+            if(Auth::guard('admin')->attempt($creds)){
+                return redirect()->route('admin.account.index');//正確
+            }else{
+                return redirect()->route('admin.account.index')->with('fail','信箱或密碼輸入錯誤.');//錯誤
+            }
+        }
     }
 
     //刪除管理員

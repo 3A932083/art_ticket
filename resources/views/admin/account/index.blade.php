@@ -28,7 +28,7 @@
         <div class="tab-pane fade show active" id="nav-user" role="tabpanel" aria-labelledby="nav-user-tab">
             <section class="pt-4">
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <a class="btn btn-success btn-sm" href="">新增</a>
+                <a class="btn btn-success btn-sm" href="{{route('admin.account.user.create')}}">新增</a>
             </div>
 
                 <table class="table">
@@ -66,11 +66,11 @@
             </section>
         </div>
 
-        <!--平台人員-->
+        <!--管理員-->
         <div class="tab-pane fade" id="nav-admin" role="tabpanel" aria-labelledby="nav-admin-tab">
             <section class="pt-4">
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <a class="btn btn-success btn-sm" href="#">新增</a>
+                <a class="btn btn-success btn-sm" href="{{route('admin.account.admin.create')}}">新增</a>
             </div>
 
                 <table class="table">

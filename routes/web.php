@@ -80,16 +80,18 @@ Route::prefix('admin')->name('admin.')->group(function () {
         //會員
         Route::get('/user/{user}/show', [AdminAccountController::class,'user_show'])->name("user.show");//會員詳情頁面
         Route::get('/user/{user}/edit', [AdminAccountController::class,'user_edit'])->name("user.edit");//會員編輯頁面
-        Route::patch('/user/{user}', [AdminAccountController::class,'user_update'])->name("user.update");//存取會員資料
+        Route::patch('/user/{user}', [AdminAccountController::class,'user_update'])->name("user.update");//更新會員資料
+        Route::get('/user/create', [AdminAccountController::class, 'user_create'])->name("user.create");//新增管理員頁面
+        Route::post('/user/store', [AdminAccountController::class, 'user_store'])->name("user.store");//存取管理員資料
         Route::delete('/user/{user}', [AdminAccountController::class, 'user_destroy'])->name('user.destroy');//刪除會員
 
         //管理員
         Route::get('/admin/{admin}/show', [AdminAccountController::class,'admin_show'])->name("admin.show");//會員詳情頁面
         Route::get('/admin/{admin}/edit', [AdminAccountController::class,'admin_edit'])->name("admin.edit");//管理員編輯頁面
-        Route::patch('/admin/{admin}', [AdminAccountController::class,'admin_update'])->name("admin.update");//存取管理員資料
+        Route::patch('/admin/{admin}', [AdminAccountController::class,'admin_update'])->name("admin.update");//更新管理員資料
+        Route::get('/admin/create', [AdminAccountController::class, 'admin_create'])->name("admin.create");//新增管理員頁面
+        Route::post('/admin/store', [AdminAccountController::class, 'admin_store'])->name("admin.store");//存取管理員資料
         Route::delete('/admin/{admin}', [AdminAccountController::class, 'admin_destroy'])->name('admin.destroy');//刪除管理員
-
-        //Route::get('/admin/create', [AdminAccountController::class, 'admin_create'])->name("admin.create");//新增管理員
     });
 
 

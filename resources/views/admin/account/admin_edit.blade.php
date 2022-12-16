@@ -6,7 +6,7 @@
     <div class="container-fluid px-4">
         <h1 class="mt-4">帳號管理</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">管理員帳號詳情</li>
+            <li class="breadcrumb-item active">管理員帳號編輯</li>
         </ol>
 
         <form action="{{route('admin.account.admin.update',$admin->id)}}" method="POST" role="form" class="row g-3">
