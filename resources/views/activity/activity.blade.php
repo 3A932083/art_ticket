@@ -97,11 +97,12 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                    @foreach($events as $event)
                                                         <tr>
-
-                                                            <th>{{$activity->start_time}}</th>
-                                                            <th>{{$activity->place}}</th>
+                                                            <th>{{$event->time}}</th>
+                                                            <th>{{$event->price}}</th>
                                                         </tr>
+                                                    @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
