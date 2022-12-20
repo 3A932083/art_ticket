@@ -44,19 +44,23 @@
 
                             <th scope="col">票價price</th>
 
+                            <th scope="col">立即訂購order</th>
 
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
+                        @foreach($events as $event)
+                            <tr>
                             <td>{{$activity->start_time}}</td>
                             <td>{{$activity->place}}</td>
-                            <td>{{$event->time}}</td>
+                            <td>{{$event->price}}</td>
+                               <td><a href="{{route('order.activity_check',1)}}" class="btn btn-secondary fs justify-content-md-end-5 position-end " >訂購</a></td>
+                        @endforeach
                     </div>
                         </tr>
                     </table>
                         <div class="col-xs-12 col-md-3 d-md-flex">
-                            <a href="{{route('order.activity_check',1)}}" class="btn btn-secondary fs justify-content-md-end-5 position-end " >下一步</a>
+
                         </div>
                         </header>
                         <!-- Post content-->

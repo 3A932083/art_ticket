@@ -24,10 +24,12 @@
             <section class="pt-4">
                 <div class="container px-lg-5">
                     <h2>修改帳號設定</h2>
+
                     <div class="simple_form edit_user" id="edit_user" novalidate="novalidate" enctype="multipart/form-data" action="https://kktix.com/users" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="pAfW6vofv3dQImyr/kgN8flzXCvGmGxjRNnUgVRZUfXjIqK9L1y6V3wErLOKhIqt0RW+AboqLSs55cLYo1pQBg==" />
                         <div class="clearfix">
                             <div class="col-8 form-horizontal">
                                 <div class="control-group string optional user_login">
+
                                     <label class="string optional control-label" for="user_login">使用者姓名</label>
                                     <div class="controls"><input class="string optional col-12" type="text" value="{{$user->name}}" name="user[login]" id="user_login" />
                                         <p class="help-block"></p>
@@ -74,6 +76,7 @@
                             <input class="string optional datepicker" type="text" value="{{$user->birthdate}}" id="user_birthdate" />
                             <p class="help-block">不可更改出生年月日。</p>
                         </div>
+
                     </div>
                     <div class="control-group select optional user_sex">
 
@@ -111,23 +114,15 @@
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                            <h4 class="card-title">【全民通識課 免費講座】「藥」健康如何補充營養</h4>
+
+                                            <h4 class="card-title"></h4>
                                             <p class="card-text">你曉得如何健康用藥嗎？
                                                 重視健康的現代人不可不知， 有些藥物、中草藥、食品與保健營養品會產生交互作用。歡迎來純青認識藥品&保健營養品的相關知識。</p>
                                             <p class="card-text"><small class="text-muted">2022/2/22</small></p>
+
                                         </div>
                                     </div>
-                                    <div class="row g-0">
-                                        <div class="col-md-4">
-                                            <img src="../img/4.png" alt="...">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                                <h4 class="card-title">【免費講座】居家空間萬用收納術</h4>
-                                                <p class="card-text">家是每個人的避風港 隨著經年累月的堆積，空間塞滿東西越來越亂 透過專業的居家整聊師講解，教你如何有效整理收納 純青與你一同找回家庭的美好環境</p>
-                                                <p class="card-text"><small class="text-muted">2022/12/25</small></p>
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>

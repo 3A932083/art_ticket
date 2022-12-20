@@ -24,11 +24,14 @@ class ActivityController extends Controller
         return view('home.lecture');
     }
 
-    public function activity(Activity $activity,Event $event)
+    public function activity(Activity $activity)
     {
-        $data = [
-            'activity' => $activity,
-            'event'=>$event
+
+        $events=Event::where('activity_id','=',$activity->id)->orderby('time')->get();
+        $data=[
+            'activity'=>$activity,
+            'events'=>$events,
+
         ];
         return view('activity.activity', $data);
     }

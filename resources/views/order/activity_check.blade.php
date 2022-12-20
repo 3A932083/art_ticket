@@ -42,11 +42,14 @@
                         <td>價格</td>
                     </tr>
                     <tr>
+                        @foreach($events as $event)
                         <th scope="row">{{$activity->name}}</th>
                         <td>{{$activity->start_time}}</td>
                         <td>{{$event->time}}</td>
                         <td>x1</td>
                         <td>{{$event->price}}</td>
+                        @endforeach
+
                     </tr>
                     <tr>
                     <thead>
@@ -70,7 +73,7 @@
                     <tbody>
                     <tr>
                         <div style="margin-bottom:20px">
-                            <th scope="row">持卡人姓名<input type="password" class="form-control"  placeholder="持卡人姓名"></th>
+                            <th scope="row">持卡人姓名<input class="form-control"  placeholder="持卡人姓名"></th>
 
                         </div>
 
@@ -81,10 +84,10 @@
 
                     </tr>
                     <tr>
-                        <th scope="row">有效期限<input type="password" class="form-control"  placeholder=""></th>
+                        <th scope="row">有效期限<input type="password" class="form-control"  placeholder="有效期限"></th>
 
                     </tr>
-                    <th scope="row">手機號碼 <input type="password" class="form-control"  placeholder=""></th>
+                    <th scope="row">手機號碼 <input class="form-control"  placeholder="手機號碼"></th>
 
                     </tr>
                     </tbody>

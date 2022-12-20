@@ -97,10 +97,12 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                    @foreach($events as $event)
                                                         <tr>
                                                             <th>{{$event->time}}</th>
                                                             <th>{{$event->price}}</th>
                                                         </tr>
+                                                    @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
