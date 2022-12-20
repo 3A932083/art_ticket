@@ -24,12 +24,31 @@ class UserController extends Controller
      */
 
     //會員中心
-    public function index(User $user)
+    public function index()
     {
-        $data = [
-            'user' => $user,
-        ];
+        //顯示個資
+        $user=Auth::user();
+        $data = ['user' => $user];
         return view('user.index',$data);
+    }
+
+    //編輯會員頁面
+    public function edit(User $user){
+        $data=['user'=>$user];
+        return view('user.edit',$data);
+    }
+    //儲存修改的個資
+    public function update(Request $request,User $user){
+
+        $user->update([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'address'=>$request->address,
+            'tel'=>$request->tel,
+            'birthdate'=>$request->birthdate,
+        ]);
+
+        return redirect()->route('user.index');
     }
 
     /**
@@ -176,28 +195,8 @@ class UserController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+
 
     /**
      * Remove the specified resource from storage.

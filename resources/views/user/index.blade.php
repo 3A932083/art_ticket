@@ -21,70 +21,45 @@
 
         <!--個人資料-->
         <div class="tab-pane fade show active" id="nav-data" role="tabpanel" aria-labelledby="nav-data-tab">
+
             <section class="pt-4">
-                <div class="container px-lg-5">
-                    <h2>修改帳號設定</h2>
-                    <div class="simple_form edit_user" id="edit_user" novalidate="novalidate" enctype="multipart/form-data" action="https://kktix.com/users" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="pAfW6vofv3dQImyr/kgN8flzXCvGmGxjRNnUgVRZUfXjIqK9L1y6V3wErLOKhIqt0RW+AboqLSs55cLYo1pQBg==" />
-                        <div class="clearfix">
-                            <div class="col-8 form-horizontal">
-                                <div class="control-group string optional user_login">
-                                    <label class="string optional control-label" for="user_login">使用者姓名</label>
-                                    <div class="controls"><input class="string optional col-12" type="text" value="{{$user->name}}" name="user[login]" id="user_login" />
-                                        <p class="help-block">您不可更改姓名。</p>
-                                    </div>
-                                </div>
+                <div class="container px-lg-4">
+                    <div class="row mb-3">
+                        <div class="col-md-6 ">
+                            <label class="form-label fs-5" >姓名</label>
+                            <input name="name" id="name" type="text" class="form-control fs-5"  value="{{$user->name}}" disabled>
+                        </div>
 
-
-                                <div class="control-group">
-                                    <label class="string optional control-label">
-                                        聯絡方式:
-                                    </label>
-                                    <div class="controls">
-                                        <div class="control-group email optional user_email">
-                                            <label class="email optional control-label" for="user_email">Email</label>
-                                            <div class="controls"><input class="col-12" data-email-suggestion="你要用的是嗎?" type="email" value="{{$user->email}}" readonly name="user[email]" id="user_email" />
-                                                <p class="help-block">您的 Email 已經認證完畢，不可更改。</p>
-                                            </div>
-                                        </div>
-
-                                        <div ng-app="MobileVerificationApp" >
-                                            <label class="string optional control-label" >
-                                                手機號碼
-                                            </label>
-                                            <div class="controls">
-                                                <input class="string optional datepicker" type="text" name="user[birthdate]" id="user_birthdate" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-md-6 ">
+                            <label class="form-label fs-5" >Email</label>
+                            <input type="email" name="email" id="email" class="form-control fs-5"  value="{{$user->email}}" disabled>
                         </div>
                     </div>
 
-                    <div class="control-group string optional user_birthdate"><label class="string optional control-label" for="user_birthdate">出生年月日</label>
-                        <div class="controls">
-                            <input class="string optional datepicker" type="text" name="user[birthdate]" id="user_birthdate" />
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label fs-5" >電話</label>
+                            <input type="text" name="tel" id="tel" class="form-control fs-5" value="{{$user->tel}}" disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fs-5" >生日</label>
+                            <input type="date" name="birthdate" id="birthdate" class="form-control fs-5" value="{{$user->birthdate}}" disabled>
                         </div>
                     </div>
-                    <div class="control-group select optional user_sex">
-                        <label class="select optional control-label" for="user_sex">生理性別</label>
-                        <div class="controls">
-                            <select class="select optional col-12" name="user[sex]" id="user_sex">
-                                <option value="">
-                                </option>
-                                <option value="male">男</option>
-                                <option value="female">女</option>
-                            </select>
-                        </div>
+
+                    <div class="col-12">
+                        <label class="form-label fs-5">住址</label>
+                        <input type="text" name="address" id="address" class="form-control fs-5" value="{{$user->address}}" disabled>
                     </div>
+
                     <p>
-                        <div class="col-xs-12 col-md-3 d-md-flex">
-                            <a class="btn btn-secondary fs justify-content-md-end-5 position-end " >儲存</a>
-                        </div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{{route('user.edit',$user->id)}}" class="btn btn-primary btn-sm">編輯</a>
+                    </div>
                     </p>
-                </div>
-        </section>
 
+                </div>
+            </section>
         </div>
 
         <!--個人票卷-->

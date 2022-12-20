@@ -57,6 +57,8 @@ Route::prefix('user')->name('user.')->group(function () {
     Route::middleware(['auth:web','PreventBackHistory'])->group(function (){
         Route::get('/index',[UserController::class,'index'])->name('index');//會員中心
         Route::post('/logout',[UserController::class,'logout'])->name('logout');//登出
+        Route::get('/{user}/edit', [UserController::class,'edit'])->name("edit");//修改會員資料頁面
+        Route::patch('/{user}', [UserController::class,'update'])->name("update");//更新會員資料
     });
 });
 
