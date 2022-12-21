@@ -39,6 +39,7 @@
             <p>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <button class="btn btn-primary btn-sm" type="submit">確認</button>
+                <a class="btn btn-primary btn-sm" href="{{ route('user.index') }}">{{ __('取消') }}</a>
             </div>
             </p>
 
