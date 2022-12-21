@@ -55,8 +55,10 @@ Route::prefix('user')->name('user.')->group(function () {
     });
     //登入後
     Route::middleware(['auth:web','PreventBackHistory'])->group(function (){
-        Route::get('/index/{user}',[UserController::class,'index'])->name('index');//會員中心
+        Route::get('/index',[UserController::class,'index'])->name('index');//會員中心
         Route::post('/logout',[UserController::class,'logout'])->name('logout');//登出
+        Route::get('/{user}/edit', [UserController::class,'edit'])->name("edit");//修改會員資料頁面
+        Route::patch('/{user}', [UserController::class,'update'])->name("update");//更新會員資料
     });
 });
 
@@ -68,17 +70,35 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::view('/login','admin.login')->name('login');//登入表單
         Route::post('/check',[AdminHomeController::class,'check'])->name('check');//登入確認並登入管理員首頁
     });
+    //登入後
     Route::middleware(['auth:admin','PreventBackHistory'])->group(function () {
         Route::get('/index',[AdminHomeController::class,'index'])->name('index');//主控台
         Route::post('/logout',[AdminHomeController::class,'logout'])->name('logout');//登出
+    });
 
-        Route::get('/account',[AdminAccountController::class,'index'])->name('account.index');//會員、平台人員帳號列表
-        Route::delete('account/{user}/user', [AdminAccountController::class, 'userDestroy'])->name('user.destroy');//刪除會員
-        Route::delete('account/{admin}/admin', [AdminAccountController::class, 'adminDestroy'])->name('admin.destroy');//刪除平台人員
+    //帳號管理
+    Route::prefix('account')->name('account.')->group(function () {
+        Route::get('/',[AdminAccountController::class,'index'])->name('index');//帳號列表
+        //會員
+        Route::get('/user/{user}/show', [AdminAccountController::class,'user_show'])->name("user.show");//會員詳情頁面
+        Route::get('/user/{user}/edit', [AdminAccountController::class,'user_edit'])->name("user.edit");//會員編輯頁面
+        Route::patch('/user/{user}', [AdminAccountController::class,'user_update'])->name("user.update");//更新會員資料
+        Route::get('/user/create', [AdminAccountController::class, 'user_create'])->name("user.create");//新增管理員頁面
+        Route::post('/user/store', [AdminAccountController::class, 'user_store'])->name("user.store");//存取管理員資料
+        Route::delete('/user/{user}', [AdminAccountController::class, 'user_destroy'])->name('user.destroy');//刪除會員
+
+        //管理員
+        Route::get('/admin/{admin}/show', [AdminAccountController::class,'admin_show'])->name("admin.show");//管理員詳情頁面
+        Route::get('/admin/{admin}/edit', [AdminAccountController::class,'admin_edit'])->name("admin.edit");//管理員編輯頁面
+        Route::patch('/admin/{admin}', [AdminAccountController::class,'admin_update'])->name("admin.update");//更新管理員資料
+        Route::get('/admin/create', [AdminAccountController::class, 'admin_create'])->name("admin.create");//新增管理員頁面
+        Route::post('/admin/store', [AdminAccountController::class, 'admin_store'])->name("admin.store");//存取管理員資料
+        Route::delete('/admin/{admin}', [AdminAccountController::class, 'admin_destroy'])->name('admin.destroy');//刪除管理員
 
     });
 
 
+    //活動
     Route::prefix('activities')->name('activities.')->group(function () {
         Route::get('/',[AdminActivityController::class,'index'])->name('index');//活動列表
         Route::get('/{activity}/show',[AdminActivityController::class,'show'])->name('show');//活動詳情

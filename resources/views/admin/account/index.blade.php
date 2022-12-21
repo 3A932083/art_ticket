@@ -28,7 +28,7 @@
         <div class="tab-pane fade show active" id="nav-user" role="tabpanel" aria-labelledby="nav-user-tab">
             <section class="pt-4">
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <a class="btn btn-success btn-sm" href="#">新增</a>
+                <a class="btn btn-success btn-sm" href="{{route('admin.account.user.create')}}">新增</a>
             </div>
 
                 <table class="table">
@@ -48,10 +48,10 @@
                                 <th scope="row" style="width: 50px">{{ $user->id }}</th>
                                 <td>{{ $user->name }}</td>
                                 <td style="width: 150px">
-                                    <a href="#" type="button" class="btn btn-primary btn-sm">詳細資料</a>
+                                    <a href="{{route('admin.account.user.show',$user->id)}}" type="button" class="btn btn-primary btn-sm">詳細資料</a>
 
                                     <!--刪除-->
-                                    <form action="/admin/account/{{$user->id}}/user" method="POST" style="display: inline-block">
+                                    <form action="{{route('admin.account.user.destroy',$user->id)}}" method="POST" style="display: inline-block">
                                         @method('DELETE')
                                         @csrf
                                         <button class="btn btn-sm btn-danger" type="submit">刪除</button>
@@ -66,11 +66,11 @@
             </section>
         </div>
 
-        <!--平台人員-->
+        <!--管理員-->
         <div class="tab-pane fade" id="nav-admin" role="tabpanel" aria-labelledby="nav-admin-tab">
             <section class="pt-4">
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <a class="btn btn-success btn-sm" href="#">新增</a>
+                <a class="btn btn-success btn-sm" href="{{route('admin.account.admin.create')}}">新增</a>
             </div>
 
                 <table class="table">
@@ -83,23 +83,25 @@
                     </thead>
 
                     <tbody>
-                    @foreach($admins as $admin)
-                            <tr>
-                                <th scope="row" style="width: 50px">{{ $admin->id }}</th>
-                                <td>{{ $admin->name }}</td>
-                                <td style="width: 150px">
-                                    <a href="#" type="button" class="btn btn-primary btn-sm">詳細資料</a>
+                        @foreach($admins as $admin)
+                                <tr>
+                                    <th scope="row" style="width: 50px">{{ $admin->id }}</th>
+                                    <td>{{ $admin->name }}</td>
 
-                                    <!--刪除-->
-                                    <form action="/admin/account/{{$admin->id}}/admin" method="POST" style="display: inline-block">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button class="btn btn-sm btn-danger" type="submit">刪除</button>
-                                    </form>
-                                </td>
-                            </tr>
-                    @endforeach
+                                    <td style="width: 150px">
+                                        <a href="{{route('admin.account.admin.show',$admin->id)}}" type="button" class="btn btn-primary btn-sm">詳細資料</a>
+
+                                        <!--刪除-->
+                                        <form action="{{route('admin.account.admin.destroy',$admin->id)}}" method="POST" style="display: inline-block">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button class="btn btn-sm btn-danger" type="submit">刪除</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                        @endforeach
                     </tbody>
+
                 </table>
 
             </section>
