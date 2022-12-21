@@ -89,7 +89,7 @@ class AdminActivityController extends Controller
             //取格硬碟實例
             $disk=Storage::disk('images');
             //刪除指定檔案
-            $disk->delete($request->image);
+            $disk->delete($activity->img);
             //自訂檔案名稱
             $imageName = time().'.'.$request->file('image')->extension();
             //把檔案存到公開的資料夾
