@@ -51,7 +51,7 @@
         </div>
         <div class="md-3">
             <label for="exampleFormControlTextarea1" class="form-label">活動圖片預覽</label>
-            <img src="/storage/images/{{$activity->img}}" class="form-control ">
+            <img src="{{asset('images/'.$activity->img)}}" class="form-control ">
         </div>
 
 
