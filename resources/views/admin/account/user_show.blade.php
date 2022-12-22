@@ -41,6 +41,7 @@
 
             <div class="d-grid gap-2 pt-3 d-md-flex justify-content-md-end">
                 <a href="{{route('admin.account.user.edit',$user->id)}}" class="btn btn-primary btn-sm fs-6">編輯</a>
+                <a class="btn btn-primary btn-sm fs-6" href="{{ route('admin.account.index') }}">{{ __('取消') }}</a>
             </div>
 
         </form>
