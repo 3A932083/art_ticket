@@ -27,6 +27,11 @@
                 </div>
             </div>
 
+            <div class="col-md-6 fs-4">
+                <label class="form-label fs-5" >密碼</label>
+                <input name="password" id="password" type="password" class="form-control fs-5"  value="{{$admin->password}}" >
+            </div>
+
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <button class="btn btn-primary btn-sm fs-6" type="submit">儲存</button>
                 <a class="btn btn-primary btn-sm fs-6" href="{{ route('admin.account.admin.show',$admin->id)}}">{{ __('取消') }}</a>

@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Models\Activity;
 use App\Models\Admin;
-use App\Models\Event;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -72,7 +69,6 @@ class AdminAccountController extends Controller
         $user->address = $request->address;
         $user->tel = $request->tel;
         $user->birthdate = $request->birthdate;
-        $save = $user->save();
 
         $save = $user->save();
         if($save){
@@ -110,6 +106,7 @@ class AdminAccountController extends Controller
         $admin->update([
             'name'=>$request->name,
             'email'=>$request->email,
+            'password'=>Hash::make($request->password),
         ]);
 
         return redirect()->route('admin.account.index');
