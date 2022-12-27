@@ -51,7 +51,7 @@
                         <tbody>
                         @foreach($events as $event)
                             <tr>
-                            <td>{{$activity->start_time}}</td>
+                            <td>{{$event->time}}</td>
                             <td>{{$activity->place}}</td>
                             <td>{{$event->price}}</td>
                                <td><a href="{{route('order.activity_check',$event->id)}}" class="btn btn-secondary fs justify-content-md-end-5 position-end " >訂購</a></td>
