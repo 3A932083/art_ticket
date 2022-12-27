@@ -25,81 +25,19 @@
                     <div class="container px-lg-5">
                         <!-- Page Features-->
                         <div class="row gx-lg-5">
-                            <a href="#"></a>
-                            <div class="col-lg-6 col-xxl-4 mb-5">
-                                <div class="card bg-light border-0 h-100">
-                                    <!--圖片-->
-
-                                    <img src ="{{asset('img/1.png')}} ">
-
-                                    <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-
-                                        <h2 class="fs-4 fw-bold">{{$activities->name}}</h2>
-                                        <p class="mb-0">{{$activities->introduce}}</p>
-                                        <a href="{{route('activity.activity',1)}}" class="stretched-link"></a>
+                            @foreach($activities as $activity)
+                                <div class="col-lg-6 col-xxl-4 mb-5">
+                                    <div class="card bg-light border-0 h-100">
+                                        <!--圖片-->
+                                        <img src="{{asset('images/'.$activity->img)}}">
+                                        <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                            <h2 class="fs-4 fw-bold">{{$activity->name}}</h2>
+                                            <p class="mb-0">{{$activity->introduce}}</p>
+                                            <a href="{{route('activity.activity',$activity->id)}}" class="stretched-link"></a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-6 col-xxl-4 mb-5">
-                                <div class="card bg-light border-0 h-100">
-                                    <!--圖片-->
-                                    <img src ="../img/1.png ">
-                                    <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-
-                                        <h2 class="fs-4 fw-bold">title2</h2>
-                                        <p class="mb-0">content123456</p>
-                                        <a href="#" class="stretched-link"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-xxl-4 mb-5">
-                                <div class="card bg-light border-0 h-100">
-                                    <!--圖片-->
-                                    <img src ="../img/1.png ">
-                                    <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-
-                                        <h2 class="fs-4 fw-bold">title3</h2>
-                                        <p class="mb-0">content123456</p>
-                                        <a href="#" class="stretched-link"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-xxl-4 mb-5">
-                                <div class="card bg-light border-0 h-100">
-                                    <!--圖片-->
-                                    <img src ="../img/1.png ">
-                                    <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-
-                                        <h2 class="fs-4 fw-bold">title4</h2>
-                                        <p class="mb-0">content123456</p>
-                                        <a href="#" class="stretched-link"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-xxl-4 mb-5">
-                                <div class="card bg-light border-0 h-100">
-                                    <!--圖片-->
-                                    <img src ="../img/1.png ">
-                                    <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-
-                                        <h2 class="fs-4 fw-bold">title5</h2>
-                                        <p class="mb-0">content123456</p>
-                                        <a href="#" class="stretched-link"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-xxl-4 mb-5">
-                                <div class="card bg-light border-0 h-100">
-                                    <!--圖片-->
-                                    <img src ="../img/1.png ">
-                                    <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-
-                                        <h2 class="fs-4 fw-bold">title6</h2>
-                                        <p class="mb-0">content123456</p>
-                                        <a href="#" class="stretched-link"></a>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </section>

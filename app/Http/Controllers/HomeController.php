@@ -10,7 +10,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $activities = Activity::find(1);
+        $activities = Activity::all();
         $data=[
           'activities'=>$activities,
         ];
