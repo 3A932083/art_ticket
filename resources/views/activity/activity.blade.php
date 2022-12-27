@@ -18,7 +18,7 @@
                                         <h1 class="fw-bolder mb-1 ">{{$activity->name}}</h1>
                                     </div>
                                     <div class="col-xs-12 col-md-3 d-md-flex">
-                                        <a href="{{route('order.activity_information',1)}}" class="btn btn-secondary fs justify-content-md-end-5 position-end " >立即訂購</a>
+                                        <a href="{{route('order.activity_information',$activity->id)}}" class="btn btn-secondary fs justify-content-md-end-5 position-end " >立即訂購</a>
                                     </div>
                                 </div>
 

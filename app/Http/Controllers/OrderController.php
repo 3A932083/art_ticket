@@ -18,12 +18,12 @@ class OrderController extends Controller
         return view('order.activity_information',$data);
     }
 
-    public function check(Activity $activity)
+    public function check(Activity $activity,Event $event)
     {
-        $events=Event::where('activity_id','=',$activity->id)->orderby('time')->get();
+
         $data = [
             'activity' => $activity,
-            'events'=>$events,
+            'events'=>$event,
         ];
         return view('order.activity_check',$data);
     }

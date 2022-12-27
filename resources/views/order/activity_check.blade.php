@@ -24,7 +24,7 @@
                 </div>
                     <!-- 購票流程 Step progress bar:END -->
                     <!-- Post title-->
-
+                <h1 align="center"><span id="ctl00_ContentPlaceHolder1_NAME" class="title">{{$activity->name}}</span></h1>
                 <!-- start: seat Map -->
                 <table class="table">
                     <thead>
@@ -35,29 +35,28 @@
                     <tbody>
                     <tr>
 
-                        <td>活動名稱</td>
                         <td>活動日期</td>
-                        <td>活動時間</td>
                         <td>票券數量</td>
                         <td>價格</td>
                     </tr>
+
                     <tr>
-                        @foreach($events as $event)
-                        <th scope="row">{{$activity->name}}</th>
-                        <td>{{$activity->start_time}}</td>
-                        <td>{{$event->time}}</td>
+
+{{--                        <th scope="row">{{$activity->name}}</th>--}}
+{{--                        <td>{{$activity->start_time}}</td>--}}
+                        <td>{{$events->time}}</td>
                         <td>x1</td>
-                        <td>{{$event->price}}</td>
-                        @endforeach
+                        <td>{{$events->price}}</td>
 
                     </tr>
+
                     <tr>
                     <thead>
                         <th scope="row">總計</th>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>{{$event->price}}</td>
+                        <td>{{$events->price}}</td>
                     </thead>
                     </tr>
                     </tbody>

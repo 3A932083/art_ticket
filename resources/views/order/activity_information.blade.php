@@ -54,7 +54,7 @@
                             <td>{{$activity->start_time}}</td>
                             <td>{{$activity->place}}</td>
                             <td>{{$event->price}}</td>
-                               <td><a href="{{route('order.activity_check',1)}}" class="btn btn-secondary fs justify-content-md-end-5 position-end " >訂購</a></td>
+                               <td><a href="{{route('order.activity_check',$event->id)}}" class="btn btn-secondary fs justify-content-md-end-5 position-end " >訂購</a></td>
                         @endforeach
                     </div>
                         </tr>
