@@ -116,6 +116,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/image',[AdminActivityController::class,'test'])->name('image.test');//測試-上傳圖片
         Route::post('/image',[AdminActivityController::class,'image'])->name('image');//測試-儲存圖片
         Route::delete('/image',[AdminActivityController::class,'image_d'])->name('image.d');//測試-儲存圖片
+        Route::get('/test',function (){
+           $faker=\Faker\Factory::create();
+            $start_time=$faker->date('y-m-d');
+            do{
+                $end_time=$faker->date('y-m-d');
+            }while($start_time>$end_time);
+            echo $start_time.' & '.$end_time;
+            echo $start_time-$end_time;
+        });
     });
     Route::get('/order',[AdminOrderController::class,'index'])->name('orders.index');//訂單列表
 

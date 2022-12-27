@@ -17,6 +17,6 @@ class ActivityTableSeeder extends Seeder
     {
         Activity::truncate();
 
-        Activity::factory(1)->create();
+        Activity::factory(6)->create();
     }
 }
