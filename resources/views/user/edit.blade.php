@@ -31,14 +31,21 @@
                 </div>
             </div>
 
-            <div class="col-12">
-                <label class="form-label fs-5">住址</label>
-                <input type="text" name="address" id="address" class="form-control fs-5" value="{{$user->address}}" >
+            <div class="row mb-3">
+                <div class="col-6">
+                    <label class="form-label fs-5">住址</label>
+                    <input type="text" name="address" id="address" class="form-control fs-5" value="{{$user->address}}" >
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fs-5" >密碼</label>
+                    <input type="password" name="password" id="password" class="form-control fs-5" value="{{$user->password}}" >
+                </div>
             </div>
 
             <p>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <button class="btn btn-primary btn-sm" type="submit">確認</button>
+                <a class="btn btn-primary btn-sm" href="{{ route('user.index') }}">{{ __('取消') }}</a>
             </div>
             </p>
 

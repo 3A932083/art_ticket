@@ -50,6 +50,7 @@ class UserController extends Controller
             'address'=>$request->address,
             'tel'=>$request->tel,
             'birthdate'=>$request->birthdate,
+            'password'=>Hash::make($request->password),
         ]);
 
         return redirect()->route('user.index');

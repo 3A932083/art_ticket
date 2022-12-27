@@ -24,8 +24,14 @@
             </div>
         </div>
 
+        <div class="col-md-6 fs-4">
+            <label class="form-label fs-5" >密碼</label>
+            <input name="password" id="password" type="password" class="form-control fs-5"  value="{{$admin->password}}" disabled>
+        </div>
+
         <div class="d-grid gap-2 pt-3 d-md-flex justify-content-md-end">
             <a href="{{route('admin.account.admin.edit',$admin->id)}}" class="btn btn-primary btn-sm fs-6">編輯</a>
+            <a class="btn btn-primary btn-sm fs-6" href="{{ route('admin.account.index') }}">{{ __('取消') }}</a>
         </div>
 
 

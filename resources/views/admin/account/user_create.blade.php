@@ -81,6 +81,7 @@
 
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <button  class="btn btn-primary btn-sm fs-6" type="submit">新增</button>
+                <a class="btn btn-primary btn-sm fs-6" href="{{ route('admin.account.index') }}">{{ __('取消') }}</a>
             </div>
 
         </form>

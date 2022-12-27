@@ -41,8 +41,8 @@ class AdminActivityController extends Controller
             //自訂檔案名稱
             $imageName = time().'.'.$request->file('image')->extension();
             //把檔案存到公開的資料夾
-            //$request->file('image')->move(public_path('/images'), $imageName);
-            $imageURL=$request->file('image')->storeAs('images',$imageName);
+            $request->file('image')->move(public_path('/images'), $imageName);
+            //$imageURL=$request->file('image')->storeAs('images',$imageName);
         }
         //將檔案名稱存至DB
         Activity::create([
@@ -53,7 +53,7 @@ class AdminActivityController extends Controller
             'place'=>$request->place,
             'introduce'=>$request->introduce,
             'precaution'=>$request->precaution,
-            'img'=>$imageURL,
+            'img'=>$imageName,
 
         ]);
         //回到傳送資料來的頁面
@@ -85,12 +85,16 @@ class AdminActivityController extends Controller
         if ($request->hasFile('image')) {
             echo 'OKK';
             //刪除原本的檔案
-            Storage::delete($activity->img);
+            //Storage::delete($activity->img);
+            //取格硬碟實例
+            $disk=Storage::disk('images');
+            //刪除指定檔案
+            $disk->delete($activity->img);
             //自訂檔案名稱
             $imageName = time().'.'.$request->file('image')->extension();
             //把檔案存到公開的資料夾
-            //$request->file('image')->move(public_path('/images'), $imageName);
-            $imageURL=$request->file('image')->storeAs('images',$imageName);
+            $request->file('image')->move(public_path('/images'), $imageName);
+            //$imageURL=$request->file('image')->storeAs('images',$imageName);
 
         }else{
             //如果沒有上傳新檔案抓取原檔案的路徑
@@ -104,14 +108,20 @@ class AdminActivityController extends Controller
             'place'=>$request->place,
             'introduce'=>$request->introduce,
             'organizer'=>$request->organizer,
-            'img'=>$imageURL,
+            'img'=>$imageName,
         ]);
         return redirect()->route('admin.activities.index');
     }
 
-    public function destroy($id)
+    public function destroy(Activity $activity)
     {
-        return "i'm destroy.";
+        //取格硬碟實例
+        $disk=Storage::disk('images');
+        //刪除指定檔案
+        $disk->delete($activity->img);
+        //Storage::delete('public/images/8FHnGNrUTHMSk7d7TaDCJdjnNcQaM2nvejKgIFOp.jpg');
+        Activity::destroy($activity->id);
+        return redirect()->route('admin.activities.index');
     }
     public function test()
     {
@@ -129,9 +139,9 @@ class AdminActivityController extends Controller
             //自訂檔案名稱
             $imageName = time().'.'.$request->file('image')->extension();
             //把檔案存到公開的資料夾
-            //$imageURL=$request->file('image')->move(public_path('/images'), $imageName);
-            $imageURL=$request->file('image')->storeAs('public/images',$imageName);
-            $url=Storage::url($imageURL);
+            $imageURL=$request->file('image')->move(public_path('/images'), $imageName);
+            //$imageURL=$request->file('image')->storeAs('public/images',$imageName);
+            //$url=Storage::url($imageURL);
         }
         //將檔案名稱存至DB
         Image::create([

@@ -44,6 +44,7 @@
 
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <button  class="btn btn-primary btn-sm fs-6" type="submit">儲存</button>
+                <a class="btn btn-primary btn-sm fs-6" href="{{ route('admin.account.user.show',$user->id)}}">{{ __('取消') }}</a>
             </div>
 
         </form>
