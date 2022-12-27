@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+use App\Models\Event;
 use Faker\Factory;
 use App\Models\Activity;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -15,8 +16,8 @@ class ActivityTableSeeder extends Seeder
      */
     public function run()
     {
-        Activity::truncate();
-
-        Activity::factory(6)->create();
+        Activity::truncate();   //重置資料表內容及編號
+        Event::truncate();
+        Activity::factory(6)->has(Event::factory(3))->create();
     }
 }
