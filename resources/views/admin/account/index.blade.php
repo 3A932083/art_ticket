@@ -95,7 +95,7 @@
                                         <form action="{{route('admin.account.admin.destroy',$admin->id)}}" method="POST" style="display: inline-block">
                                             @method('DELETE')
                                             @csrf
-                                            <button class="btn btn-sm btn-danger" type="submit">刪除</button>
+                                            <button class="btn btn-sm btn-danger btn-del-account" type="submit">刪除</button>
                                         </form>
                                     </td>
                                 </tr>
