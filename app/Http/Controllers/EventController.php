@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Activity;
+use App\Models\Event;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class EventController extends Controller
 {
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $activities = Activity::all();
-        $data=[
-          'activities'=>$activities,
-        ];
-        //return view('home.new',$data);
-        return view('home.new',$data);
-}
-
+        //
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -48,7 +46,7 @@ class HomeController extends Controller
      */
     public function show($id)
     {
-
+        //
     }
 
     /**
@@ -84,4 +82,5 @@ class HomeController extends Controller
     {
         //
     }
+
 }

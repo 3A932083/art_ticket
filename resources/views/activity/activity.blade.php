@@ -11,14 +11,15 @@
                         <!-- Post header-->
                         <header class="mb-4">
                             <!-- Preview image figure-->
-                            <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
+                            <figure class="mb-4"><img class="img-fluid rounded" src="{{asset('images/'.$activity->img)}}" alt="..." /></figure>
                                 <div class="row align-items-center">
                                     <div class="col-xs-12 col-md-9">
                                         <!-- Post title-->
                                         <h1 class="fw-bolder mb-1 ">{{$activity->name}}</h1>
+                                        <h5 class="fw-bolder mb-1">{{$activity->organizer}}</h5>
                                     </div>
                                     <div class="col-xs-12 col-md-3 d-md-flex">
-                                        <a href="{{route('order.activity_information',1)}}" class="btn btn-secondary fs justify-content-md-end-5 position-end " >立即訂購</a>
+                                        <a href="{{route('order.activity_information',$activity->id)}}" class="btn btn-secondary fs justify-content-md-end-5 position-end " >立即訂購</a>
                                     </div>
                                 </div>
 
@@ -36,33 +37,23 @@
                                     </h2>
                                     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                         <div class="accordion-body fs-5">
-                                            <strong>{{$activity->introduce}}</strong>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">活動時間：{{$activity->start_time}}~{{$activity->end_time}}</li>
+                                                <li class="list-group-item">活動地點：{{$activity->place}}</li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <!--購票方式-->
+                                <!--活動介紹-->
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingTwo">
                                         <button class="accordion-button  collapsed fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
-                                            購票方式
+                                            活動介紹
                                         </button>
                                     </h2>
                                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                         <div class="accordion-body fs-5">
-                                            <strong>小標題</strong> 內容
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--退票方式-->
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingThree">
-                                        <button class="accordion-button  collapsed fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
-                                            退票方式
-                                        </button>
-                                    </h2>
-                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body fs-5">
-                                            <strong></strong> 內容
+                                            <strong>{{$activity->introduce}}</strong>
                                         </div>
                                     </div>
                                 </div>

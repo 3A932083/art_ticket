@@ -24,6 +24,7 @@
 
             <section class="pt-4">
                 <div class="container px-lg-4">
+
                     <div class="row mb-3">
                         <div class="col-md-6 ">
                             <label class="form-label fs-5" >姓名</label>
@@ -44,6 +45,7 @@
                         <div class="col-md-6">
                             <label class="form-label fs-5" >生日</label>
                             <input type="date" name="birthdate" id="birthdate" class="form-control fs-5" value="{{$user->birthdate}}" disabled>
+
                         </div>
                     </div>
 
@@ -59,9 +61,11 @@
                     </div>
 
                     <p>
+
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <a href="{{route('user.edit',$user->id)}}" class="btn btn-primary btn-sm">編輯</a>
                     </div>
+
                     </p>
 
                 </div>
@@ -86,23 +90,14 @@
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                            <h4 class="card-title">【全民通識課 免費講座】「藥」健康如何補充營養</h4>
-                                            <p class="card-text">你曉得如何健康用藥嗎？
-                                                重視健康的現代人不可不知， 有些藥物、中草藥、食品與保健營養品會產生交互作用。歡迎來純青認識藥品&保健營養品的相關知識。</p>
+
+                                            <h4 class="card-title">{{$activity->name}}</h4>
+                                            <p class="card-text">{{$activity}}</p>
                                             <p class="card-text"><small class="text-muted">2022/2/22</small></p>
+
                                         </div>
                                     </div>
-                                    <div class="row g-0">
-                                        <div class="col-md-4">
-                                            <img src="../img/4.png" alt="...">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                                <h4 class="card-title">【免費講座】居家空間萬用收納術</h4>
-                                                <p class="card-text">家是每個人的避風港 隨著經年累月的堆積，空間塞滿東西越來越亂 透過專業的居家整聊師講解，教你如何有效整理收納 純青與你一同找回家庭的美好環境</p>
-                                                <p class="card-text"><small class="text-muted">2022/12/25</small></p>
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>

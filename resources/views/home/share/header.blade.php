@@ -5,7 +5,9 @@
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="../img/1.png" class="d-block w-100">
+                        <img src="../img/6.png" class="d-block w-100">
+
+                            <a href="{{route('activity.activity',1)}}" class="stretched-link"></a>
                     </div>
 
                     <div class="carousel-item">

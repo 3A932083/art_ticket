@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -20,15 +21,18 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
 
     //會員中心
-    public function index()
+    public function index(Activity $activity)
     {
         //顯示個資
         $user=Auth::user();
-        $data = ['user' => $user];
+       // $activity =Activity::activity();
+        $data = ['user' => $user,
+        'activity' => $activity];
+
         return view('user.index',$data);
     }
 
@@ -55,7 +59,7 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Validation\Validator|\Illuminate\Validation\Validator
      */
 
     protected function create(Request $request)
@@ -194,8 +198,19 @@ class UserController extends Controller
     public function show($id)
     {
         //
+
+
     }
 
+
+
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
 
 
 

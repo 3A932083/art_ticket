@@ -20,7 +20,7 @@ class Activity extends Model
         'precaution',
     ];
     public $timestamps = false;//不用儲存建立時間及修改時間
-    public function event(){
+    public function events(){
         //一個活動有多個場次
         return $this->hasMany(Activity::class);
     }

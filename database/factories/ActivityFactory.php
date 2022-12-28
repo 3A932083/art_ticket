@@ -16,15 +16,20 @@ class ActivityFactory extends Factory
      */
     public function definition()
     {
+        $start_time=$this->faker->date('y-m-d');
+        do{
+            $end_time=$this->faker->date('y-m-d');
+        }while($start_time>$end_time);
+
         return [
-            'name'=>$this->faker->sentence,//活動名稱
-            'start_time'=>$this->faker->date('yyyy-mm-dd'),//開始時間
-            'end_time'=>$this->faker->date('yyyy-mm-dd'),//結束時間
+            'name'=>$this->faker->sentence(2),//活動名稱
+            'start_time'=>$start_time,//開始時間
+            'end_time'=>$end_time,//結束時間
             'place'=>$this->faker->city(),//活動地點
             'introduce'=>$this->faker->paragraph,//活動介紹
             'organizer'=>$this->faker->company,//主辦單位
-            'img'=>$this->faker->image(public_path('images')),//活動圖片
-            'precaution'=>$this->faker->paragraph,//注意事項
+            'img'=>rand(1,9).'.jpg',//活動圖片
+            'precaution'=>$this->faker->text('200'),//注意事項
         ];
     }
 }

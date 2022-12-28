@@ -24,7 +24,7 @@
                 </div>
                     <!-- 購票流程 Step progress bar:END -->
                     <!-- Post title-->
-
+                <h1 align="center"><span id="ctl00_ContentPlaceHolder1_NAME" class="title">{{$activity->name}}</span></h1>
                 <!-- start: seat Map -->
                 <table class="table">
                     <thead>
@@ -35,26 +35,28 @@
                     <tbody>
                     <tr>
 
-                        <td>活動名稱</td>
                         <td>活動日期</td>
-                        <td>活動時間</td>
                         <td>票券數量</td>
                         <td>價格</td>
                     </tr>
+
                     <tr>
-                        <th scope="row">{{$activity->name}}</th>
-                        <td>{{$activity->start_time}}</td>
-                        <td>5:20</td>
+
+{{--                        <th scope="row">{{$activity->name}}</th>--}}
+{{--                        <td>{{$activity->start_time}}</td>--}}
+                        <td>{{$events->time}}</td>
                         <td>x1</td>
-                        <td>800</td>
+                        <td>{{$events->price}}</td>
+
                     </tr>
+
                     <tr>
                     <thead>
                         <th scope="row">總計</th>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>800</td>
+                        <td>{{$events->price}}</td>
                     </thead>
                     </tr>
                     </tbody>
@@ -70,7 +72,7 @@
                     <tbody>
                     <tr>
                         <div style="margin-bottom:20px">
-                            <th scope="row">持卡人姓名<input type="password" class="form-control"  placeholder="持卡人姓名"></th>
+                            <th scope="row">持卡人姓名<input class="form-control"  placeholder="持卡人姓名"></th>
 
                         </div>
 
@@ -81,10 +83,10 @@
 
                     </tr>
                     <tr>
-                        <th scope="row">有效期限<input type="password" class="form-control"  placeholder=""></th>
+                        <th scope="row">有效期限<input type="password" class="form-control"  placeholder="有效期限"></th>
 
                     </tr>
-                    <th scope="row">手機號碼 <input type="password" class="form-control"  placeholder=""></th>
+                    <th scope="row">手機號碼 <input class="form-control"  placeholder="手機號碼"></th>
 
                     </tr>
                     </tbody>
