@@ -16,8 +16,14 @@ class AdminActivityController extends Controller
     public function index()
     {
         $activities = Activity::orderBy('id', 'DESC')->get();//取得資料庫中的欄位值，以陣列的方式
+        $activities_show=Activity::where('category','=',1)->orderBy('id','DESC')->get();
+        $activities_diy=Activity::where('category','=',2)->orderBy('id','DESC')->get();
+        $activities_lecture=Activity::where('category','=',3)->orderBy('id','DESC')->get();
         $data=[
-            'activities'=>$activities
+            'activities'=>$activities,
+            'activities_show'=>$activities_show,
+            'activities_diy'=>$activities_diy,
+            'activities_lecture'=>$activities_lecture,
         ];
 
         return view('admin.activities.index',$data);
@@ -47,6 +53,7 @@ class AdminActivityController extends Controller
         //將檔案名稱存至DB
         Activity::create([
             'name'=>$request->name,
+            'category'=>$request->category,
             'organizer'=>$request->organizer,
             'start_time'=>$request->start_time,
             'end_time'=>$request->end_time,
@@ -104,6 +111,7 @@ class AdminActivityController extends Controller
         }
         $activity->update([
             'name'=>$request->name,
+            'category'=>$request->category,
             'start_time'=>$request->start_time,
             'end_time'=>$request->end_time,
             'place'=>$request->place,

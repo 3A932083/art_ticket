@@ -14,6 +14,25 @@
         <!--csrf驗證機制，產生隱藏的input，包含一組驗證密碼-->
         @csrf
         <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">活動類別</label>
+            <div class="ms-3 me-3">
+                <div class="row">
+                    <div class="form-check col">
+                        <input class="form-check-input" type="radio" name="category" id="category" value="1" checked>
+                        <label class="form-check-label" for="flexRadioDefault1">展覽</label>
+                    </div>
+                    <div class="form-check col">
+                        <input class="form-check-input" type="radio" name="category" id="category" value="2">
+                        <label class="form-check-label" for="flexRadioDefault2">體驗</label>
+                    </div>
+                    <div class="form-check col">
+                        <input class="form-check-input" type="radio" name="category" id="category" value="3">
+                        <label class="form-check-label" for="flexRadioDefault2">講座</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">活動名稱</label>
             <!--回傳時會把name包裝成key，填入的內容包裝成value-->
             <input name="name" id="name" type="text" class="form-control" placeholder="請輸入活動名稱"><!--單行輸入框-->
