@@ -15,6 +15,7 @@ class AdminsTableSeeder extends Seeder
      */
     public function run()
     {
-        Admin::factory(6)->create();
+        Admin::truncate();   //重置資料表內容及編號
+        Admin::factory()->create();
     }
 }

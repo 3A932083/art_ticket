@@ -19,7 +19,7 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->name(),//姓名
-            'email' => fake()->unique()->email(),//email str_random(10).'@mail.com',
+            'email' => 'user@gmail.com',//email str_random(10).'@mail.com',
             'email_verified_at' => now(),//email驗證時間
             'password' => '$2y$10$YSjl9Kz5PLLVTodhHLnU6OE.9/7VJ0z0X60nKY82uAlKNGzTS5/xe', // 密碼:123456789
             'remember_token' => Str::random(10),
