@@ -16,6 +16,7 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">活動名稱</th>
+            <th scope="col">推薦</th>
             <th scope="col">功能</th>
         </tr>
         </thead>
@@ -25,6 +26,11 @@
             <tr>
                 <th scope="row" style="width: 50px">{{ $activity->id }}</th><!--印出資料表內的id欄位-->
                 <td>{{ $activity->name }}</td>
+                @if($activity->is_feature == 1)
+                    <td>是</td>
+                @else
+                    <td>否</td>
+                @endif
                 <td style="width: 150px">
                     <a href="{{route('admin.activities.show',$activity->id)}}" class="btn btn-primary btn-sm">詳細資料</a>
 

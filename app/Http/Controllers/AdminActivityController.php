@@ -99,7 +99,7 @@ class AdminActivityController extends Controller
 
         }else{
             //如果沒有上傳新檔案抓取原檔案的路徑
-            $imageURL=$activity->img;
+            $imageName=$activity->img;
             echo "NOO";
         }
         $activity->update([
@@ -109,6 +109,8 @@ class AdminActivityController extends Controller
             'place'=>$request->place,
             'introduce'=>$request->introduce,
             'organizer'=>$request->organizer,
+            'precaution'=>$request->precaution,
+            'is_feature'=>$request->is_feature,
             'img'=>$imageName,
         ]);
         return redirect()->route('admin.activities.index');

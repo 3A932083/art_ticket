@@ -50,6 +50,13 @@
                     <label for="exampleFormControlTextarea1" class="form-label">注意事項</label>
                     <textarea name="precaution" id="precaution" class="form-control" rows="10" disabled>{{$activity->precaution}}</textarea><!--多行輸入框-->
                 </div>
+                <div class="mb-3">
+                    @if($activity->is_feature == 1)
+                        <label for="exampleFormControlTextarea1" class="form-label">是否列為推薦：是</label>
+                    @else
+                        <label for="exampleFormControlTextarea1" class="form-label">是否列為推薦：否</label>
+                    @endif
+                </div>
                 <div class="md-3">
                     <label for="exampleFormControlTextarea1" class="form-label">活動圖片預覽</label>
                     <img src="{{asset('images/'.$activity->img)}}" class="form-control ">
