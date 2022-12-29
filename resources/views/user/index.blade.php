@@ -86,7 +86,7 @@
                     </thead>
 
                     <tbody>
-{{--                    @foreach()--}}
+                    
                     <tr>
                         <th scope="row" style="width: 50px"></th>
                         <td></td><!--活動名稱-->

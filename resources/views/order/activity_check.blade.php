@@ -91,10 +91,14 @@
                     </tr>
                     </tbody>
                 </table>
+                <form action="{{route('order.store')}}" method="POST">
+                    @csrf
+                    <input type="hidden" name="event" id="event" value="{{ $events->id}}">
+                    <button type="submit" class="btn btn-primary btn-sm">成功訂購</button>
 
-                <div class="col-xs-12 col-md-3 d-md-flex">
-                    <a href="{{route('order.activity_end',1)}}" class="btn btn-secondary fs justify-content-md-end-5 position-end " >下一步</a>
-                </div>
+                </form>
+
+
                         </header>
                         <!-- Post content-->
                         <section class="mb-5">
