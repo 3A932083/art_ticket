@@ -26,10 +26,11 @@ class ActivityFactory extends Factory
             'start_time'=>$start_time,//開始時間
             'end_time'=>$end_time,//結束時間
             'place'=>$this->faker->city(),//活動地點
-            'introduce'=>$this->faker->paragraph,//活動介紹
+            'introduce'=>$this->faker->text('200'),//活動介紹
             'organizer'=>$this->faker->company,//主辦單位
             'img'=>rand(1,9).'.jpg',//活動圖片
             'precaution'=>$this->faker->text('200'),//注意事項
+            'is_feature'=>rand(0,1),//是否推薦
         ];
     }
 }

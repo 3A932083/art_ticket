@@ -18,6 +18,6 @@ class ActivityTableSeeder extends Seeder
     {
         Activity::truncate();   //重置資料表內容及編號
         Event::truncate();
-        Activity::factory(6)->has(Event::factory(3))->create();
+        Activity::factory(20)->has(Event::factory(3))->create();
     }
 }
