@@ -31,6 +31,7 @@ class ActivityFactory extends Factory
             'img'=>rand(1,9).'.jpg',//活動圖片
             'precaution'=>$this->faker->text('200'),//注意事項
             'is_feature'=>rand(0,1),//是否推薦
+            'category'=>rand(1,3),//活動類別
         ];
     }
 }
