@@ -46,6 +46,17 @@
             <textarea name="precaution" id="precaution" class="form-control" rows="10" placeholder="請輸入注意事項"></textarea><!--多行輸入框-->
         </div>
         <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">是否列為推薦</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="is_feature" id="is_feature" value="1">
+                <label class="form-check-label" for="flexRadioDefault1">是</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="is_feature" id="is_feature" value="0" checked>
+                <label class="form-check-label" for="flexRadioDefault2">否</label>
+            </div>
+        </div>
+        <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">活動圖片</label>
             <input type="file" name="image" id="image" accept="image/*" class="form-control">
         </div>

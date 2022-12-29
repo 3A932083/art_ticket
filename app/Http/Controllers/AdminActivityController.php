@@ -53,6 +53,7 @@ class AdminActivityController extends Controller
             'place'=>$request->place,
             'introduce'=>$request->introduce,
             'precaution'=>$request->precaution,
+            'is_feature'=>$request->is_feature,
             'img'=>$imageName,
 
         ]);

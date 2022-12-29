@@ -18,6 +18,7 @@ class Activity extends Model
         'organizer',
         'img',
         'precaution',
+        'is_feature',
     ];
     public $timestamps = false;//不用儲存建立時間及修改時間
     public function events(){
