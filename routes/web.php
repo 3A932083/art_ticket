@@ -138,8 +138,8 @@ Route::prefix('order')->name('order.')->group(function () {
 
     Route::get('check/{event}',[OrderController::class,'check'])->name('activity_check');//訂單確認
     Route::get('end/{activity}',[OrderController::class,'end'])->name('activity_end');//發送票券
-    Route::post('/store', [OrderController::class, 'store'])->name('store');
+    Route::post('/store', [OrderController::class, 'store'])->name('store');//儲存訂單至orders資料表
 
 });
 
-
+Route::get('/test',[OrderController::class,'test'])->name('test');

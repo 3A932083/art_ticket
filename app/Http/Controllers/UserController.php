@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activity;
+use App\Models\Event;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -25,15 +27,19 @@ class UserController extends Controller
      */
 
     //會員中心
-    public function index(Activity $activity)
+    public function index()
     {
-        //顯示個資
-        $user=Auth::user();
-       // $activity =Activity::activity();
-        $data = ['user' => $user,
-        'activity' => $activity];
 
-        return view('user.index',$data);
+        $user=Auth::user();//目前使用者資料
+        $orders = Order::orderBy('id', 'DESC')->get();
+       // $event=Event::where('id','=',$order->event_id)->orderBy('id', 'DESC')->get();
+      //$activity  = Activity::orderBy('id', 'DESC')->get();
+        $data = [
+            'user' => $user,
+            'orders'=>$orders,
+        ];
+       // return $event;
+       return view('user.index',$data);
     }
 
     //編輯會員頁面

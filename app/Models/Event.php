@@ -20,4 +20,7 @@ class Event extends Model
         //一個場次只會屬於一個活動
         return $this->belongsTo(Activity::class);
     }
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
 }
