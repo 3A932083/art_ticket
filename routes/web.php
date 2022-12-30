@@ -136,7 +136,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
 Route::prefix('order')->name('order.')->group(function () {
     Route::get('information/{activity}',[OrderController::class,'information'])->name('activity_information');//活動詳情
 
-    Route::get('check/{activity}',[OrderController::class,'check'])->name('activity_check');//訂單確認
+    Route::get('check/{event}',[OrderController::class,'check'])->name('activity_check');//訂單確認
     Route::get('end/{activity}',[OrderController::class,'end'])->name('activity_end');//發送票券
+    Route::post('/store', [OrderController::class, 'store'])->name('store');//儲存訂單至orders資料表
+
 });
 
+Route::get('/test',[OrderController::class,'test'])->name('test');

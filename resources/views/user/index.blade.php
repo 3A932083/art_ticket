@@ -85,17 +85,51 @@
                     </tr>
                     </thead>
 
+                    @foreach($orders as $order)
                     <tbody>
-{{--                    @foreach()--}}
                     <tr>
-                        <th scope="row" style="width: 50px"></th>
+                        <th scope="row" style="width: 50px">{{$order->id}}</th>
                         <td></td><!--活動名稱-->
                         <td style="width: 150px">
                             <a href="" class="btn btn-primary btn-sm">詳情</a>
-                            <a href="" class="btn btn-primary btn-sm">退票</a>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@123">退票</button>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <!--標題-->
+                                            <h5 class="modal-title" id="exampleModalLabel">退票</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <form action="" method="post" >
+                                            @method('post')
+                                            <!--csrf驗證機制，產生隱藏的input，包含一組驗證密碼-->
+                                            @csrf
+                                            <div class="modal-body">
+                                                <input id="activity_id" name="activity_id" type="hidden" value="">
+                                                <div class="mb-3">
+                                                    <label for="message-text" class="col-form-label">銀行帳號:</label>
+                                                    <input type="text" class="form-control" id="count" name="count">
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label for="message-text" class="col-form-label">連絡電話:</label>
+                                                    <input type="text" class="form-control" id="count" name="count">
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">退票</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
-{{--                    @endforeach--}}
+                    @endforeach
+
                     </tbody>
                 </table>
             </div>
