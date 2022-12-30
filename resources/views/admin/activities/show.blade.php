@@ -19,6 +19,13 @@
 
         <div class="tab-pane fade show active" id="nav-introduce" role="tabpanel" aria-labelledby="nav-introduce-tab">
             <div class="pt-4">
+                @if($activity->category == 1)
+                    <label for="exampleFormControlTextarea1" class="form-label">活動類別：展覽</label>
+                @elseif($activity->category == 2)
+                    <label for="exampleFormControlTextarea1" class="form-label">活動類別：體驗</label>
+                @else
+                    <label for="exampleFormControlTextarea1" class="form-label">活動類別：講座</label>
+                @endif
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">活動名稱</label>
                     <!--回傳時會把name包裝成key，填入的內容包裝成value-->
@@ -49,6 +56,13 @@
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">注意事項</label>
                     <textarea name="precaution" id="precaution" class="form-control" rows="10" disabled>{{$activity->precaution}}</textarea><!--多行輸入框-->
+                </div>
+                <div class="mb-3">
+                    @if($activity->is_feature == 1)
+                        <label for="exampleFormControlTextarea1" class="form-label">是否列為推薦：是</label>
+                    @else
+                        <label for="exampleFormControlTextarea1" class="form-label">是否列為推薦：否</label>
+                    @endif
                 </div>
                 <div class="md-3">
                     <label for="exampleFormControlTextarea1" class="form-label">活動圖片預覽</label>

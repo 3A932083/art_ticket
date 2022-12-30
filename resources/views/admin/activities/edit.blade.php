@@ -14,6 +14,54 @@
         <!--csrf驗證機制，產生隱藏的input，包含一組驗證密碼-->
         @csrf
         <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">活動類別</label>
+            <div class="ms-3 me-3">
+                <div class="row">
+                    @if($activity->category == 1)
+                        <div class="form-check col">
+                            <input class="form-check-input" type="radio" name="category" id="category" value="1" checked>
+                            <label class="form-check-label" for="flexRadioDefault1">展覽</label>
+                        </div>
+                        <div class="form-check col">
+                            <input class="form-check-input" type="radio" name="category" id="category" value="2">
+                            <label class="form-check-label" for="flexRadioDefault2">體驗</label>
+                        </div>
+                        <div class="form-check col">
+                            <input class="form-check-input" type="radio" name="category" id="category" value="3">
+                            <label class="form-check-label" for="flexRadioDefault2">講座</label>
+                        </div>
+                    @elseif($activity->category == 2)
+                        <div class="form-check col">
+                            <input class="form-check-input" type="radio" name="category" id="category" value="1">
+                            <label class="form-check-label" for="flexRadioDefault1">展覽</label>
+                        </div>
+                        <div class="form-check col">
+                            <input class="form-check-input" type="radio" name="category" id="category" value="2" checked>
+                            <label class="form-check-label" for="flexRadioDefault2">體驗</label>
+                        </div>
+                        <div class="form-check col">
+                            <input class="form-check-input" type="radio" name="category" id="category" value="3">
+                            <label class="form-check-label" for="flexRadioDefault2">講座</label>
+                        </div>
+                    @else
+                        <div class="form-check col">
+                            <input class="form-check-input" type="radio" name="category" id="category" value="1">
+                            <label class="form-check-label" for="flexRadioDefault1">展覽</label>
+                        </div>
+                        <div class="form-check col">
+                            <input class="form-check-input" type="radio" name="category" id="category" value="2">
+                            <label class="form-check-label" for="flexRadioDefault2">體驗</label>
+                        </div>
+                        <div class="form-check col">
+                            <input class="form-check-input" type="radio" name="category" id="category" value="3" checked>
+                            <label class="form-check-label" for="flexRadioDefault2">講座</label>
+                        </div>
+                    @endif
+
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">活動名稱</label>
             <!--回傳時會把name包裝成key，填入的內容包裝成value-->
             <input name="name" id="name" type="text" class="form-control" placeholder="請輸入活動名稱" value="{{$activity->name}}"><!--單行輸入框-->
@@ -44,6 +92,29 @@
         <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">注意事項</label>
             <textarea name="precaution" id="precaution" class="form-control" rows="10" placeholder="請輸入注意事項">{{$activity->precaution}}</textarea><!--多行輸入框-->
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">是否列為推薦</label>
+            @if($activity->is_feature == 1)
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="is_feature" id="is_feature" value="1" checked>
+                    <label class="form-check-label" for="flexRadioDefault1">是</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="is_feature" id="is_feature" value="0">
+                    <label class="form-check-label" for="flexRadioDefault2">否</label>
+                </div>
+            @else
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="is_feature" id="is_feature" value="1">
+                    <label class="form-check-label" for="flexRadioDefault1">是</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="is_feature" id="is_feature" value="0" checked>
+                    <label class="form-check-label" for="flexRadioDefault2">否</label>
+                </div>
+            @endif
+
         </div>
         <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">活動圖片</label>

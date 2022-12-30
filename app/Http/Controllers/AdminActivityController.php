@@ -16,8 +16,14 @@ class AdminActivityController extends Controller
     public function index()
     {
         $activities = Activity::orderBy('id', 'DESC')->get();//取得資料庫中的欄位值，以陣列的方式
+        $activities_show=Activity::where('category','=',1)->orderBy('id','DESC')->get();
+        $activities_diy=Activity::where('category','=',2)->orderBy('id','DESC')->get();
+        $activities_lecture=Activity::where('category','=',3)->orderBy('id','DESC')->get();
         $data=[
-            'activities'=>$activities
+            'activities'=>$activities,
+            'activities_show'=>$activities_show,
+            'activities_diy'=>$activities_diy,
+            'activities_lecture'=>$activities_lecture,
         ];
 
         return view('admin.activities.index',$data);
@@ -47,12 +53,14 @@ class AdminActivityController extends Controller
         //將檔案名稱存至DB
         Activity::create([
             'name'=>$request->name,
+            'category'=>$request->category,
             'organizer'=>$request->organizer,
             'start_time'=>$request->start_time,
             'end_time'=>$request->end_time,
             'place'=>$request->place,
             'introduce'=>$request->introduce,
             'precaution'=>$request->precaution,
+            'is_feature'=>$request->is_feature,
             'img'=>$imageName,
 
         ]);
@@ -98,16 +106,19 @@ class AdminActivityController extends Controller
 
         }else{
             //如果沒有上傳新檔案抓取原檔案的路徑
-            $imageURL=$activity->img;
+            $imageName=$activity->img;
             echo "NOO";
         }
         $activity->update([
             'name'=>$request->name,
+            'category'=>$request->category,
             'start_time'=>$request->start_time,
             'end_time'=>$request->end_time,
             'place'=>$request->place,
             'introduce'=>$request->introduce,
             'organizer'=>$request->organizer,
+            'precaution'=>$request->precaution,
+            'is_feature'=>$request->is_feature,
             'img'=>$imageName,
         ]);
         return redirect()->route('admin.activities.index');
