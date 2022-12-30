@@ -11,8 +11,10 @@ class HomeController extends Controller
     public function index()
     {
         $activities = Activity::all();
+        $activities_feature = Activity::where('is_feature','=','1')->get();
         $data=[
-          'activities'=>$activities,
+            'activities'=>$activities,
+            'activities_feature'=>$activities_feature,
         ];
         //return view('home.new',$data);
         return view('home.new',$data);
