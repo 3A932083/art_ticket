@@ -31,7 +31,8 @@ class UserController extends Controller
     {
 
         $user=Auth::user();//目前使用者資料
-        $orders = Order::orderBy('id', 'DESC')->get();
+        //$orders = Order::orderBy('id', 'DESC')->get();
+        $orders=Order::where('user_id','=',$user->id)->orderby('id','DESC')->get();
        // $event=Event::where('id','=',$order->event_id)->orderBy('id', 'DESC')->get();
       //$activity  = Activity::orderBy('id', 'DESC')->get();
         $data = [

@@ -45,20 +45,25 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-        $id=Auth::id();
+        $user=Auth::user();
+        $orders=Order::where('user_id','=',$user->id)->orderby('id','DESC')->get();
         Order::create([
         'event_id'=>$request->event,
-        'user_id'=>$id,
+        'user_id'=>$user->id,
             'status'=>0,
         ]);
-        return view('user.index');
+        $data=[
+            'user'=>$user,
+            'orders'=>$orders,
+        ];
+        return view('user.index',$data);
     }
 
     public function test()
     {
         $array=array();
         $orders=Order::where('id','<','13')->get();
-        $count=count($orders,1);
+        $count=count($orders,);
         foreach ($orders as $order){
             $event=Event::where('id','=',$order->event_id)->get();
            // $user=User::where('id','=',$order->user_id)->get();
