@@ -58,16 +58,16 @@ class OrderController extends Controller
     {
         $array=array();
         $orders=Order::where('id','<','13')->get();
+        $count=count($orders,1);
         foreach ($orders as $order){
             $event=Event::where('id','=',$order->event_id)->get();
            // $user=User::where('id','=',$order->user_id)->get();
-            echo $event;
             //$activity=$event->activity()->get();
        //$activity=Activity::where('id','=',$event->activity_id)->get();
         }
 
        // $array=Arr::add($array,"key",["order"=>111,"event"=>23,"activity"=>123]);
-
+echo $count;
        // print_r($event->id) ;
         //return view('order.activity_end');
     }

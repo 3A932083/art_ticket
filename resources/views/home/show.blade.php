@@ -27,6 +27,7 @@
 
                                 <h2 class="fs-4 fw-bold">{{$activity->name}}</h2>
                                 <p class="mb-0">{{$activity->introduce}}</p>
+                                <a href="{{route('activity.activity',$activity->id)}}" class="stretched-link"></a>
                             </div>
                         </div>
                     </div>
