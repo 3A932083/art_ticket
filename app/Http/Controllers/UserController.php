@@ -6,6 +6,7 @@ use App\Models\Activity;
 use App\Models\Event;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -32,12 +33,27 @@ class UserController extends Controller
 
         $user=Auth::user();//目前使用者資料
         //$orders = Order::orderBy('id', 'DESC')->get();
-        $orders=Order::where('user_id','=',$user->id)->orderby('id','DESC')->get();
-       // $event=Event::where('id','=',$order->event_id)->orderBy('id', 'DESC')->get();
-      //$activity  = Activity::orderBy('id', 'DESC')->get();
+        $array=array();
+        $count=0;
+        $orders=Order::where('user_id','=',$user->id)->get();
+        foreach ($orders as $order){
+            $events=$order->event()->get();
+            foreach ($events as $event){
+                $activities=$event->activity()->get();
+                foreach ($activities as $activity){
+                    $array=Arr::add($array,$count,[
+                        'order_id'=>$order->id,
+                        'event_id'=>$event->id,
+                        'activity_id'=>$activity->id,
+                        'activity_name'=>$activity->name,
+                    ]);
+                    $count++;
+                }
+            }
+        }
         $data = [
             'user' => $user,
-            'orders'=>$orders,
+            'array'=>$array,
         ];
        // return $event;
        return view('user.index',$data);

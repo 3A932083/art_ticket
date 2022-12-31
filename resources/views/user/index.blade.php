@@ -85,11 +85,11 @@
                     </tr>
                     </thead>
 
-                    @foreach($orders as $order)
+                    @foreach($array as $array_item)
                     <tbody>
                     <tr>
-                        <th scope="row" style="width: 50px">{{$order->id}}</th>
-                        <td></td><!--活動名稱-->
+                        <th scope="row" style="width: 50px">{{$array_item['order_id']}}</th>
+                        <td>{{$array_item['activity_name']}}</td><!--活動名稱-->
                         <td style="width: 150px">
                             <a href="" class="btn btn-primary btn-sm">詳情</a>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@123">退票</button>

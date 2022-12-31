@@ -46,15 +46,32 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $user=Auth::user();
-        $orders=Order::where('user_id','=',$user->id)->orderby('id','DESC')->get();
+        $array=array();
+        $count=0;
         Order::create([
         'event_id'=>$request->event,
         'user_id'=>$user->id,
             'status'=>0,
         ]);
+        $orders=Order::where('user_id','=',$user->id)->orderby('id','DESC')->get();
+        foreach ($orders as $order){
+            $events=$order->event()->get();
+            foreach ($events as $event){
+                $activities=$event->activity()->get();
+                foreach ($activities as $activity){
+                    $array=Arr::add($array,$count,[
+                        'order_id'=>$order->id,
+                        'event_id'=>$event->id,
+                        'activity_id'=>$activity->id,
+                        'activity_name'=>$activity->name,
+                    ]);
+                    $count++;
+                }
+            }
+        }
         $data=[
             'user'=>$user,
-            'orders'=>$orders,
+            'array'=>$array,
         ];
         return view('user.index',$data);
     }
@@ -62,19 +79,23 @@ class OrderController extends Controller
     public function test()
     {
         $array=array();
-        $orders=Order::where('id','<','13')->get();
-        $count=count($orders,);
+        $count=0;
+        $orders=Order::where('id','<','4')->get();
         foreach ($orders as $order){
-            $event=Event::where('id','=',$order->event_id)->get();
-           // $user=User::where('id','=',$order->user_id)->get();
-            //$activity=$event->activity()->get();
-       //$activity=Activity::where('id','=',$event->activity_id)->get();
+            $events=$order->event()->get();
+            foreach ($events as $event){
+                $activities=$event->activity()->get();
+                foreach ($activities as $activity){
+                    $array=Arr::add($array,$count,[
+                        'order_id'=>$order->id,
+                        'event_id'=>$event->id,
+                        'activity_id'=>$activity->id,
+                    ]);
+                    $count++;
+                }
+            }
         }
-
-       // $array=Arr::add($array,"key",["order"=>111,"event"=>23,"activity"=>123]);
-echo $count;
-       // print_r($event->id) ;
-        //return view('order.activity_end');
+        print_r($array);
     }
 }
 
