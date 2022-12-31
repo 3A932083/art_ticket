@@ -44,8 +44,11 @@ class UserController extends Controller
                     $array=Arr::add($array,$count,[
                         'order_id'=>$order->id,
                         'event_id'=>$event->id,
+                        'event_time'=>$event->time,
+                        'event_price'=>$event->price,
                         'activity_id'=>$activity->id,
                         'activity_name'=>$activity->name,
+                        'activity_img'=>$activity->img,
                     ]);
                     $count++;
                 }
