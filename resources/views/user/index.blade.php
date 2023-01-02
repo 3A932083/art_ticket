@@ -92,13 +92,13 @@
                         <td>{{$array_item['activity_name']}}</td><!--活動名稱-->
                         <td style="width: 150px">
 
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@123">詳情</button>
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#order{{$array_item['order_id']}}" data-bs-whatever="@123">詳情</button>
+                            <div class="modal fade" id="order{{$array_item['order_id']}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <!--標題-->
-                                            <h5 class="modal-title" id="exampleModalLabel">詳情</h5>
+                                            <h5 class="modal-title" id="more">詳情</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <form action="" method="post" >
@@ -137,8 +137,8 @@
 
 
 
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@123">退票</button>
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <button type="button" id="btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#refund" data-bs-whatever="@123" >退票</button>
+                            <div class="modal fade" id="refund" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -146,10 +146,10 @@
                                             <h5 class="modal-title" id="exampleModalLabel">退票</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <form action="" method="post" >
-                                            @method('post')
-                                            <!--csrf驗證機制，產生隱藏的input，包含一組驗證密碼-->
-                                            @csrf
+{{--                                        <form action="" method="post" >--}}
+{{--                                            @method('post')--}}
+{{--                                            <!--csrf驗證機制，產生隱藏的input，包含一組驗證密碼-->--}}
+{{--                                            @csrf--}}
                                             <div class="modal-body">
                                                 <input id="activity_id" name="activity_id" type="hidden" value="">
                                                 <div class="mb-3">
@@ -163,20 +163,28 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">退票</button>
+                                                <button type="submit" class="btn btn-primary" id="refund">退票</button>
                                             </div>
-                                        </form>
+
+{{--                                        </form>--}}
                                     </div>
                                 </div>
                             </div>
                         </td>
                     </tr>
                     @endforeach
-
+                    <script>
+                        let refund_btn = document.querySelector('#refund');
+                        let btn = document.querySelector('#btn');
+                        refund_btn.addEventListener('click', () => {
+                            btn.innerText = '退票成功';
+                        })
+                    </script>
                     </tbody>
                 </table>
             </div>
         </div>
+
 
 {{--        <!--退票申請-->--}}
 {{--        <div class="tab-pane fade " id="nav-refund" role="tabpanel" aria-labelledby="nav-refund-tab">--}}

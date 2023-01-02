@@ -67,36 +67,35 @@ Route::prefix('user')->name('user.')->group(function () {
 //管理員
 Route::prefix('admin')->name('admin.')->group(function () {
     //登入前可執行的動作
-    Route::middleware(['guest:admin','PreventBackHistory'])->group(function () {
-        Route::view('/login','admin.login')->name('login');//登入表單
-        Route::post('/check',[AdminHomeController::class,'check'])->name('check');//登入確認並登入管理員首頁
+    Route::middleware(['guest:admin', 'PreventBackHistory'])->group(function () {
+        Route::view('/login', 'admin.login')->name('login');//登入表單
+        Route::post('/check', [AdminHomeController::class, 'check'])->name('check');//登入確認並登入管理員首頁
     });
 
     //登入後可執行的動作
-    Route::middleware(['auth:admin','PreventBackHistory'])->group(function () {
-        Route::get('/index',[AdminHomeController::class,'index'])->name('index');//主控台
-        Route::post('/logout',[AdminHomeController::class,'logout'])->name('logout');//登出
+    Route::middleware(['auth:admin', 'PreventBackHistory'])->group(function () {
+        Route::get('/index', [AdminHomeController::class, 'index'])->name('index');//主控台
+        Route::post('/logout', [AdminHomeController::class, 'logout'])->name('logout');//登出
 
         //帳號管理
         Route::prefix('account')->name('account.')->group(function () {
-            Route::get('/',[AdminAccountController::class,'index'])->name('index');//帳號列表
+            Route::get('/', [AdminAccountController::class, 'index'])->name('index');//帳號列表
             //會員
-            Route::get('/user/{user}/show', [AdminAccountController::class,'user_show'])->name("user.show");//會員詳情頁面
-            Route::get('/user/{user}/edit', [AdminAccountController::class,'user_edit'])->name("user.edit");//會員編輯頁面
-            Route::patch('/user/{user}', [AdminAccountController::class,'user_update'])->name("user.update");//更新會員資料
+            Route::get('/user/{user}/show', [AdminAccountController::class, 'user_show'])->name("user.show");//會員詳情頁面
+            Route::get('/user/{user}/edit', [AdminAccountController::class, 'user_edit'])->name("user.edit");//會員編輯頁面
+            Route::patch('/user/{user}', [AdminAccountController::class, 'user_update'])->name("user.update");//更新會員資料
             Route::get('/user/create', [AdminAccountController::class, 'user_create'])->name("user.create");//新增管理員頁面
             Route::post('/user/store', [AdminAccountController::class, 'user_store'])->name("user.store");//存取管理員資料
             Route::delete('/user/{user}', [AdminAccountController::class, 'user_destroy'])->name('user.destroy');//刪除會員
 
             //管理員
-            Route::get('/admin/{admin}/show', [AdminAccountController::class,'admin_show'])->name("admin.show");//管理員詳情頁面
-            Route::get('/admin/{admin}/edit', [AdminAccountController::class,'admin_edit'])->name("admin.edit");//管理員編輯頁面
-            Route::patch('/admin/{admin}', [AdminAccountController::class,'admin_update'])->name("admin.update");//更新管理員資料
+            Route::get('/admin/{admin}/show', [AdminAccountController::class, 'admin_show'])->name("admin.show");//管理員詳情頁面
+            Route::get('/admin/{admin}/edit', [AdminAccountController::class, 'admin_edit'])->name("admin.edit");//管理員編輯頁面
+            Route::patch('/admin/{admin}', [AdminAccountController::class, 'admin_update'])->name("admin.update");//更新管理員資料
             Route::get('/admin/create', [AdminAccountController::class, 'admin_create'])->name("admin.create");//新增管理員頁面
             Route::post('/admin/store', [AdminAccountController::class, 'admin_store'])->name("admin.store");//存取管理員資料
             Route::delete('/admin/{admin}', [AdminAccountController::class, 'admin_destroy'])->name('admin.destroy');//刪除管理員
-    });
-
+        });
 
 
     });
@@ -104,42 +103,52 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     //活動
     Route::prefix('activities')->name('activities.')->group(function () {
-        Route::get('/',[AdminActivityController::class,'index'])->name('index');//活動列表
-        Route::get('/{activity}/show',[AdminActivityController::class,'show'])->name('show');//活動詳情
-        Route::get('/create',[AdminActivityController::class,'create'])->name('create');//新增活動頁面
-        Route::post('/',[AdminActivityController::class,'store'])->name('store');//儲存活動資料
-        Route::get('/{activity}/edit',[AdminActivityController::class,'edit'])->name('edit');//編輯活動頁面
-        Route::patch('/{activity}',[AdminActivityController::class,'update'])->name('update');//更新活動資料
-        Route::delete('/{activity}',[AdminActivityController::class,'destroy'])->name('destroy');//刪除活動資料
-        Route::post('/events',[AdminEventController::class,'store'])->name('events.store');//儲存場次資訊
-        Route::delete('/events/{event}',[AdminEventController::class,'destroy'])->name('events.destroy');//儲存場次資訊
+        Route::get('/', [AdminActivityController::class, 'index'])->name('index');//活動列表
+        Route::get('/{activity}/show', [AdminActivityController::class, 'show'])->name('show');//活動詳情
+        Route::get('/create', [AdminActivityController::class, 'create'])->name('create');//新增活動頁面
+        Route::post('/', [AdminActivityController::class, 'store'])->name('store');//儲存活動資料
+        Route::get('/{activity}/edit', [AdminActivityController::class, 'edit'])->name('edit');//編輯活動頁面
+        Route::patch('/{activity}', [AdminActivityController::class, 'update'])->name('update');//更新活動資料
+        Route::delete('/{activity}', [AdminActivityController::class, 'destroy'])->name('destroy');//刪除活動資料
+        Route::post('/events', [AdminEventController::class, 'store'])->name('events.store');//儲存場次資訊
+        Route::delete('/events/{event}', [AdminEventController::class, 'destroy'])->name('events.destroy');//儲存場次資訊
 
-        Route::get('/image',[AdminActivityController::class,'test'])->name('image.test');//測試-上傳圖片
-        Route::post('/image',[AdminActivityController::class,'image'])->name('image');//測試-儲存圖片
-        Route::delete('/image',[AdminActivityController::class,'image_d'])->name('image.d');//測試-儲存圖片
-        Route::get('/test',function (){
-           $faker=\Faker\Factory::create();
-            $start_time=$faker->date('y-m-d');
-            do{
-                $end_time=$faker->date('y-m-d');
-            }while($start_time>$end_time);
-            echo $start_time.' & '.$end_time;
-            echo $start_time-$end_time;
+        Route::get('/image', [AdminActivityController::class, 'test'])->name('image.test');//測試-上傳圖片
+        Route::post('/image', [AdminActivityController::class, 'image'])->name('image');//測試-儲存圖片
+        Route::delete('/image', [AdminActivityController::class, 'image_d'])->name('image.d');//測試-儲存圖片
+        Route::get('/test', function () {
+            $faker = \Faker\Factory::create();
+            $start_time = $faker->date('y-m-d');
+            do {
+                $end_time = $faker->date('y-m-d');
+            } while ($start_time > $end_time);
+            echo $start_time . ' & ' . $end_time;
+            echo $start_time - $end_time;
         });
     });
-    Route::get('/order',[AdminOrderController::class,'index'])->name('orders.index');//訂單列表
 
-});
+        Route::get('/order', [AdminOrderController::class, 'index'])->name('orders.index');//訂單列表
+
+      Route::prefix('orders')->name('orders.')->group(function () {
+        Route::get('/', [AdminOrderController::class, 'index'])->name('index');//訂單列表
+        Route::get('/{order}/show', [AdminOrderController::class, 'show'])->name('show');//訂單詳情
+        Route::get('/create', [AdminOrderController::class, 'create'])->name('create');//新增訂單頁面
+        Route::post('/', [AdminOrderController::class, 'store'])->name('store');//儲存訂單資料
+        Route::get('/{order}/edit', [AdminOrderController::class, 'edit'])->name('edit');//編輯訂單頁面
+        Route::patch('/{order}', [AdminOrderController::class, 'update'])->name('update');//更新訂單資料
+        Route::delete('/{order}', [AdminOrderController::class, 'destroy'])->name('destroy');//刪除訂單資料
+    });
 
 
 //訂購
-Route::prefix('order')->name('order.')->group(function () {
-    Route::get('information/{activity}',[OrderController::class,'information'])->name('activity_information');//活動詳情
+    Route::prefix('order')->name('order.')->group(function () {
+        Route::get('information/{activity}', [OrderController::class, 'information'])->name('activity_information');//活動詳情
 
-    Route::get('check/{event}',[OrderController::class,'check'])->name('activity_check');//訂單確認
-    Route::get('end/{activity}',[OrderController::class,'end'])->name('activity_end');//發送票券
-    Route::post('/store', [OrderController::class, 'store'])->name('store');//儲存訂單至orders資料表
+        Route::get('check/{event}', [OrderController::class, 'check'])->name('activity_check');//訂單確認
+        Route::get('end/{activity}', [OrderController::class, 'end'])->name('activity_end');//發送票券
+        Route::post('/store', [OrderController::class, 'store'])->name('store');//儲存訂單至orders資料表
 
+
+    });
 });
 
-Route::get('/test',[OrderController::class,'test'])->name('test');
