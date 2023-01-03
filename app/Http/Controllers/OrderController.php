@@ -61,6 +61,7 @@ class OrderController extends Controller
                 foreach ($activities as $activity){
                     $array=Arr::add($array,$count,[
                         'order_id'=>$order->id,
+                        'order_status'=>$order->status,
                         'event_id'=>$event->id,
                         'event_time'=>$event->time,
                         'event_price'=>$event->price,
