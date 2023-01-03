@@ -10,7 +10,7 @@
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <button class="nav-link active" id="nav-data-tab" data-bs-toggle="tab" data-bs-target="#nav-data" type="button" role="tab" aria-controls="nav-data" aria-selected="true">個人資料</button>
                     <button class="nav-link" id="nav-ticket-tab" data-bs-toggle="tab" data-bs-target="#nav-ticket" type="button" role="tab" aria-controls="nav-ticket" aria-selected="false">個人票卷</button>
-{{--                    <button class="nav-link" id="nav-refund-tab" data-bs-toggle="tab" data-bs-target="#nav-refund" type="button" role="tab" aria-controls="nav-refund" aria-selected="false">退票申請</button>--}}
+{{--                    <button class="nav-link" id="nav-refund-tab" data-bs-toggle="tab" data-bs-target="#nav-refund" type="button" role="tab" aria-controls="nav-refund" aria-selected="false">退票區</button>--}}
                 </div>
             </nav>
         </div>
@@ -71,6 +71,7 @@
                 </div>
             </section>
         </div>
+
 
         <!--個人票卷-->
 
@@ -134,14 +135,14 @@
                                 </div>
                             </div>
 
-
-
+                            @if($array_item['order_status']==0)
                             <button type="button" id="btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#refund" data-bs-whatever="@123" >退票</button>
                             <div class="modal fade" id="refund" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <form action="{{route('user.refund',$array_item['order_id'])}}" method="post" >
                                     @method('patch')
                                     <!--csrf驗證機制，產生隱藏的input，包含一組驗證密碼-->
                                     @csrf
+
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -149,7 +150,6 @@
                                             <h5 class="modal-title" id="exampleModalLabel">退票</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-
                                             <div class="modal-body">
                                                 <input id="activity_id" name="activity_id" type="hidden" value="">
                                                 <div class="mb-3">
@@ -160,36 +160,26 @@
                                                     <label for="message-text" class="col-form-label">連絡電話:</label>
                                                     <input type="text" class="form-control" id="count" name="count">
                                                 </div>
-
                                             </div>
+
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                 <button type="submit" class="btn btn-primary refund">確定</button>
                                             </div>
 
+                                        @else
+                                                <label for="message-text" class="col-form-label">審核中</label>
+
+                                            @endif
                                     </div>
                                 </div>
                                 </form>
                             </div>
                         </td>
                     </tr>
-
                     </tbody>
                     @endforeach
-
-{{--                    <script>--}}
-{{--                        let refund = document.querySelectorAll('.refund');--}}
-
-{{--                        [...refund].forEach(e => {--}}
-{{--                            e.addEventListener('click', () => {--}}
-{{--                                let text = document.createElement("button");--}}
-{{--                                text.innerHTML = "審核中";--}}
-{{--                                text.className = "btn btn-primary disabled";--}}
-{{--                                btn = e.parentNode.parentNode.parentNode.parentNode.parentNode.children[2];--}}
-{{--                                parent = e.parentNode.parentNode.parentNode.parentNode.parentNode;--}}
-{{--                                parent.replaceChild(text, btn);--}}
-{{--                            })--}}
-{{--                        })--}}
-{{--                    </script>--}}
+                </table>
+            </div>
 
 @endsection
