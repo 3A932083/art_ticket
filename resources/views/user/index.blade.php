@@ -123,6 +123,11 @@
                                                     <label for="message-text" class="col-form-label">票價:</label>
                                                     <h1> <h1>{{$array_item['event_price']}}</h1></h1>
                                                 </div>
+
+                                                <div class="mb-3">
+                                                    <label for="message-text" class="col-form-label">票券:</label>
+                                                    <img src="../img/7.png" width="300" height="300">
+                                                </div>
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                             </div>
                                             <div class="modal-footer">
