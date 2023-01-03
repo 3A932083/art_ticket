@@ -43,6 +43,7 @@ class UserController extends Controller
                 foreach ($activities as $activity){
                     $array=Arr::add($array,$count,[
                         'order_id'=>$order->id,
+                        'order_status'=>$order->status,
                         'event_id'=>$event->id,
                         'event_time'=>$event->time,
                         'event_price'=>$event->price,
@@ -213,8 +214,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
+
 
     /**
      * Display the specified resource.
@@ -229,7 +231,19 @@ class UserController extends Controller
 
     }
 
+    public function refund(Request $request,Order $order)
+    {
 
+        $user=Auth::user();
+        $order->update([
+            'event_id'=>$order->event_id,
+            'user_id'=>$user->id,
+            'status'=>1,
+        ]);
+
+    return redirect()->route('user.index');
+
+    }
 
 
     /**

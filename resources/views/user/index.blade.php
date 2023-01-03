@@ -73,6 +73,7 @@
         </div>
 
         <!--個人票卷-->
+
         <div class="tab-pane fade" id="nav-ticket" role="tabpanel" aria-labelledby="nav-ticket-tab">
 
             <div class="container px-lg-4">
@@ -135,10 +136,12 @@
 
 
 
-
-
                             <button type="button" id="btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#refund" data-bs-whatever="@123" >退票</button>
                             <div class="modal fade" id="refund" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <form action="{{route('user.refund',$array_item['order_id'])}}" method="post" >
+                                    @method('patch')
+                                    <!--csrf驗證機制，產生隱藏的input，包含一組驗證密碼-->
+                                    @csrf
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -146,10 +149,7 @@
                                             <h5 class="modal-title" id="exampleModalLabel">退票</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-{{--                                        <form action="" method="post" >--}}
-{{--                                            @method('post')--}}
-{{--                                            <!--csrf驗證機制，產生隱藏的input，包含一組驗證密碼-->--}}
-{{--                                            @csrf--}}
+
                                             <div class="modal-body">
                                                 <input id="activity_id" name="activity_id" type="hidden" value="">
                                                 <div class="mb-3">
@@ -160,90 +160,36 @@
                                                     <label for="message-text" class="col-form-label">連絡電話:</label>
                                                     <input type="text" class="form-control" id="count" name="count">
                                                 </div>
+
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary" id="refund">退票</button>
+                                                <button type="submit" class="btn btn-primary refund">確定</button>
                                             </div>
 
-{{--                                        </form>--}}
                                     </div>
                                 </div>
+                                </form>
                             </div>
                         </td>
                     </tr>
-                    @endforeach
-                    <script>
-                        let refund_btn = document.querySelector('#refund');
-                        let btn = document.querySelector('#btn');
-                        refund_btn.addEventListener('click', () => {
-                            btn.innerText = '退票成功';
-                        })
-                    </script>
+
                     </tbody>
-                </table>
-            </div>
-        </div>
+                    @endforeach
 
+{{--                    <script>--}}
+{{--                        let refund = document.querySelectorAll('.refund');--}}
 
-{{--        <!--退票申請-->--}}
-{{--        <div class="tab-pane fade " id="nav-refund" role="tabpanel" aria-labelledby="nav-refund-tab">--}}
+{{--                        [...refund].forEach(e => {--}}
+{{--                            e.addEventListener('click', () => {--}}
+{{--                                let text = document.createElement("button");--}}
+{{--                                text.innerHTML = "審核中";--}}
+{{--                                text.className = "btn btn-primary disabled";--}}
+{{--                                btn = e.parentNode.parentNode.parentNode.parentNode.parentNode.children[2];--}}
+{{--                                parent = e.parentNode.parentNode.parentNode.parentNode.parentNode;--}}
+{{--                                parent.replaceChild(text, btn);--}}
+{{--                            })--}}
+{{--                        })--}}
+{{--                    </script>--}}
 
-{{--            <form method="POST" action=" ">--}}
-{{--                @csrf--}}
-
-{{--                <section class="pt-4">--}}
-{{--                        <div class="row mb-3 px-4">--}}
-{{--                            <label for="order" class="col-md-4 col-form-label text-md-end">{{ __('訂單：') }}</label>--}}
-{{--                            <div class="col-md-2">--}}
-{{--                                <select class="form-select" aria-label="Default select example">--}}
-{{--                                    <option selected>選擇訂單</option>--}}
-{{--                                    <option value="1">One</option>--}}
-{{--                                    <option value="2">Two</option>--}}
-{{--                                    <option value="3">Three</option>--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-{{--                        <div class="row mb-3 px-4">--}}
-{{--                            <label for="activityname" class="col-md-4 col-form-label text-md-end">{{ __('活動名稱：') }}</label>--}}
-
-{{--                        </div>--}}
-
-{{--                        <div class="row mb-3 px-4">--}}
-{{--                            <label for="activityplace" class="col-md-4 col-form-label text-md-end">{{ __('活動地點：') }}</label>--}}
-
-{{--                        </div>--}}
-
-{{--                        <div class="row mb-3 px-4">--}}
-{{--                            <label for="activitytime" class="col-md-4 col-form-label text-md-end">{{ __('活動場次：') }}</label>--}}
-
-{{--                        </div>--}}
-
-{{--                        <div class="row mb-3 px-4">--}}
-{{--                            <label for="bank" class="col-md-4 col-form-label text-md-end">{{ __('退款銀行：') }}</label>--}}
-{{--                            <div class="col-md-2">--}}
-{{--                                <input id="bank" type="text" class="form-control" placeholder="請輸入退款銀行">--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-{{--                        <div class="row mb-3 px-4">--}}
-{{--                            <label for="bankaccount" class="col-md-4 col-form-label text-md-end">{{ __('銀行帳號：') }}</label>--}}
-{{--                            <div class="col-md-2">--}}
-{{--                                <input id="bankaccount" type="text" class="form-control"  placeholder="請輸入銀行帳號">--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-{{--                        <div class="row mb-3 px-4">--}}
-{{--                            <div class="col-md-8 offset-md-4">--}}
-{{--                                <button type="submit" class="btn btn-primary">--}}
-{{--                                    {{ __('確定退票') }}--}}
-{{--                                </button>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                </section>--}}
-{{--            </form>--}}
-{{--        </div>--}}
-
-{{--    </div>--}}
 @endsection

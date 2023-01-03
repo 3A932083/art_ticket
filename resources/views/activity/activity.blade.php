@@ -82,13 +82,18 @@
                                             <div class="container">
                                                 <table class="table caption-top table-hover">
                                                     <thead>
-                                                        <tr>
-                                                            <th>活動日期</th>
-                                                            <th>票價</th>
-                                                        </tr>
+                                                    <tr>
+                                                        <th>活動日期</th>
+                                                        <th>票價</th>
+                                                    </tr>
                                                     </thead>
                                                     <tbody>
-
+                                                    @foreach($events as $event)
+                                                        <tr>
+                                                            <th>{{$event->time}}</th>
+                                                            <th>{{$event->price}}</th>
+                                                        </tr>
+                                                    @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -98,10 +103,8 @@
                             </div>
                         </section>
                     </article>
-
                 </div>
             </div>
         </div>
     </section>
-
 @endsection

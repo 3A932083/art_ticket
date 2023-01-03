@@ -68,7 +68,6 @@ class AdminOrderController extends Controller
 
     public function destroy(Order $order)
     {
-
         Order::destroy($order->id);
         return redirect()->route('admin.orders.index');
     }

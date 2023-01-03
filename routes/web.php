@@ -57,8 +57,9 @@ Route::prefix('user')->name('user.')->group(function () {
     Route::middleware(['auth:web','PreventBackHistory'])->group(function (){
         Route::get('/index',[UserController::class,'index'])->name('index');//會員中心
         Route::post('/logout',[UserController::class,'logout'])->name('logout');//登出
-        Route::get('/{user}/edit', [UserController::class,'edit'])->name("edit");//修改會員資料頁面
-        Route::patch('/{user}', [UserController::class,'update'])->name("update");//更新會員資料
+        Route::get('/{user}/edit', [UserController::class,'edit'])->name('edit');//修改會員資料頁面
+        Route::patch('/{user}', [UserController::class,'update'])->name('update');//更新會員資料
+        Route::patch('/{order}/refund',[UserController::class,'refund'])->name('refund');//儲存退票狀態
 
     });
 });
@@ -138,17 +139,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::patch('/{order}', [AdminOrderController::class, 'update'])->name('update');//更新訂單資料
         Route::delete('/{order}', [AdminOrderController::class, 'destroy'])->name('destroy');//刪除訂單資料
     });
-
+});
 
 //訂購
-    Route::prefix('order')->name('order.')->group(function () {
-        Route::get('information/{activity}', [OrderController::class, 'information'])->name('activity_information');//活動詳情
-
-        Route::get('check/{event}', [OrderController::class, 'check'])->name('activity_check');//訂單確認
-        Route::get('end/{activity}', [OrderController::class, 'end'])->name('activity_end');//發送票券
-        Route::post('/store', [OrderController::class, 'store'])->name('store');//儲存訂單至orders資料表
-
-
-    });
+Route::prefix('order')->name('order.')->group(function () {
+    Route::get('information/{activity}',[OrderController::class,'information'])->name('activity_information');//活動詳情
+    Route::get('check/{event}',[OrderController::class,'check'])->name('activity_check');//訂單確認
+    Route::post('/store', [OrderController::class, 'store'])->name('store');//儲存訂單至orders資料表
+    Route::get('end/{activity}',[OrderController::class,'end'])->name('activity_end');//發送票券
 });
+
+
+
+
 
