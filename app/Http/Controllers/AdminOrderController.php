@@ -5,14 +5,29 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class AdminOrderController extends Controller
 {
     public function index(){
-        $orders = Order::orderBy('id', 'DESC')->get();//取得資料庫中的欄位值，以陣列的方式
 
-        $data=[
-            'orders'=>$orders
+        $array=array();
+        $count=0;
+        $orders = Order::orderBy('id', 'DESC')->get();
+        //$orders=Order::where('user_id','=',$user->id)->get();
+        foreach ($orders as $order){
+            $users=$order->user()->get();
+            foreach ($users as $user){
+                    $array=Arr::add($array,$count,[
+                        'order_id'=>$order->id,
+                        'order_status'=>$order->status,
+                        'order_user'=>$user->name,
+                    ]);
+                    $count++;
+            }
+        }
+        $data = [
+            'array'=>$array,
         ];
         return view('admin.orders.index',$data);
     }
@@ -68,7 +83,7 @@ class AdminOrderController extends Controller
 
     public function destroy(Order $order)
     {
-        Order::destroy($order->id);
+        $order->delete();
         return redirect()->route('admin.orders.index');
     }
 }

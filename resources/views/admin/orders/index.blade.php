@@ -19,14 +19,14 @@
         </thead>
 
         <tbody>
-        @foreach($orders as $order)<!--activities陣列內有幾筆資料就會重複執行幾次-->
+        @foreach($array as $array_item)<!--activities陣列內有幾筆資料就會重複執行幾次-->
         <tr>
-            <th scope="row" style="width: 50px">{{ $order->id }}</th><!--印出資料表內的id欄位-->
-            <th scope="row" style="width: 50px">{{ $order->id }}</th>
+            <th scope="row" style="width: 50px">{{$array_item['order_id']}}</th><!--印出資料表內的id欄位-->
+            <th scope="row" style="width: 50px">{{$array_item['order_user']}}</th>
                         <td style="width: 150px">
 
 
-        <form action={{"admin.orders.destroy',$order->id"}} method="post" style="display: inline-block">
+        <form action={{route('admin.orders.destroy',$array_item['order_id'])}} method="post" style="display: inline-block">
                     @method('delete')
                     @csrf
                     <button type="submit" class="btn btn-danger btn-sm">刪除</button>
