@@ -20,17 +20,30 @@
 
         <tbody>
         @foreach($array as $array_item)<!--activities陣列內有幾筆資料就會重複執行幾次-->
+
         <tr>
             <th scope="row" style="width: 50px">{{$array_item['order_id']}}</th><!--印出資料表內的id欄位-->
             <th scope="row" style="width: 50px">{{$array_item['order_user']}}</th>
                         <td style="width: 150px">
 
 
-        <form action={{route('admin.orders.destroy',$array_item['order_id'])}} method="post" style="display: inline-block">
+                            <form action={{route('admin.orders.destroy',$array_item['order_id'])}} method="post" style="display: inline-block">
                     @method('delete')
                     @csrf
                     <button type="submit" class="btn btn-danger btn-sm">刪除</button>
                 </form>
+                            @if($array_item['order_status']==0)
+                                <label for="message-text" class="col-form-label"></label>
+                            @elseif($array_item['order_status']==1)
+      <form action={{route('admin.orders.refund',$array_item['order_id'])}} method="post" style="display: inline-block">
+               @method('patch')
+               @csrf
+               <button type="submit" class="btn btn-danger btn-sm">審核</button>
+               </form>
+
+                            @else
+                                <label for="message-text" class="col-form-label">成功</label>
+                            @endif
             </td>
         </tr>
         @endforeach

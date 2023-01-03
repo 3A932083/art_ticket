@@ -167,9 +167,10 @@
                                                 <button type="submit" class="btn btn-primary refund">確定</button>
                                             </div>
 
-                                        @else
+                                        @elseif($array_item['order_status']==1)
                                                 <label for="message-text" class="col-form-label">審核中</label>
-
+                                        @else
+                                            <label for="message-text" class="col-form-label">退票成功</label>
                                             @endif
                                     </div>
                                 </div>

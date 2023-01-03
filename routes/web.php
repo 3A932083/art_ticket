@@ -138,6 +138,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/{order}/edit', [AdminOrderController::class, 'edit'])->name('edit');//編輯訂單頁面
         Route::patch('/{order}', [AdminOrderController::class, 'update'])->name('update');//更新訂單資料
         Route::delete('/{order}', [AdminOrderController::class, 'destroy'])->name('destroy');//刪除訂單資料
+          Route::patch('/{order}/refund',[AdminOrderController::class,'refund'])->name('refund');//儲存申請退票狀態
+
     });
 });
 

@@ -6,6 +6,7 @@ use App\Models\Event;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 
 class AdminOrderController extends Controller
 {
@@ -84,6 +85,19 @@ class AdminOrderController extends Controller
     public function destroy(Order $order)
     {
         $order->delete();
+        return redirect()->route('admin.orders.index');
+    }
+
+        public function refund(Order $order)
+    {
+
+        $user=Auth::user();
+        $order->update([
+            'event_id'=>$order->event_id,
+            'user_id'=>$user->id,
+            'status'=>2,
+        ]);
+
         return redirect()->route('admin.orders.index');
     }
 }
