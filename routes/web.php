@@ -126,6 +126,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         });
         //訂單
         Route::get('/order', [AdminOrderController::class, 'index'])->name('orders.index');//訂單列表
+
         Route::prefix('orders')->name('orders.')->group(function () {
             Route::get('/', [AdminOrderController::class, 'index'])->name('index');//訂單列表
             Route::get('/{order}/show', [AdminOrderController::class, 'show'])->name('show');//訂單詳情
@@ -135,6 +136,19 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::patch('/{order}', [AdminOrderController::class, 'update'])->name('update');//更新訂單資料
             Route::delete('/{order}', [AdminOrderController::class, 'destroy'])->name('destroy');//刪除訂單資料
         });
+
+
+      Route::prefix('orders')->name('orders.')->group(function () {
+        Route::get('/', [AdminOrderController::class, 'index'])->name('index');//訂單列表
+        Route::get('/{order}/show', [AdminOrderController::class, 'show'])->name('show');//訂單詳情
+        Route::get('/create', [AdminOrderController::class, 'create'])->name('create');//新增訂單頁面
+        Route::post('/', [AdminOrderController::class, 'store'])->name('store');//儲存訂單資料
+        Route::get('/{order}/edit', [AdminOrderController::class, 'edit'])->name('edit');//編輯訂單頁面
+        Route::patch('/{order}', [AdminOrderController::class, 'update'])->name('update');//更新訂單資料
+        Route::delete('/{order}', [AdminOrderController::class, 'destroy'])->name('destroy');//刪除訂單資料
+        Route::patch('/{order}/refund',[AdminOrderController::class,'refund'])->name('refund');//儲存申請退票狀態
+      });
+
     });
 });
 
