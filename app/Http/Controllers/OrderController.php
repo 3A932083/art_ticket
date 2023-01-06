@@ -76,7 +76,12 @@ class OrderController extends Controller
             'user'=>$user,
             'array'=>$array,
         ];
-        return view('user.index',$data);
+
+        if($user){
+            return redirect()->route('user.index',$data);//正確
+        }else{
+            return redirect()->route('user.login');//無法抓到使用者的話回到登入畫面
+        }
     }
 
     public function test()

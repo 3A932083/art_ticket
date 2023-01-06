@@ -91,8 +91,10 @@
                     </tr>
                     </tbody>
                 </table>
-                <form action="{{route('order.store')}}" method="POST">
+
+                <form action="{{route('user.order.store')}}" method="POST">
                     @csrf
+
                     <input type="hidden" name="event" id="event" value="{{ $events->id}}">
                     <button type="submit" class="btn btn-primary btn-sm">成功訂購</button>
 
