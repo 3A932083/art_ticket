@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -83,9 +84,12 @@ class AdminAccountController extends Controller
 
     //刪除會員
     public function user_destroy(User $user){
-        $user->delete();
+        $order=Order::where('user_id','=',$user->id)->get();//找出有和此user關聯的order
+        Order::destroy($order);//刪除有關連的order
+        $user->delete();//刪除使用者
         return redirect()->route('admin.account.index');
     }
+    
 
 
 
